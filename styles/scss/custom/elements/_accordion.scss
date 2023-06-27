@@ -1,0 +1,40 @@
+.accordion-item{
+    border: 0;
+    border-radius: 0 !important;  
+    background-color: inherit;
+    position: relative;
+    .accordion-button:not(.collapsed){
+        background-color: inherit;
+        box-shadow: none;
+    }
+    .accordion-header{
+        button{
+            padding: 0;
+            &::after{
+                content: none;
+            }
+            &:focus{
+                background-color: inherit;
+                border: 0;
+                box-shadow: none;
+            }
+        }
+    }
+    .accordion-collapse{
+        position: absolute;
+        z-index: 99;
+        background-color: white;
+        box-shadow: 0 2px 10px 0 #323546;
+        
+        border-radius: 8px;
+        overflow: hidden;
+        .accordion-body{
+            padding: 0;
+        }
+    }
+}
+
+
+
+
+
