@@ -1,0 +1,328 @@
+.header{
+    width: 100%;
+    max-width: 100%;
+    &-web{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $bg-clr-1;
+        &-topbar{
+            padding: 8px 0;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space:nowrap;
+            width: 100%;
+            .web-container{
+                padding: 0 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &-left{
+                    display: flex;
+                    align-items: center;
+                    margin-right: 8px;
+                    .global-stats{
+                        display: flex;
+                        align-items: center;
+                        .glo-stat-item{
+                            margin-right: 12px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            .eth-gas{
+                                margin-right: 2px;
+                                svg{
+                                    color: $text-clr-1; 
+                                }
+                            }
+                            .base-text{
+                                color: $text-clr-1;
+                                font-size: 0.6875rem;
+                                font-weight: 500;
+                                // line-height: 150%;
+                            }          
+                            .links{                          
+                                color: $text-clr-2 ;
+                                font-size: 0.6875rem;
+                                font-weight: 500;
+                                white-space: nowrap;
+                                display: inline-block;                       
+                               
+                            }
+                            .percent-change{
+                                margin-left: 6px;
+                                display: flex;
+                                align-items: center;
+                                svg,.value{
+                                    color: $text-clr-3;
+                                }
+                                .value{
+                                    margin-left: 2px;
+                                    font-size: 0.6875rem;
+                                    font-weight: bold;
+                                    white-space: nowrap;
+                                }
+                            }
+                            .downarrow{
+                                margin-left: 2px;
+                                margin-bottom: 1px;
+                                svg{
+                                    color: $text-clr-2;    
+                                }
+                            }
+                        }
+                       
+                    }
+                }
+
+                &-right{
+                    display: flex;
+                    align-items: center;
+                    .options{
+                        display: flex;
+                        align-items: center;
+                        &-item{
+                            margin-right: 12px;
+                            display: flex;
+                            align-items: center;
+                            .lang-accordion{
+                                .accordion{                                 
+                                    .accordion-header{
+                                        button{
+                                            background-color: inherit;
+                                            font-size: 0.75rem;
+                                            font-weight: 600;
+                                            color: white;
+                                            white-space: nowrap;
+                                            display: flex;
+                                            align-items: center;
+                                            svg{
+                                                color: white;
+                                                margin-left: 4px;
+                                                margin-bottom: 2px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .currency{
+                                background-color: inherit;
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                color: white;
+                                white-space: nowrap;
+                                display: flex;
+                                align-items: center;
+                                svg{
+                                    color: white;
+                                    margin-left: 4px;
+                                    margin-bottom: 2px;
+                                }
+                                &::before{
+                                    content: '';
+                                    width: 15px;
+                                    height: 15px;
+                                    border-radius: 50%;
+                                    border-color:1px solid $border-clr-1 ;
+                                    background-image: url("https://s2.coinmarketcap.com/static/cloud/img/fiat-flags/USD.svg");
+                                    background-size: cover;
+                                    background-position: center center;
+                                    background-repeat: no-repeat;
+                                    margin-right: 5px;
+                                }
+                            }
+                            .theme{
+                                button{
+                                    background-color: inherit;
+                                    svg{
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
+                        &-border{
+                            width: 1px;
+                            height: 22.5px;
+                            margin-right:12px;
+                            background-color: $border-clr-2;
+                        }
+                       
+                    }
+                    .user-section{
+                        display: flex;
+                        align-items: center;
+                        .signup-btn,.login-btn{
+                            button{
+                                display: flex;
+                                align-items: center;
+                                justify-self: center;
+                                height: 32px;
+                                padding: 0 16px;
+                                border-radius: 8px;
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                border: 1px solid;
+                            }
+                        }
+                        .login-btn{
+                            margin: 2px 8px 2px 12px;
+                            button{
+                                background-color: inherit;                            
+                                border-color: $border-clr-3;                               
+                                color: $border-clr-3;                                                                
+                                &:hover{
+                                    background-color: $bg-clr-2 ;
+                                }
+                            }
+                        }
+                        .signup-btn{
+                            position: relative;
+                            button{
+                                color: white;
+                                background-color:$bg-clr-3;
+                                border-color: $bg-clr-3;
+                            }
+                            img{
+                                position: absolute;
+                                z-index: 999;
+                                pointer-events: none;
+                                top: -17px;
+                                left: 51px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-middle{
+            width: 100%;
+            height: 1px;
+            background-color: $border-clr-2 ;
+        }
+        &-global{
+            width: 100%;
+            padding: 0 24px;
+            .web-container{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                &-left{
+                    display: flex;
+                    align-items: center;
+                    .mainlogo{
+                        // margin-top: -2px;
+                        .logo-link{
+                            display: flex;
+                            align-items: center;
+                            margin-right: 16px;
+                            height: 60px;
+                            width: 168px;
+                            line-height: 60px;
+                            svg{
+                                width: 100%;
+                                max-height: 100%;
+
+                            }
+                        }
+                    }
+                    .header-navbar{
+                        display: flex;
+                        justify-content: flex-start;
+                        padding-left: 16px;
+                        .navbar{
+                            padding: 0 !important;
+                            .navbar-nav{
+                                padding: 20px 16.5px;
+                                display: flex;
+                                align-items: center;
+                                min-height: 71px;
+                                .nav-item{
+                                    .nav-item-link{
+                                        color: white;
+                                        font-size: 0.875rem;
+                                        font-weight: 600;
+                                        &:hover{
+                                            color:$text-clr-2 ;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &-right{
+                    display: flex;
+                    align-items: center;
+                    .user-favorite{
+                        display: flex;
+                        align-items: center;
+                        .watchlist,.portfolio{
+                            display: flex;
+                            align-items: center;
+                            padding: 0 8px;
+                            background-color: inherit;
+                            color: white;
+                            font-size: 0.75rem;
+                            font-weight: 400;
+                            height: 36px;
+                            border-radius: 8px;
+                            .star-text,.portfolio-text{
+                                margin-left: 6px;
+                            }
+                            svg{
+                                color:$text-clr-1 ;
+                            }
+                            &:hover{
+                                background-color: $bg-clr-2;
+                            }
+                        }
+                        .watchlist{
+                            img{
+                                margin-bottom: 1px;
+                            }
+                        }
+                    }
+                    .coin-search-btn{
+                        background-color: $border-clr-2;
+                        border-radius: 8px;
+                        margin-left: 8px;
+                        .search-input{
+                            padding: 8px;
+                            display: flex;
+                            align-items: center;
+                            svg{
+                                flex-shrink: 0;
+                                margin-top: 1px;
+                            }
+                            .placeholder{
+                                flex-direction: 1;
+                                margin-left: 6px;
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                width: 200px;
+                                overflow: hidden;
+                                line-height: 22.5px;
+                            }
+                            svg,.placeholder{
+                                color: $bg-clr-4;
+                            }
+                            .search-tooltip{
+                                flex-shrink: 0;
+                                width: 20px;
+                                height: 20px;
+                                background-color: $bg-clr-4;
+                                border-radius: 4px;
+                                text-align: center;
+                                color: white;
+                                line-height: 19px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
