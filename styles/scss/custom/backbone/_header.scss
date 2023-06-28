@@ -26,12 +26,18 @@
                     .global-stats{
                         display: flex;
                         align-items: center;
+                        .gas:has(.eth-gas:not(:hover)) .tooltips{
+                            --dp-c : none;
+                        }
+                        .gas:has(.eth-gas:hover) .tooltips{
+                            --dp-c : block;
+                        }
                         .glo-stat-item{
                             margin-right: 12px;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            .eth-gas{
+                            .eth-gas-img{
                                 margin-right: 2px;
                                 svg{
                                     color: $text-clr-1; 
@@ -48,7 +54,8 @@
                                 font-size: 0.6875rem;
                                 font-weight: 500;
                                 white-space: nowrap;
-                                display: inline-block;                       
+                                display: inline-block;     
+                                                  
                                
                             }
                             .percent-change{
@@ -73,7 +80,55 @@
                                 }
                             }
                         }
-                       
+                        .gas{
+                            .eth-gas{
+                                position: relative;
+                            }
+                            .tooltips{      
+                                display: var(--dp-c);                   
+                                top: 0;
+                                left: -19px;
+                                .tooltip-info{
+                                    background-color: $bg-clr-2;
+                                    padding: 24px;                                                                                         
+                                    .tooltip-body{
+                                        .gas-values{
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: space-between;
+                                            .value{
+                                                display: flex;
+                                                flex-direction: column;
+                                                align-items: flex-start;
+                                                justify-content: center;                                           
+                                                .gwei{
+                                                    color: white;
+                                                    font-size: 0.875rem;
+                                                    font-weight: 600;
+                                                    padding: 5px 20px 5px 0; 
+                                                    line-height: 25px;                                                 
+                                                }                                               
+                                            }
+                                            .value:not(:last-child){
+                                                .gwei{
+                                                    border-right: 1px solid $bg-clr-4;
+                                                }
+                                            }
+                                            .value:not(:first-child){
+                                                padding-left: 20px;
+                                            }
+                                        }
+                                        .supporter{
+                                            margin-top: 15px;
+                                        }
+                                        .gas-values .value:has(.title,.sec),.supporter{
+                                            font-size: 0.6875rem;
+                                            color: $bg-clr-4;
+                                        }
+                                    }
+                                }
+                            }
+                        }    
                     }
                 }
 
@@ -326,3 +381,6 @@
         }
     }
 }
+
+
+

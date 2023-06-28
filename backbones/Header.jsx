@@ -17,6 +17,7 @@ const Header = () => {
   return (
     <header className='header'>
       <div className="header-web">
+
         <div className="header-web-topbar">
           <div className="web-container">
             <div className="web-container-left">
@@ -64,20 +65,48 @@ const Header = () => {
                     BTC:&nbsp;50.2%&nbsp;ETH:&nbsp;19.0%
                   </Link>
                 </li>
-                <li className="glo-stat-item">
-                  <div className="eth-gas">
+                <li className="glo-stat-item gas">
+                  <div className="eth-gas-img">
                     <BiSolidGasPump size={15} />
                   </div>
                   <span className='base-text'>
                     ETH Gas:
                   </span>
                   &nbsp;
-                  <Link href={"/"} className='links'>
-                    14 Gwei 
-                  </Link>
-                  <span className="downarrow">
-                    <FiChevronDown size={12} />
-                  </span>
+                  <div className='eth-gas'>
+                    <Link href={"/"} className='links'>
+                      14 Gwei 
+                    </Link>
+                    <span className="downarrow">
+                      <FiChevronDown size={12} />
+                    </span>
+                    <div className="tooltips">
+                      <div className="tooltip-info">
+                        <div className="tooltip-body">
+                          <div className="gas-values">
+                            <div className="value">
+                              <span className='title'>Slow</span>
+                              <span className='gwei'>30 Gwei</span>
+                              <span className='sec'>~195 sec</span>
+                            </div>
+                            <div className="value">
+                              <span className='title'>Slow</span>
+                              <span className='gwei'>30 Gwei</span>
+                              <span className='sec'>~185 sec</span>
+                            </div>
+                            <div className="value">
+                              <span className='title'>Slow</span>
+                              <span className='gwei'>20 Gwei</span>
+                              <span className='sec'>~160 sec</span>
+                            </div>
+                          </div>
+                          <div className="supporter">
+                            Powered by Etherscan
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>               
                 </li>
               </ul>
             </div>
@@ -209,8 +238,8 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="header-web-middle"></div>
-        
+        <div className="header-web-middle"></div> 
+
       </div>
     </header>
   )
