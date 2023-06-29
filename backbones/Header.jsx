@@ -105,7 +105,7 @@ const Header = () => {
                           </div>
                         </div>
                       </div>
-                  </div>
+                    </div>
                   </div>               
                 </li>
               </ul>
@@ -143,8 +143,21 @@ const Header = () => {
                 <div className="options-item options-border"></div>
               </div>
               <div className="user-section">
-                <div className="cmc-diamond">
-                  <img src="https://s2.coinmarketcap.com/static/cloud/img/loyalty-program/diamond-icon.svg" alt="diamond" width={20} height={20} />
+                <div className="diamond">
+                  <Link href={"/"} className="diamond-img">
+                    <img src="https://s2.coinmarketcap.com/static/cloud/img/loyalty-program/diamond-icon.svg" alt="diamond" width={20} height={20} />
+                  </Link>
+                  <div className="tooltips">
+                    <div className="tooltip-info">
+                      <div className="tooltip-body">
+                        <div className="body-img">
+                          <img src="https://s2.coinmarketcap.com/static/cloud/img/loyalty-program/promo-2.png" alt="suprisebox" width={64} />
+                          <p className='title'>CoinMarketCap Diamonds</p>
+                          <p className='desc'>Earn CoinMarketCap Rewards by completing various tasks on the CoinMarketCap website.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="login-btn">
                   <button className='login'>
@@ -232,6 +245,13 @@ const Header = () => {
                   <div className="placeholder">Search</div>
                   <div className="search-tooltip">
                     /
+                    <div className="tooltips">
+                      <div className="tooltip-info">
+                        <div className="tooltip-body">
+                          use to trigger search 
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

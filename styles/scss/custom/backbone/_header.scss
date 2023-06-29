@@ -208,6 +208,62 @@
                     .user-section{
                         display: flex;
                         align-items: center;
+                        &:has(.diamond:not(:hover)) .tooltips{
+                            --dp-c : none;
+                        }
+                        &:has(.diamond:hover) .tooltips{
+                            --dp-c : block;
+                        }
+                        .diamond{
+                            position: relative;
+                            &-img{
+                                display: flex;
+                                padding: 8px 6px 6px;
+                                border-radius: 50%;
+                                bottom: 2px; 
+                                position: relative;                     
+                                &:hover{
+                                    background-color: $bg-clr-2;
+                                }
+                            }
+                            .tooltips{      
+                                display: var(--dp-c);                   
+                                top: 13px;
+                                left: -34px;
+                                .tooltip-info{
+                                    background-color: $bg-clr-1;
+                                    padding: 3px;                                                                                         
+                                    .tooltip-body{
+                                        width: 320px;
+                                        padding: 12px;
+                                        border-radius: 8px;
+                                        box-shadow: $box-shadow-2;
+                                        white-space: break-spaces;
+                                        &::before{
+                                            display: none;
+                                        }
+                                        img{
+                                            float: left;
+                                            margin-right: 16px;
+                                            margin-bottom: 16px;
+                                        }
+                                        .title{
+                                            font-size: 0.75rem;
+                                            line-height: 18px;
+                                            font-weight: 500;
+                                            color: white;
+                                            margin: 4px 0;
+                                        }
+                                        .desc{
+                                            font-size: 0.75rem;
+                                            line-height: 18px;
+                                            font-weight: 500;
+                                            color: $text-clr-1;
+                                        }
+                                    }
+                                }
+                                }
+                        }
                         .signup-btn,.login-btn{
                             button{
                                 display: flex;
@@ -364,6 +420,12 @@
                             svg,.placeholder{
                                 color: $bg-clr-4;
                             }
+                            &:has(.search-tooltip:not(:hover)) .tooltips{
+                            --dp-c : none;
+                            }
+                            &:has(.search-tooltip:hover) .tooltips{
+                            --dp-c : block;
+                            }
                             .search-tooltip{
                                 flex-shrink: 0;
                                 width: 20px;
@@ -373,6 +435,27 @@
                                 text-align: center;
                                 color: white;
                                 line-height: 19px;
+                                position: relative;
+                                .tooltips{      
+                                display: var(--dp-c);                   
+                                top: 10px;
+                                left: -66px;
+                                .tooltip-info{
+                                    background-color: white;
+                                    padding: 3px;                                                                                         
+                                    .tooltip-body{
+                                        color: #000;
+                                        font-size: 0.75rem;
+                                        font-weight: 600;
+                                        width:128px;
+                                        &::before{
+                                            border-bottom-color: white;
+                                            top: 5px;
+                                            left: calc(50% - -46px);
+                                        }
+                                    }
+                                }
+                                }
                             }
                         }
                     }
