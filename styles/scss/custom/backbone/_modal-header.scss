@@ -1,0 +1,142 @@
+.modal{
+    display: flex !important;
+    align-items: center;
+    .modal-dialog{
+        width: 848px;
+        max-width: 848px;
+        
+        .modal-content{
+            background-color: $bg-clr-2;
+            width: 100%;
+    
+            .modal-currency{
+                padding: 0 !important;              
+                .currency-title{
+                    color: #fff;
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    line-height: 34px;
+                    padding: 24px;
+                    display: flex;
+                    justify-content: space-between;
+                    span{
+                        svg{
+                            cursor: pointer;
+                            color: $bg-clr-6;
+                        }
+                    }
+                }
+                .search-bar{
+                    margin-top: 8px;
+                    padding: 0 24px 16px 24px;
+                    input{
+                        padding: 0 16px;
+                        border: 1px solid $border-clr-4 ;
+                        line-height: 18px;
+                        font-size: 0.75rem;
+                        border-radius: 8px;
+                        background-color: $border-clr-2;
+                        color: #fff;
+                        max-width: 100%;
+                        width: 100%;
+                        height: 30px;
+                        &::placeholder{
+                            color: $text-clr-4;
+                        }              
+                        &:hover{
+                            border-color: $border-clr-5;
+                        }  
+                        &:focus{
+                            border-color: $border-clr-5;
+                            box-shadow: $box-shadow-3;
+                        }                                  
+                    }
+                }
+                .currency-items{               
+                    padding: 0 24px 16px 24px;
+                    overflow-y: scroll;
+                    max-height: 49.6vh;
+                    &::-webkit-scrollbar {
+                        width: 0 !important
+                    }  
+                    .currency-item{
+                        overflow-y: scroll;
+                        max-height: 50vh;
+                        padding-top: 10px;
+                        width: 100%;
+                        &::-webkit-scrollbar {
+                            width: 0 !important
+                        } 
+                        span{
+                            font-size: 0.75rem;
+                            color: $text-clr-1;
+                            line-height: 18px;
+                            padding-left: 12px;
+                        }
+                    }
+                    .group-list{
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 4px;
+                        margin-top: 4px;
+                        margin-bottom: 10px;
+                        .checking{
+                            background-color: $border-clr-2;
+                        }
+                        .list-item{
+                            border-radius: 8px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: 10.5px 13px;
+                            cursor: pointer;
+                            &:hover{
+                                background-color: $border-clr-2;
+                            }
+                            .item-option{
+                                display: flex;
+                                align-items: center;
+                                .option-img{
+                                    display: flex;
+                                    align-items: center;
+                                }
+                                .option-currency{
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    .name,.symbol{
+                                        font-size: 0.75rem;
+                                        cursor: pointer;
+                                        font-weight: 500;
+                                        line-height: 133%;
+                                    }
+                                    .name{
+                                        color: #fff;                                 
+                                       
+                                    }
+                                    .symbol{
+                                        color: $text-clr-5;
+                                    }
+                                }                        
+                            }
+                            .item-check{
+                                svg{
+                                    background-color: $text-clr-3;
+                                    border-radius: 50% ;
+                                    path:first-child{
+                                        color: $bg-clr-1;
+                                    }
+                                    path:nth-child(2){
+                                        color: $text-clr-3;
+                                    }
+                                }
+                            } 
+    
+                        }
+                    }
+                }
+               
+            }
+        }
+    }
+}

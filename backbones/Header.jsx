@@ -1,19 +1,27 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Accordion, Nav, Navbar } from 'react-bootstrap'
+import { useState } from 'react'
+import { Accordion, Nav, Navbar, Button, Modal } from 'react-bootstrap'
 import {BiSolidUpArrow,BiSolidDownArrow,BiSolidGasPump} from 'react-icons/bi'
 import {FiChevronDown} from 'react-icons/fi'
 import {BsFillSunFill} from 'react-icons/bs'
 import {GoStarFill} from 'react-icons/go'
 import {BiSolidPieChartAlt2,BiSearch} from 'react-icons/bi'
-
+import {AiOutlineCheckCircle} from 'react-icons/ai'
+import {CgClose} from 'react-icons/cg'
+import {HiCalendar} from 'react-icons/hi'
 import logo from 'public/img/logo.png'
-import portfolio from 'public/img/portfolio.png'
-import star from 'public/img/star.png'
+import calendar from 'public/img/calendar.png'
 
 
 const Header = () => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   return (
     <header className='header'>
       <div className="header-web">
@@ -108,6 +116,13 @@ const Header = () => {
                     </div>
                   </div>               
                 </li>
+                <li className="glo-stat-item">
+                  <span className='base-text'>Fear & Greed: </span>
+                  &nbsp;
+                  <div  className='links'>
+                    59/100
+                  </div>
+                </li>
               </ul>
             </div>
             <div className="web-container-right">
@@ -123,17 +138,433 @@ const Header = () => {
                               </span>
                             </Accordion.Header>
                             <Accordion.Body>
-                                deneme
+                              <div className="lang-search">
+                                <input type="text" placeholder="Search" autoComplete="off" spellCheck="false" autoFocus/>
+                                <BiSearch size={16} />
+                              </div>
+                              <div className="lang-lists">
+                              <div className="title">Popular languages</div>
+                                  <ul className="lang-list-populer">
+                                    <li>
+                                      English
+                                      <span>EN</span>
+                                    </li>
+                                    <li>
+                                      Русский 
+                                      <span>RU</span>
+                                    </li>
+                                    <li>
+                                      Tiếng Việt 
+                                      <span>VI</span>
+                                    </li>
+                                    <li>
+                                      Türkçe 
+                                      <span>TR</span>
+                                    </li>
+                                    <li>
+                                      Español 
+                                      <span>ES</span>
+                                    </li>
+                                  </ul>
+                                  <div className="title">All languages</div>
+                                  <ul className="lang-list">
+                                    <li>
+                                      اَلْعَرَبِيَّةُ 
+                                      <span>AR</span>
+                                    </li>
+                                    <li>
+                                      български 
+                                      <span>BG</span>
+                                    </li>
+                                    <li>
+                                      Čeština 
+                                      <span>CSةُ</span>
+                                    </li>
+                                    <li>
+                                      Dansk 
+                                      <span>DA</span>
+                                    </li>
+                                    <li>
+                                      Deutsch  
+                                      <span>DE</span>
+                                    </li>
+                                    <li>
+                                      ελληνικά  
+                                      <span>EL</span>
+                                    </li>
+                                    <li>
+                                      Čeština 
+                                      <span>CSةُ</span>
+                                    </li>
+                                    <li>
+                                      Dansk 
+                                      <span>DA</span>
+                                    </li>
+                                    <li>
+                                      български 
+                                      <span>BG</span>
+                                    </li>
+                                    <li>
+                                      Čeština 
+                                      <span>CSةُ</span>
+                                    </li>
+                                  </ul>
+                              </div>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                   </div>
                 </div>
                 <div className="options-item">
-                  <div className="currency">
+                  <button className="currency" onClick={handleShow}>
                     USD
                     <BiSolidDownArrow size={8.5} />
-                  </div>
+                  </button>
+                  <Modal
+                    show={show}          
+                    keyboard={false}
+                    
+                  >
+                    <Modal.Body className='modal-currency' >
+                      <div className="currency-title">
+                        <span>Select Currency</span>
+                        <span onClick={handleClose}>
+                          <CgClose size={25} />
+                        </span>
+                      </div>
+                      <div className="search-bar">
+                        <input type="text" placeholder="Search" />
+                      </div>      
+                      <div className="currency-items">                         
+                          <div className="currency-item popular">
+                            <span>Popular currencies</span>
+                            <div className="group-list">
+                              <div className="list-item checking">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                    <img src={"https://s2.coinmarketcap.com/static/cloud/img/fiat-flags/USD.svg"} alt="USD" width={18} height={18}/>
+                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">United States Dollar</span>
+                                    <span className="symbol">USD - $</span>
+                                  </div>
+                                </div>
+                                <div className="item-check">
+                                  <AiOutlineCheckCircle size={18} />
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                    <img src={"https://s2.coinmarketcap.com/static/cloud/img/fiat-flags/EUR.svg"} alt="EUR" width={18} height={18}/>
+                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Euro</span>
+                                    <span className="symbol">EUR - €</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                    <img src={"https://s2.coinmarketcap.com/static/cloud/img/fiat-flags/GBP.svg"} alt="EUR" width={18} height={18}/>
+                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Pound Sterling</span>
+                                    <span className="symbol">GBP - £</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                    <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>
+                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Bitcoin</span>
+                                    <span className="symbol">BTC</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                    <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"} alt="ETH" width={18} height={18}/>
+                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Ethereum</span>
+                                    <span className="symbol">ETH</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="currency-item bitcoin-units">
+                            <span>Bitcoin Units</span>
+                            <div className="group-list">
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Bits</span>
+                                    <span className="symbol">BITS</span>
+                                  </div>
+                                </div>
+                              
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                             
+                              
+                            </div>
+                          </div>
+
+                          <div className="currency-item fiat">
+                            <span>Fiat currencies</span>
+                            <div className="group-list">
+                              <div className="list-item checking">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                    <img src={"https://s2.coinmarketcap.com/static/cloud/img/fiat-flags/USD.svg"} alt="USD" width={18} height={18}/>
+                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">United States Dollar</span>
+                                    <span className="symbol">USD - $  </span>
+                                  </div>
+                                </div>
+                                <div className="item-check">
+                                  <AiOutlineCheckCircle size={18} />
+                                </div>
+                              
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                             
+                              
+                            </div>
+                          </div>
+
+                          <div className="currency-item cryptocurrency">
+                            <span>Cryptocurrencies</span>
+                            <div className="group-list">
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">United States Dollar</span>
+                                    <span className="symbol">USD - $  </span>
+                                  </div>
+                                </div>
+                              
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="list-item">
+                                <div className="item-option">
+                                  <div className="option-img">
+                                  <img src={"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"} alt="BTC" width={18} height={18}/>                                  </div>
+                                  <div className="option-currency">
+                                    <span className="name">Satoshi</span>
+                                    <span className="symbol">SATS</span>
+                                  </div>
+                                </div>
+                              </div>
+                             
+                              
+                            </div>
+                          </div>
+                      </div>
+                    </Modal.Body>
+                  </Modal>
                 </div>
                 <div className="options-item">
                   <div className="theme">
@@ -175,8 +606,7 @@ const Header = () => {
           </div>
         </div>
         <div className="header-web-middle"></div>
-        <div className="header-web-global">
-          
+        <div className="header-web-global">       
           <div className="web-container">
             <div className="web-container-left">
               <div className="mainlogo">
@@ -187,10 +617,110 @@ const Header = () => {
               <div className="header-navbar">
                 <Navbar>
                   <Nav>
-                    <Nav.Item>
-                      <Link href={"/"} className='nav-item-link'>
+                    <Nav.Item className='crypto-tooltip'>
+                      <Link href={"/"} className='nav-item-link '>
                         Cryptocurrencies
                       </Link>
+                      <div className="tooltips">
+                      <div className="tooltip-info">
+                        <div className="tooltip-body">
+                          <div className="cryptocurrencies">
+                          <div className="title">CRYPTOCURRENCIES</div>
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuCmcIcon.svg"} width={32}
+                                height={32} alt="Ranking" />
+                                Ranking
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuRecentlyAddedIcon.svg"} width={32}
+                                height={32} alt="recentlyAdded" />
+                                Recently Added
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuCategoriesIcon.svg"} width={32}
+                                height={32} alt="Categories" />
+                                Categories
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuSpotlightIcon.svg"} width={32}
+                                height={32} alt="Spotlight" />
+                                Spotlight
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuGainersLosersIcon.svg"} width={32}
+                                height={32} alt="Stats" />
+                                Gainers & Losers
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuGlobalChartsIcon.svg"} width={32}
+                                height={32} alt="Charts" />
+                                Global Charts
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuHistoryIcon.svg"} width={32}
+                                height={32} alt="Charts" />
+                                Historical Snapshots
+                              </Link>
+                              <hr />
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuPriceEstimateIcon.svg"} width={32}
+                                height={32} alt="priceEstimates" />
+                                Price Estimates
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuPolkadotIcon.svg"} width={32}
+                                height={32} alt="Parachains" />
+                                Polkadot Parachains
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuLegalIcon.svg"} width={32}
+                                height={32} alt="legalCountries" />
+                                Legal Tender Countries
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuFiatsIcon.svg"} width={32}
+                                height={32} alt="Fiats/Companies" />
+                                Fiats / Companies Rankings
+                              </Link>
+                            </div>
+                          </div>
+                          <div className="cryptocurrencies">
+                            <div className="title">NFT</div>
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuNFTOverview.svg"} width={32}
+                                height={32} alt="nFTStats" />
+                                Overall NFT Stats
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuNFTCollections.svg"} width={32}
+                                height={32} alt="topCollections" />
+                                Top Collections
+                              </Link>
+                              <Link href={"/"}>
+                                <Image src={calendar} width={32}
+                                height={32} alt="topCollections" />
+                                Upcoming Sales
+                              </Link>
+                            </div>
+                            <div className="title title-m">On Chain Data</div>
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuDexscan.svg"} width={32}
+                                height={32} alt="dexPairs" />
+                                Dex Pairs
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuChainRanking.svg"} width={32}
+                                height={32} alt="chainRanking" />
+                                Chain Ranking
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
                     </Nav.Item>
                   </Nav>
                   <Nav>

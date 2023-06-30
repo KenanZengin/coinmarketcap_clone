@@ -54,9 +54,7 @@
                                 font-size: 0.6875rem;
                                 font-weight: 500;
                                 white-space: nowrap;
-                                display: inline-block;     
-                                                  
-                               
+                                display: inline-block;                           
                             }
                             .percent-change{
                                 margin-left: 6px;
@@ -157,6 +155,87 @@
                                                 color: white;
                                                 margin-left: 4px;
                                                 margin-bottom: 2px;
+                                            }
+                                        }
+                                    }
+                                    .accordion-collapse{
+                                        left: -143px;
+                                        top: 22px;
+                                        .accordion-body{
+                                            width: 200px;                                            
+                                            border: 1px solid $border-clr-2;
+                                            background-color: $bg-clr-5;
+                                            padding: 15px;
+                                            .lang-search{
+                                                width: 100%;
+                                                position: relative;
+                                                input{
+                                                    padding-left: 30px;
+                                                    padding-right: 16px;
+                                                    border: 1px solid $border-clr-4 ;
+                                                    line-height: 21px;
+                                                    font-size: 0.875rem;
+                                                    border-radius: 8px;
+                                                    background-color: $bg-clr-5;
+                                                    color: #fff;
+                                                    max-width: 100%;
+                                                    width: 100%;
+                                                    height: 40px;
+                                                    &::placeholder{
+                                                        color: $text-clr-4;
+                                                    }              
+                                                    &:hover{
+                                                        border-color: $border-clr-5;
+                                                    }  
+                                                    &:focus{
+                                                        border-color: $border-clr-5;
+                                                        box-shadow: $box-shadow-3;
+                                                    }                                  
+                                                }
+                                                svg{
+                                                    z-index: 999;
+                                                    left: 10px;
+                                                    top: 13px;
+                                                    position: absolute;
+                                                    color: $bg-clr-6 ;
+                                                }
+                                            }
+                                            .lang-lists{                                                
+                                                overflow-y: scroll;
+                                                max-height: 52vh;
+                                                padding-top: 10px;
+                                                width: 100%;
+                                                &::-webkit-scrollbar {
+                                                    width: 0 !important
+                                                }                                                  
+                                                .title{
+                                                    padding-left: 12px;
+                                                    font-size: 0.75rem;
+                                                    font-weight: 500;
+                                                    color: $bg-clr-4;
+                                                    line-height: 24px;
+
+                                                }
+                                                .lang-list-populer,.lang-list{ 
+                                                    li{
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: flex-start;
+                                                        color: #fff;
+                                                        font-size: 0.75rem;
+                                                        font-weight: bold;
+                                                        line-height: 16px;
+                                                        padding: 10px 12px;
+                                                        width: 100%;
+                                                        span{
+                                                            font-size: 0.75rem;
+                                                            font-weight:normal;
+                                                            color: $text-clr-1;
+                                                            margin-left: 6px;
+                                                        }
+                                                    }
+                                                }
+                                               
                                             }
                                         }
                                     }
@@ -262,7 +341,7 @@
                                         }
                                     }
                                 }
-                                }
+                            }
                         }
                         .signup-btn,.login-btn{
                             button{
@@ -345,11 +424,85 @@
                         padding-left: 16px;
                         .navbar{
                             padding: 0 !important;
+                            &:has(.navbar-nav:first-child:hover) .crypto-tooltip .tooltips{
+                                    --dp-c : block;
+                            }
+                            &:has(.navbar-nav:first-child:not(:hover)) .crypto-tooltip .tooltips{
+                                --dp-c : none;
+                            }
                             .navbar-nav{
                                 padding: 20px 16.5px;
                                 display: flex;
                                 align-items: center;
-                                min-height: 71px;
+                                min-height: 71px;              
+                                .crypto-tooltip{
+                                    .tooltips{      
+                                        display: var(--dp-c);                   
+                                        top: 0;
+                                        left: 0;
+                                        .tooltip-info{
+                                            background-color: $bg-clr-1;
+                                            padding: 3px;      
+                                            box-shadow: $box-shadow-1;                                                                                   
+                                            .tooltip-body{
+                                                display: flex;
+                                                justify-content: space-between;
+                                                width: 100%;
+                                                padding: 32px 24px;
+                                                border-radius: 8px;    
+                                                white-space: break-spaces;
+                                                &::before{
+                                                    border-bottom-color:$bg-clr-1;
+                                                    top: 3px;
+                                                }
+                                                .cryptocurrencies{
+                                                    .title{
+                                                        font-size: 0.875rem;
+                                                        font-weight: 500;
+                                                        line-height: 21px;
+                                                        margin-left: 8px;
+                                                        margin-bottom: 8px;
+                                                        color: $bg-clr-4;
+                                                        letter-spacing: -0.1px;
+                                                    }
+                                                    .title-m{
+                                                        margin-top: 19px;
+                                                    }
+                                                    .menu{
+
+                                                        a{
+                                                            display: flex;
+                                                            align-items: center;
+                                                            border-radius: 8px;                                                         
+                                                            max-width: 265px;
+                                                            padding: 8px;
+                                                            color: #fff;
+                                                            font-size: 0.875rem;
+                                                            font-weight: 600;
+                                                            &:hover{
+                                                                background-color: $bg-clr-2 ;
+                                                            }
+                                                            img{
+                                                                margin-right: 16px;
+                                                            }
+                                                           
+                                                        }
+                                                        hr{
+                                                            margin: 12px 0;
+                                                            height: 1px;
+                                                            border-width: 0;
+                                                            background-color: $border-clr-2;
+                                                            opacity: 1 !important;
+                                                        }
+                                                    }
+                                                }
+                                                .cryptocurrencies:nth-child(2){
+                                                    margin: 0 10px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                                 .nav-item{
                                     .nav-item-link{
                                         color: white;
