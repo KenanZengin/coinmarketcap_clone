@@ -3,14 +3,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { Accordion, Nav, Navbar, Button, Modal } from 'react-bootstrap'
-import {BiSolidUpArrow,BiSolidDownArrow,BiSolidGasPump} from 'react-icons/bi'
+import {AiFillCloseCircle} from 'react-icons/ai'
+import {BiSolidUpArrow, BiSolidDownArrow, BiSolidGasPump} from 'react-icons/bi'
 import {FiChevronDown} from 'react-icons/fi'
-import {BsFillSunFill} from 'react-icons/bs'
+import {BsFillSunFill, BsFire} from 'react-icons/bs'
 import {GoStarFill} from 'react-icons/go'
-import {BiSolidPieChartAlt2,BiSearch} from 'react-icons/bi'
+import {BiSolidPieChartAlt2, BiSearch} from 'react-icons/bi'
 import {AiOutlineCheckCircle} from 'react-icons/ai'
 import {CgClose} from 'react-icons/cg'
-import {HiCalendar} from 'react-icons/hi'
+import {PiArrowSquareOutBold} from 'react-icons/pi'
 import logo from 'public/img/logo.png'
 import calendar from 'public/img/calendar.png'
 
@@ -18,9 +19,8 @@ import calendar from 'public/img/calendar.png'
 const Header = () => {
 
   const [show, setShow] = useState(false);
+  const [dp,setDp] = useState("none")
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   
   return (
     <header className='header'>
@@ -216,7 +216,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="options-item">
-                  <button className="currency" onClick={handleShow}>
+                  <button className="currency" onClick={()=>setShow(true)}>
                     USD
                     <BiSolidDownArrow size={8.5} />
                   </button>
@@ -228,7 +228,7 @@ const Header = () => {
                     <Modal.Body className='modal-currency' >
                       <div className="currency-title">
                         <span>Select Currency</span>
-                        <span onClick={handleClose}>
+                        <span onClick={()=>setShow(false)}>
                           <CgClose size={25} />
                         </span>
                       </div>
@@ -611,13 +611,13 @@ const Header = () => {
             <div className="web-container-left">
               <div className="mainlogo">
                 <Link href={"/"} className='logo-link'>
-                  <Image src={logo} alt='MainLogo' />
+                  <Image src={logo} alt='MainLogo' priority />
                 </Link>
               </div>
               <div className="header-navbar">
                 <Navbar>
                   <Nav>
-                    <Nav.Item className='crypto-tooltip'>
+                    <Nav.Item className='crypto-tooltip first-nav'>
                       <Link href={"/"} className='nav-item-link '>
                         Cryptocurrencies
                       </Link>
@@ -724,31 +724,196 @@ const Header = () => {
                     </Nav.Item>
                   </Nav>
                   <Nav>
-                    <Nav.Item>
+                    <Nav.Item className='crypto-tooltip second-nav'>
                       <Link href={"/"} className='nav-item-link'>
                       Exchanges
                       </Link>
+                      <div className="tooltips">
+                      <div className="tooltip-info">
+                        <div className="tooltip-body">
+                          <div className="cryptocurrencies">
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuSpotIcon.svg"} width={32}
+                                height={32} alt="Spot" />
+                                Spot
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuDerivativesIcon.svg"} width={32}
+                                height={32} alt="Deravatives" />
+                                Derivatives
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuDexIcon.svg"} width={32}
+                                height={32} alt="dex" />
+                                Dex
+                              </Link>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      </div>
                     </Nav.Item>
                   </Nav>
                   <Nav>
-                    <Nav.Item>
+                    <Nav.Item className='crypto-tooltip third-nav'>
                       <Link href={"/"} className='nav-item-link'>
                       Community
                       </Link>
+                      <div className="tooltips">
+                      <div className="tooltip-info">
+                        <div className="tooltip-body">
+                          <div className="cryptocurrencies">
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/feed.svg"} width={32}
+                                height={32} alt="Feedback" />
+                                Feeds
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/articles.svg"} width={32}
+                                height={32} alt="Articles " />
+                                Articles
+                              </Link>
+                             
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      </div>
                     </Nav.Item>
                   </Nav>
                   <Nav>
-                    <Nav.Item>
+                    <Nav.Item className='crypto-tooltip fourth-nav'>
                       <Link href={"/"} className='nav-item-link'>
                       Products
                       </Link>
+                      <div className="tooltips">
+                      <div className="tooltip-info">
+                        <div className="tooltip-body">
+                          <div className="cryptocurrencies">
+                          <div className="title">PRODUCTS</div>
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuConverterIcon.svg"} width={32}
+                                height={32} alt="Ranking" />
+                                Converter
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuExplorerIcon.svg"} width={32}
+                                height={32} alt="blockchainExplorer" />
+                                Blockchain Explorer
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuTelegramBotIcon.svg"} width={32}
+                                height={32} alt="Telegram" />
+                                Telegram bot
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>
+                              <hr />
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuCryptoApiIcon.dark.svg"} width={32}
+                                height={32} alt="cryptoApi" />
+                                Crypto API
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuWidgetsIcon.dark.svg"} width={32}
+                                height={32} alt="Parachains" />
+                                Site Widgets
+                              </Link>
+                            </div>
+                          </div>
+                          <div className="cryptocurrencies">
+                          <div className="title">CAMPAIGNS</div>
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuAirdropsIcon.svg"} width={32}
+                                height={32} alt="freeAirdrops" />
+                                Free Airdrops
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuRewardsIcon.svg"} width={32}
+                                height={32} alt="blockchainExplorer" />
+                                Diamond Rewards
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuEarnCryptoIcon.svg"} width={32}
+                                height={32} alt="learn&Earn" />
+                                Learn & Earn
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>                            
+                            </div>
+                          </div>
+                          <div className="cryptocurrencies">
+                          <div className="title">CALENDARS</div>
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuICOIcon.svg"} width={32}
+                                height={32} alt="icoCalendar" />
+                                ICO Calendar
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuEvents2Icon.svg"} width={32}
+                                height={32} alt="eventsCalendar" />
+                                Events Calendar
+                              </Link>                   
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
                     </Nav.Item>
                   </Nav>
                   <Nav>
-                    <Nav.Item>
+                    <Nav.Item className='crypto-tooltip fifth-nav'>
                       <Link href={"/"} className='nav-item-link'>
                       Learn
                       </Link>
+                      <div className="tooltips">
+                      <div className="tooltip-info">
+                        <div className="tooltip-body">
+                          <div className="cryptocurrencies">
+                            <div className="menu">
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuNewsIcon.svg"} width={32}
+                                height={32} alt="News" />
+                                News
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuAlexandriaIcon.svg"} width={32}
+                                height={32} alt="Alexandria " />
+                                Alexandria
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuCMCResearch.svg"} width={32}
+                                height={32} alt="Research " />
+                                Research
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuVideosIcon.svg"} width={32}
+                                height={32} alt="Videos " />
+                                Videos
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>
+                              <Link href={"/"}>
+                                <img src={"https://s2.coinmarketcap.com/static/cloud/img/menu/MenuGlossaryIcon.svg"} width={32}
+                                height={32} alt="Glossary " />
+                                Glossary
+                                <PiArrowSquareOutBold size={15} />
+                              </Link>
+                             
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      </div>
                     </Nav.Item>
                   </Nav>
                 </Navbar>
@@ -770,7 +935,7 @@ const Header = () => {
                 </button>
               </div>
               <div className="coin-search-btn">
-                <div className="search-input">
+                <div className="search-input" onClick={()=>setDp("block")}>
                   <BiSearch size={19} />
                   <div className="placeholder">Search</div>
                   <div className="search-tooltip">
@@ -781,6 +946,123 @@ const Header = () => {
                           use to trigger search 
                         </div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="search-area" style={{"--dp-v":dp}}>
+                  <div className="search-area-content">
+                    <div className="searching-label">
+                      <BiSearch size={15} />
+                      <input type="text" placeholder='Search coin, pair, contract address or exchange' />
+                      <div className="close" onClick={()=>setDp("none")}>
+                        <AiFillCloseCircle size={18} />
+                      </div>
+                    </div>
+                    <div className="trending">
+                      <div className="title">
+                        Trending
+                        &nbsp;
+                        <span>
+                          <BsFire size={14} />
+                        </span>
+                      </div>
+                      <ul className="trend-list">
+                        <li>
+                          <Link href={"/"}>
+                            <span className="info">
+                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/24478.png" alt="pepe" width={20} height={20} />
+                              <span className='name'>Pepe</span>
+                              <span className="symbol">PEPE</span>
+                            </span>
+                            <span className="rank">
+                              #58
+                            </span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={"/"}>
+                            <span className="info">
+                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/10791.png" alt="eCash" width={20} height={20} />
+                              <span className='name'>eCash</span>
+                              <span className="symbol">XEC</span>
+                            </span>
+                            <span className="rank">
+                              #62
+                            </span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={"/"}>
+                            <span className="info">
+                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png" alt="bitcoinCash" width={20} height={20} />
+                              <span className='name'>Bitcoin Cash</span>
+                              <span className="symbol">BCH</span>
+                            </span>
+                            <span className="rank">
+                              #14
+                            </span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={"/"}>
+                            <span className="info">
+                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="bitcoin" width={20} height={20} />
+                              <span className='name'>Bitcoin Cash</span>
+                              <span className="symbol">BCH</span>
+                            </span>
+                            <span className="rank">
+                              #1
+                            </span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={"/"}>
+                            <span className="info">
+                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/18037.png" alt="MAV" width={20} height={20} />
+                              <span className='name'>Maverick Protocol</span>
+                              <span className="symbol">MAV</span>
+                            </span>
+                            <span className="rank">
+                              #242
+                            </span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={"/"}>
+                            <span className="info">
+                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/2.png" alt="LTC" width={20} height={20} />
+                              <span className='name'>Litecoin</span>
+                              <span className="symbol">LTC</span>
+                            </span>
+                            <span className="rank">
+                              #9
+                            </span>
+                          </Link>
+                        </li>
+                      
+                      </ul>
+                    </div>
+                    <div className="recent-searches">
+                      <div className="title">
+                        Recent search 
+                      </div>
+                      <ul className="recentlist">
+                        <li>
+                          <Link href={"/"}>
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btc" height={20} width={20} />
+                            <span className="name">Bitcoin</span>
+                            <span className="symbol">BTC</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={"/"}>
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/10791.png" alt="xec" height={20} width={20} />
+                            <span className="name">eCash</span>
+                            <span className="symbol">XEC</span>
+                          </Link>
+                        </li>
+                       
+                      </ul>
                     </div>
                   </div>
                 </div>

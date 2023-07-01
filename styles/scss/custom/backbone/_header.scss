@@ -424,22 +424,76 @@
                         padding-left: 16px;
                         .navbar{
                             padding: 0 !important;
-                            &:has(.navbar-nav:first-child:hover) .crypto-tooltip .tooltips{
+                            &:has(.navbar-nav:first-child:hover) .first-nav {
+                                .nav-item-link{
+                                    color: $border-clr-3 !important;
+                                }
+                                .tooltips{
                                     --dp-c : block;
+                                }
+                                
                             }
-                            &:has(.navbar-nav:first-child:not(:hover)) .crypto-tooltip .tooltips{
+                            &:has(.navbar-nav:first-child:not(:hover)) .first-nav .tooltips{
                                 --dp-c : none;
                             }
+
+                            &:has(.navbar-nav:nth-child(2):hover) .second-nav {
+                                 .nav-item-link{
+                                    color: $border-clr-3 !important;
+                                }
+                                .tooltips{
+                                    --dp-c : block;
+                                }
+                            }
+                            &:has(.navbar-nav:nth-child(2):not(:hover)) .second-nav .tooltips{
+                                --dp-c : none;
+                            }
+
+                            &:has(.navbar-nav:nth-child(3):hover) .third-nav {
+                                 .nav-item-link{
+                                    color: $border-clr-3 !important;
+                                }
+                                .tooltips{
+                                    --dp-c : block;
+                                }
+                            }
+                            &:has(.navbar-nav:nth-child(3):not(:hover)) .third-nav .tooltips{
+                                --dp-c : none;
+                            }
+
+                            &:has(.navbar-nav:nth-child(4):hover) .fourth-nav {
+                                 .nav-item-link{
+                                    color: $border-clr-3 !important;
+                                }
+                                .tooltips{
+                                    --dp-c : block;
+                                }
+                            }
+                            &:has(.navbar-nav:nth-child(4):not(:hover)) .fourth-nav .tooltips{
+                                --dp-c : none;
+                            }
+
+                            &:has(.navbar-nav:nth-child(5):hover) .fifth-nav {
+                                .nav-item-link{
+                                   color: $border-clr-3 !important;
+                               }
+                               .tooltips{
+                                   --dp-c : block;
+                               }
+                           }
+                           &:has(.navbar-nav:nth-child(5):not(:hover)) .fifth-nav .tooltips{
+                               --dp-c : none;
+                           }
+                           
                             .navbar-nav{
                                 padding: 20px 16.5px;
                                 display: flex;
                                 align-items: center;
-                                min-height: 71px;              
+                                min-height: 71px;   
+                                
                                 .crypto-tooltip{
                                     .tooltips{      
-                                        display: var(--dp-c);                   
-                                        top: 0;
-                                        left: 0;
+                                        display: var(--dp-c);                                                      
                                         .tooltip-info{
                                             background-color: $bg-clr-1;
                                             padding: 3px;      
@@ -450,7 +504,7 @@
                                                 width: 100%;
                                                 padding: 32px 24px;
                                                 border-radius: 8px;    
-                                                white-space: break-spaces;
+                                                white-space: nowrap;
                                                 &::before{
                                                     border-bottom-color:$bg-clr-1;
                                                     top: 3px;
@@ -485,6 +539,10 @@
                                                             img{
                                                                 margin-right: 16px;
                                                             }
+                                                            svg{
+                                                                color: $bg-clr-4;
+                                                                margin-left: 8px;
+                                                            }
                                                            
                                                         }
                                                         hr{
@@ -513,6 +571,49 @@
                                         }
                                     }
                                 }
+                                .first-nav{
+                                    .tooltips{
+                                        top: 0;
+                                        left: 0;
+                                    }
+                                }
+                                .second-nav{
+                                    .tooltips{                                     
+                                        top: 36px;
+                                        left: 177px;                                     
+                                    }
+                                }     
+                                .third-nav{
+                                    .tooltips{
+                                        top: 40px;
+                                        left: 291px;                                       
+                                    }
+                                }
+                                .fourth-nav{
+                                    .tooltips{
+                                        top: 22px;
+                                        left: 314px;
+                                        .tooltip-body{
+                                            // padding: 13px !important;
+                                            .cryptocurrencies{
+                                                margin: 0 10px;
+                                            }
+                                        }
+                                    }
+                                }  
+                                .fifth-nav{
+                                    .tooltips{
+                                        top: 29px;
+                                        left: 477px;                                    
+                                    }
+                                }  
+                                .second-nav,.third-nav,.fifth-nav{
+                                    .tooltips{
+                                        .tooltip-body{
+                                            padding: 13px !important;
+                                        }
+                                    }
+                                }   
                             }
                         }
                     }
@@ -553,10 +654,12 @@
                         background-color: $border-clr-2;
                         border-radius: 8px;
                         margin-left: 8px;
+                        position: relative;
                         .search-input{
                             padding: 8px;
                             display: flex;
                             align-items: center;
+                            cursor: pointer;
                             svg{
                                 flex-shrink: 0;
                                 margin-top: 1px;
@@ -608,6 +711,154 @@
                                         }
                                     }
                                 }
+                                }
+                            }
+                        }
+                        .search-area{
+                            display: var(--dp-v);
+                            position: absolute;                           
+                            top:0;
+                            animation: 0.5s ease 0s 1 normal forwards running opacityValue;
+                            max-width: 400px;
+                            left: -138px;
+                            box-shadow: $box-shadow-4;
+                            z-index: 9999;
+                            &-content{
+                                width: 400px;
+                                min-height: 140px;
+                                max-height: 673px;
+                                border-radius: 8px;
+                                background-color: $bg-clr-1;
+                                .searching-label{
+                                    padding: 16px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    font-size: 0.835rem;
+                                    input{
+                                        flex: 1;
+                                        width: 310px;
+                                        background-color: $bg-clr-1;
+                                        color: #fff;
+                                        padding-left: 7px;
+                                        &::placeholder{
+                                            color: $bg-clr-4;
+                                        }
+                                    }
+                                    > svg{
+                                        margin-top: 1px;
+                                    }
+                                    svg{
+                                        color: $bg-clr-7;
+                                    }
+                                    .close{
+                                        cursor: pointer;
+                                    }
+                                }
+                                .trending{
+                                    padding: 8px;                                  
+                                    .title{
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 0 8px;
+                                        margin-bottom: 8px;
+                                        font-size: 0.6875rem;
+                                        color: $bg-clr-7;
+                                        svg{
+                                            color: $bg-clr-8;
+                                        }
+                                    }
+                                    .trend-list{
+                                        li:first-child{
+                                            a{
+                                                background-color: $bg-clr-2;
+                                            }
+                                        }
+                                        li{
+                                            a{
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: space-between;
+                                                padding: 10px;
+                                                
+                                                border-radius: 8px;
+                                                .info{
+                                                    display: flex;
+                                                    align-items: center;
+                                                    padding-right: 8px;
+                                                    img{
+                                                        border-radius: 10px;
+                                                        margin-right: 8px;                                                        
+                                                    }
+                                                    .name{
+                                                        white-space: nowrap;
+                                                        color: #fff;
+                                                        font-weight: 600;
+                                                        font-size: 0.875rem;
+                                                    }
+                                                    .symbol{
+                                                        margin-left: 6px;
+                                                        font-size: 0.75rem;
+                                                        color: $text-clr-1 ;
+                                                    }
+                                                }
+                                                .rank{
+                                                    color: $bg-clr-7;
+                                                    font-size: 0.75rem;
+                                                    font-weight: 500;
+                                                }
+                                                &:hover{
+                                                    background-color: $bg-clr-2;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .recent-searches{
+                                    padding-bottom: 10px;
+                                    .title{
+                                        font-size: 0.6875rem;
+                                        color: $bg-clr-7;
+                                        margin-left: 16px;
+                                        margin-top: 16px;
+                                    }
+                                    .recentlist{
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 0 8px;
+                                        margin: 8px 0;
+                                        max-width: 400px;
+                                        overflow: auto hidden;
+                                        
+                                        li{
+                                            margin-right: 8px;
+                                            a{
+                                                padding: 8px 26px;
+                                                display: flex;
+                                                flex-direction: column;
+                                                justify-content: center;
+                                                align-items: center;
+                                                background-color: $bg-clr-2;
+                                                border-radius: 8px;
+                                                img{
+                                                    border-radius: 10px;
+                                                }
+                                                .name{
+                                                    margin-top: 4px;
+                                                    color:#fff;
+                                                    white-space: nowrap;
+                                                    font-size: 0.75rem;
+                                                    font-weight: 500;    
+                                                    line-height: 18px;                                        
+                                                }
+                                                .symbol{
+                                                    font-size: 0.6875rem;
+                                                    color: $bg-clr-7;
+                                                    
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
