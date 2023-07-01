@@ -1,9 +1,12 @@
+import Coinlist from "@/components/coinlist";
 
 
 export default function Home() {
   return (
-    <div style={{"height":"100vh","backgroundColor":"#222531"}}>
-      Cryptocurrencies
+    <div className="coins" style={{height:"100vh"}}>
+      <div className="coins-body">
+        <Coinlist />
+      </div>
     </div>
   )
 }

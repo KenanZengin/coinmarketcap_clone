@@ -1,1 +1,44 @@
+.coins{
+    background: $linear-1;
+    background-color: #17171a;
+    &-body{
+        max-width: 1402px;
+        padding: 0 16px;
+        margin: 0 auto;
+        .coinlist{
+            padding-top: 5px;
+            .topbar{
+                .title{
+                    padding: 24px 0;
+                    h1{
+                        font-size: 1.5rem;
+                        color: #fff;
+                        font-weight: bold;
+                        margin-top: 8px;
+                        margin-bottom: 4px;
+                        line-height: 34px;
+                    }
+                    .desc{
+                        color: $text-clr-1;
+                        font-size: 0.875rem;
+                        line-height: 21px;
+                        display: flex;
+                        align-items: center;
+                        span:first-child{
+                            color: $text-clr-3;
+                            svg{
+                                color: $text-clr-3;
+                            }
+                        }
+                        span:last-child{
+                            text-decoration: underline;
+                            cursor: pointer;
+                            margin-left: 7.5px;
+                        }
 
+                    }
+                }
+            }
+        }
+    }
+}
