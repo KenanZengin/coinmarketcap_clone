@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { Accordion, Nav, Navbar, Button, Modal } from 'react-bootstrap'
+import { Accordion, Nav, Navbar, Modal } from 'react-bootstrap'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {BiSolidUpArrow, BiSolidDownArrow, BiSolidGasPump} from 'react-icons/bi'
 import {FiChevronDown} from 'react-icons/fi'

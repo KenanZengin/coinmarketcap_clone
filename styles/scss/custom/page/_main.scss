@@ -8,34 +8,352 @@
         .coinlist{
             padding-top: 5px;
             .topbar{
-                .title{
-                    padding: 24px 0;
-                    h1{
-                        font-size: 1.5rem;
-                        color: #fff;
-                        font-weight: bold;
-                        margin-top: 8px;
-                        margin-bottom: 4px;
-                        line-height: 34px;
+                &-header{
+                    display: flex;
+                    align-items: center;
+                    .title{
+                        
+                        h1{
+                            font-size: 1.5rem;
+                            color: #fff;
+                            font-weight: bold;                    
+                            margin-bottom: 6px;
+                            line-height: 34px;
+                        }
+                        .desc{
+                            color: $text-clr-1;
+                            font-size: 0.875rem;
+                            line-height: 21px;
+                            display: flex;
+                            align-items: center;
+                            span:first-child{
+                                color: $text-clr-3;
+                                svg{
+                                    color: $text-clr-3;
+                                }
+                            }
+                            span:last-child{
+                                text-decoration: underline;
+                                cursor: pointer;
+                                margin-left: 7.5px;
+                            }
+    
+                        }
                     }
-                    .desc{
+                    .change{
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: flex-end;
+                        align-self: stretch;
+                        padding: 35px 0;
+                        flex-grow: 1;
+                        text-align: end;
                         color: $text-clr-1;
                         font-size: 0.875rem;
                         line-height: 21px;
-                        display: flex;
-                        align-items: center;
-                        span:first-child{
-                            color: $text-clr-3;
-                            svg{
-                                color: $text-clr-3;
+                       
+                        &:has(input:checked) .switch-label{
+                            background-color: $border-clr-3;
+                            .switch-button{
+                                left: calc(100% - 3px);
+                                transform: translateX(-100%);
                             }
                         }
-                        span:last-child{
-                            text-decoration: underline;
-                            cursor: pointer;
-                            margin-left: 7.5px;
+                        input[type="checkbox"]{
+                            width: 0;
+                            height: 0;
+                            display: none;
                         }
+                        .switch-label{
+                            display: flex;
+                            width: 48px;
+                            height: 24px;
+                            align-items: center;
+                            justify-content: space-between;
+                            cursor: pointer;  
+                            border-radius: 100px;
+                            position: relative;
+                            transition: background-color 0.2s ease 0s;
+                            background: $border-clr-2; //$border-clr-3
+                            margin-left: 6px;
+                            .switch-button{
+                                position: absolute;
+                                top: 3px;
+                                left: 3px;
+                                width: 18px;
+                                height: 18px;
+                                border-radius: 100%;
+                                transition: 0.25s all ease;
+                                background: #fff;
+                                box-shadow: $box-shadow-5;
+                                // 
+                            }
+                        }
+                    }
+                }
+                &-cards{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 24px;
+                    padding-top: 15px;
+                    .card{
+                        width: 33%;
+                        max-width: 448px;
+                        height: 200px;
+                        box-shadow: $box-shadow-6;
+                        padding: 16px;
+                        overflow: hidden;
+                        background-color: $bg-clr-1;
+                        border-radius: 8px;
+                    }
+                    .first-card, .second-card{
+                        .top{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 10px;
+                            .left,.right{
+                                display: flex;
+                                align-items: center;
+                                line-height: 22.5px;
+                            }
+                            .left{
+                                color: #fff;
+                                font-weight: bold;
+                                img{
+                                    margin-right: 10px;
+                                }
+                                .star{
+                                    font-size: 20px;
+                                    margin-right: 10px;
+                                }
+                            }
+                            .right{
+                                color: $border-clr-3;
+                                font-size: 0.75rem;
+                                font-weight: 600;                                
+                            }
+                        }
+                        .lists{
+                            padding-left: 7px;                        
+                            .list{
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                height: 40px;
+                                cursor: pointer;
+                                white-space: nowrap;
+                                .info{
+                                    display: flex;
+                                    align-items: center;
+                                    .order{
+                                        color: $bg-clr-7;
+                                        line-height: 18px;
+                                    }
+                                    img{                                       
+                                        border-radius: 12px;
+                                    }
+                                    .populerimg{
+                                        margin-left: 16px;
+                                    }
+                                    .comintyimg{
+                                        margin-left: -7px;
+                                    }
+                                    
+                                }
+                                .change{
+                                    font-size: 0.75rem; 
+                                    line-height: 22.5px;  
+                                    svg{
+                                        margin-right: 4px;
+                                    }
+                                }
+                                .down{
+                                    color: $text-clr-7 !important;
+                                    svg{
+                                        color: $text-clr-7
+                                    }
+                                }
+                                .up{
+                                    color: $text-clr-3 !important;
+                                    svg{
+                                        color: $text-clr-3;
+                                    }
+                                }
+                                .follow{                                    
+                                    padding: 0 5px;                                   
+                                    display: flex;
+                                    align-items: center;                                 
+                                    button{
+                                        background-color:$bg-clr-2;
+                                        color: #fff;
+                                        font-size: 0.75rem;                                       
+                                        height: 32px;
+                                        font-weight: bold;
+                                        border-radius: 8px;
+                                        padding: 0 20px;
+                                    }
+                                }
+                                .name{
+                                    color: #fff;
+                                }
+                                .symbol,.name-tag{                                     
+                                    color: $text-clr-6;                                   
+                                }
+                                svg{
+                                    color: $border-clr-3;
+                                }
+                                .name,.symbol,.order,.name-tag{
+                                    font-size: 0.75rem;
+                                }
+                                .name,.symbol{
+                                    margin-left: 8px;
+                                }
+                            }
+                        }
+                    }
+                  
+                    .second-card{
+                        .carousel{
+                            &-indicators{
+                                bottom: -28px;
+                                .active{
+                                    background-color: $border-clr-3;
+                                    opacity: 1;
+                                }
+                                button{
+                                    width: 7px;
+                                    height: 7px;
+                                    border-radius: 50%;     
+                                                       
+                                }
+                            }
+                            &-inner{
+                                height: 168px;
+                                .carousel-item{
+                                    max-width: 416px;
+                                    min-width: 416px;
+                                    min-height: 100%;
+                                    overflow: hidden;
+                                }
+                                .carousel-item:first-child{
+                                    background-color: #0d1421;
+                                }
+                            }
+                            &-control{
+                                &-next,&-prev{
+                                    display: none;
+                                }
+                            }
+                        }
+                        .content{
+                            display: flex;
+                            padding-top: 15px;
+                            .logo{
+                                margin-right: 12px;
+                                width: 36px;
+                                height: 36px;
+                                display: block;
+                                img{
+                                    border-radius: 100%;
+                                }
+                            }
+                           
+                            .big-img{
+                                margin-right: 16px;
+                                img{
+                                    border-radius: 8px;
+                                    object-fit: cover;
+                                }
+                            }
+                            .comment{
+                                flex-grow: 1;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                .head{
+                                    display: flex;
+                                    align-items: center;
+                                    .name{
+                                        margin-left: 0 !important;
+                                        color: #fff;
+                                    }
+                                    .name-tag{
+                                        color: $text-clr-6;   
+                                    }
+                                    .name-tag,.name{
+                                        font-size: 0.75rem;
+                                    }
+                                    svg{
+                                        color: $border-clr-5 ;
+                                    }
+                                    img{
+                                        border-radius: 100%;
+                                    }
+                                    .big-img-name{
+                                        font-size: 0.875rem;
+                                        color: $text-clr-1;
+                                        font-weight: 500;
+                                        margin-left: 5px;
+                                        
+                                    }
+                                }
+                                .head-m{
+                                    margin-bottom: 3px;
+                                }
+                                .desc{
+                                    margin-top: 7px;
+                                    font-size: 0.875rem;
+                                    color: #fff;
+                                    line-height: 20px;
+                                    margin-bottom: 8px;
+                                    font-weight: 600;
+                                }
+                                .bottom{
+                                    display: flex;
+                                    align-items: center;
+                                    color: $bg-clr-7;
+                                    font-size: 0.75rem;
+                                    line-height: 22.5px;
+                                    .date{
+                                        margin-right: 10px;
+                                        display: flex;
+                                        align-items: center;
+                                        svg{
+                                            color: $bg-clr-7;
+                                            margin-right: 6px;
+                                        }
+                                        .point{
+                                            height: 4px;
+                                            width: 4px;
+                                            border-radius: 50%;
+                                            background-color: $bg-clr-7;
+                                            margin-right: 6px;
+                                        }
+                                    }
+                                    a{
+                                        padding: 4px 8px;
+                                        color: white;
+                                        font-size: 0.75rem;
+                                        font-weight: 600;
+                                        border-radius: 40px;
+                                        display: flex;
+                                        align-items: center;
+                                        background-color: $border-clr-2;
+                                        img{
+                                            border-radius: 100%;
+                                        }
+                                        span{
+                                            margin-left: 5px;
+                                            line-height: 1.5;
+                                        }
+                                    }
+                                   
+                                }
 
+                            }
+                        }
                     }
                 }
             }
