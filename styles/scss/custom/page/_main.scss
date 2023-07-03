@@ -12,7 +12,7 @@
                     --ds-k:none;
                    
                 }
-                 &:has(.topbar-header input:checked) .topbar-cards{
+                &:has(.topbar-header input:checked) .topbar-cards{
                     --ds-k:flex;
                     align-items: center;
                     justify-content: space-between;
@@ -102,7 +102,6 @@
                 }
                 &-cards{
                     display: var(--ds-k);
-                    animation: 0.5s ease 0s 1 normal forwards running opacityValue ;        
                     margin-bottom: 24px;
                     padding-top: 15px;
                     .card{                 
@@ -455,6 +454,251 @@
                             }
                         }
                     }
+                }
+                &:has(.topbar-customize .options .option-list .extra-categori input[type="checkbox"]:checked) .topbar-extra{
+                    --dp-e:block;
+                }
+                &:has(.topbar-customize .options .option-list .extra-categori input[type="checkbox"]:not(:checked)) .topbar-extra{
+                    --dp-e:none;
+                }
+                &-customize{
+                    margin-top: 16px;
+                    height: 64px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    white-space: nowrap;                 
+                    .categories,.options{
+                        .categori-list,.option-list{
+                            display: flex;
+                            align-items: center;
+                            li{
+                                margin-right: 4px;
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                a,button{
+                                    padding: 5px 8px;
+                                    font-size: 0.75rem;
+                                    display: flex;
+                                    align-items: center;
+                                    font-weight: 600;
+                                    height: 32px;
+                                    border-radius: 8px !important;
+                                }                                
+                            }                        
+                            .all-user-categori{
+                                a{
+                                    color: $border-clr-3 ;
+                                    background-color: $bg-clr-10;
+                                }
+                            }
+                            .member-categori{
+                                input[type="checkbox"]{
+                                    display: none;
+                                    width:  0;
+                                    height: 0;
+                                }
+                                a,button{
+                                    background-color: $border-clr-2;
+                                    color: #fff;
+                                    cursor: pointer;
+                                    svg{
+                                        color: $text-clr-1;  
+                                        margin-right: 4px;                                     
+                                    }
+                                    &:hover{
+                                        background:$linear-2; 
+                                        svg{
+                                            color: #fff;
+                                        }
+                                    }
+                                                            
+                                }                                
+                                .accor-member{
+                                    svg{
+                                        margin-left: 2px !important;
+                                    }
+                                }
+                                button{
+                                    background-color: $border-clr-2;
+                                    border-radius: 4px;                                 
+                                    &:hover{
+                                        background:$linear-2; 
+                                    }
+                                }
+                                span{
+                                    font-size: 0.75rem;
+                                    color: $text-clr-8;
+                                    margin-right: 6px;
+                                }
+                                .accordion{                                 
+                                    .accordion-header{
+                                       button{
+                                        svg{
+                                            margin-left: 2px !important;
+                                            margin-right: 0 !important;
+                                        }
+                                       }
+                                    }
+                                    .accordion-collapse{
+                                        left: -10px;
+                                        top: 40px;                                       
+                                        max-height: 140px;
+                                        box-shadow: $box-shadow-4;
+                                        background-color: $border-clr-2;
+                                        .accordion-body{
+                                            background-color: $bg-clr-2;
+                                            padding: 5px 9px;
+                                            position: relative;
+                                            .row-v{
+                                                padding: 5px 12px;
+                                                color:#fff;
+                                                font-size: 0.875rem;
+                                                font-weight: 600;                                                
+                                                height: 40px;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                border-radius: 8px;
+                                                &:hover{
+                                                    background-color: $border-clr-2;
+                                                }
+                                            }                                            
+                                        }
+                                    }
+                                }
+                            }
+                            .categori{
+                                a{
+                                    color: $text-clr-8;
+                                }
+                            }
+                            .border{
+                                height: 16px;
+                                width: 1px;
+                                background-color: $border-clr-2;
+                                margin: 0 16px;
+                            }
+                            .extra-categori{
+                                button{
+                                    padding: 0 !important;
+                                    label{
+                                        cursor: pointer;
+                                        padding: 5px 8px;
+                                        height: 32px;
+                                        display: flex;
+                                        align-items: center;
+                                    }     
+                                }
+                            }
+                        }
+                    }
+                }
+                &-extra{
+                    display: var(--dp-e);
+                    margin-top: 0 !important;
+                    padding-top: 16px;
+                    border-top: 1px solid $border-clr-2;
+                    .options{
+                        .option-list{
+                            .extra-categori{
+                                margin-right: 15px !important;
+                                
+                                .accordion{                                 
+                                    .accordion-header{
+                                       button{
+                                        border-radius: 20px !important;
+                                        padding: 5px 8px !important;
+                                        svg{
+                                            margin-left: 2px !important;
+                                            margin-right: 0 !important;
+                                        }
+                                       }
+                                    }
+                                    .accordion-collapse{
+                                        left: -3px;
+                                        top: 40px;                                       
+                                        box-shadow: $box-shadow-4;
+                                        background-color: #000;
+                                        max-height: 320px;
+                                        .accordion-body{
+                                            background-color: #000;
+                                            padding:8px;
+                                            position: relative;
+                                            .search-label{
+                                                width: 100%;
+                                                svg{
+                                                    position: absolute;
+                                                    color: $bg-clr-4;
+                                                    top: 16px;
+                                                    left: 16px;
+    
+                                                }
+                                                input{
+                                                    padding: 6px 8px 6px 32px;
+                                                    margin-right: 2px;
+                                                    background-color: $bg-clr-11;
+                                                    border: 2px solid $bg-clr-11;
+                                                    font-size: 0.75rem;
+                                                    font-weight: 500;
+                                                    border-radius: 8px;
+                                                    color: $text-clr-9;
+                                                    width: 100%;
+                                                    &:hover{
+                                                        background-color: $bg-clr-12;
+                                                        border-color: $bg-clr-12;
+                                                    }
+                                                    &:focus{
+                                                        border-color: $border-clr-6;
+                                                        background-color: $bg-clr-11;
+                                                    }
+                                                    &::placeholder{
+                                                        color: $text-clr-4;
+                                                    }
+                                                }
+                                            }
+                                            .extra-list{
+                                                padding-top: 10px;
+                                                overflow-y: scroll;
+                                                max-height: 260px;                                                
+                                                width: 100%;        
+                                                &::-webkit-scrollbar {
+                                                    width: 0 !important
+                                                }                                       
+                                                .info{
+                                                    margin: 16px 0px 8px;
+                                                    padding: 0px 8px 8px;
+                                                    color: $text-clr-1;
+                                                    font-size: 0.6875rem;
+                                                    font-weight: 500;
+                                                    line-height: 18px;
+                                                    border-bottom: 1px solid $border-clr-2;
+                                                }
+                                                ul{
+                                                    li{
+                                                        padding: 13.5px 8px;
+                                                        font-size: 0.875rem;
+                                                        color: #fff;
+                                                        font-weight: 600;
+                                                        line-height: 21px;
+                                                        border-radius: 8px;
+                                                        cursor: pointer;
+
+                                                    }
+                                                }
+                                            }
+                                           
+                                                                                  
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &-extra,&-cards{
+                    animation: 0.5s ease 0s 1 normal forwards running opacityValue ;        
                 }
             }
         }

@@ -1,12 +1,16 @@
 "use client"
 
 import Link from "next/link"
-import { Carousel } from "react-bootstrap"
-import {BiSolidUpArrow,BiSolidDownArrow} from "react-icons/bi"
+import { Carousel, Accordion } from "react-bootstrap"
+import {BiSolidUpArrow,BiSolidDownArrow,BiSolidPieChartAlt2,BiCalendarMinus,BiSearch} from "react-icons/bi"
+import {FiChevronDown} from "react-icons/fi"
 import {MdOutlineKeyboardArrowRight,MdRemoveRedEye} from "react-icons/md"
 import {VscVerifiedFilled} from "react-icons/vsc"
 import {FaCommentDots,FaHeart} from "react-icons/fa"
 import {AiOutlineInfoCircle} from "react-icons/ai"
+import {GoStarFill} from "react-icons/go"
+import {PiSlidersHorizontalBold} from "react-icons/pi"
+
 
 const Topbar = () => {  
   return (
@@ -262,6 +266,210 @@ const Topbar = () => {
             <span className="fear-value">61</span>
             <span className="fear-text">Greed</span>
           </div>
+        </div>
+      </div>
+      <div className="topbar-customize">
+        <div className="categories">
+          <ul className="categori-list">
+            <li className="member-categori">
+              <Link href={"/"}>
+                <GoStarFill size={14} />
+                Watchlist
+              </Link>
+            </li>
+            <li className="member-categori">
+            <Link href={"/"}>
+              <BiSolidPieChartAlt2 size={14} />
+              Portfolio
+            </Link>
+            </li>
+            <li className="border"></li>
+            <li className="all-user-categori">
+              <Link href={"/"}>
+                Cryptocurrencies
+              </Link>
+            </li>
+            <li className="categori">
+              <Link href={"/"}>
+              Categories
+              </Link>
+            </li>
+            <li className="border"></li>
+            <li className="categori">
+              <Link href={"/"}>
+                Defi
+              </Link>
+            </li>
+            <li className="categori">
+              <Link href={"/"}>
+                Bitcoin Ecosystem
+              </Link>
+            </li>
+            <li className="categori">
+              <Link href={"/"}>
+                Liquit Staking Derivatives
+              </Link>
+            </li>
+            <li className="categori">
+              <Link href={"/"}>
+                Metaverse
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="options">
+          <ul className="option-list">
+            <li className="member-categori">
+              <span>Show rows</span>              
+                <Accordion defaultActiveKey="1">
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header> 
+                              50
+                              <FiChevronDown size={14} />
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <div className="row-v">100</div>
+                              <div className="row-v">50</div>
+                              <div className="row-v">20</div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                </Accordion>
+            </li>
+            <li className="member-categori extra-categori">
+              <input type="checkbox"  id="extra" />
+                <button>
+                  <label htmlFor="extra">
+                    <PiSlidersHorizontalBold size={14} />
+                    Filters
+                  </label>
+                </button>
+             
+            </li>
+            <li className="member-categori">
+              <button>  
+                <BiCalendarMinus size={14} />
+                Customize             
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="topbar-extra topbar-customize">
+        <div className="options">
+          <ul className="option-list">
+            <li className="member-categori extra-categori">             
+                <Accordion defaultActiveKey="1">
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header> 
+                              Category
+                              <FiChevronDown size={14} />
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <div className="search-label">
+                                <BiSearch size={18}/>
+                                <input type="text" placeholder="Search"/>
+                              </div>
+                              <div className="extra-list">
+                                <div className="info">Popular Categories</div>
+                               <ul>
+                                  <li>Platform</li>
+                                  <li>Store Of Value</li>
+                                  <li>Atomic Swaps</li>
+                                  <li>Centralized Exchange (CEX)Token</li>
+                                  <li>Collectivles & NFTs</li>
+                                  <li>Decentralized Exchange (DEX)Token</li>
+                                  <li>Defi</li>
+                              </ul>
+                              </div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                </Accordion>
+            </li>
+            <li className="member-categori extra-categori">             
+                <Accordion defaultActiveKey="1">
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header> 
+                              Algorithm
+                              <FiChevronDown size={14} />
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <div className="search-label">
+                                <BiSearch size={18}/>
+                                <input type="text" placeholder="Search"/>
+                              </div>
+                              <div className="extra-list">
+                                <div className="info">Popular Algorithms</div>
+                               <ul>
+                                  <li>Platform</li>
+                                  <li>Store Of Value</li>
+                                  <li>Atomic Swaps</li>
+                                  <li>Centralized Exchange (CEX)Token</li>
+                                  <li>Collectivles & NFTs</li>
+                                  <li>Decentralized Exchange (DEX)Token</li>
+                                  <li>Defi</li>
+                              </ul>
+                              </div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                </Accordion>
+            </li>
+            <li className="member-categori extra-categori">             
+                <Accordion defaultActiveKey="1">
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header> 
+                              Platform
+                              <FiChevronDown size={14} />
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <div className="search-label">
+                                <BiSearch size={18}/>
+                                <input type="text" placeholder="Search"/>
+                              </div>
+                              <div className="extra-list">
+                                <div className="info">Platform Algorithms</div>
+                               <ul>
+                                  <li>Platform</li>
+                                  <li>Store Of Value</li>
+                                  <li>Atomic Swaps</li>
+                                  <li>Centralized Exchange (CEX)Token</li>
+                                  <li>Collectivles & NFTs</li>
+                                  <li>Decentralized Exchange (DEX)Token</li>
+                                  <li>Defi</li>
+                              </ul>
+                              </div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                </Accordion>
+            </li>
+            <li className="member-categori extra-categori">             
+                <Accordion defaultActiveKey="1">
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header> 
+                              Industry
+                              <FiChevronDown size={14} />
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <div className="search-label">
+                                <BiSearch size={18}/>
+                                <input type="text" placeholder="Search"/>
+                              </div>
+                              <div className="extra-list">
+                                <div className="info">Industry Algorithms</div>
+                               <ul>
+                                  <li>Platform</li>
+                                  <li>Store Of Value</li>
+                                  <li>Atomic Swaps</li>
+                                  <li>Centralized Exchange (CEX)Token</li>
+                                  <li>Collectivles & NFTs</li>
+                                  <li>Decentralized Exchange (DEX)Token</li>
+                                  <li>Defi</li>
+                              </ul>
+                              </div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                </Accordion>
+            </li>  
+          </ul>
         </div>
       </div>
     </div>
