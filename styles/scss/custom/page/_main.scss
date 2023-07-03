@@ -8,6 +8,15 @@
         .coinlist{
             padding-top: 5px;
             .topbar{
+                &:has(.topbar-header input:not(:checked)) .topbar-cards{
+                    --ds-k:none;
+                   
+                }
+                 &:has(.topbar-header input:checked) .topbar-cards{
+                    --ds-k:flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
                 &-header{
                     display: flex;
                     align-items: center;
@@ -92,22 +101,24 @@
                     }
                 }
                 &-cards{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
+                    display: var(--ds-k);
+                    animation: 0.5s ease 0s 1 normal forwards running opacityValue ;        
                     margin-bottom: 24px;
                     padding-top: 15px;
-                    .card{
+                    .card{                 
                         width: 33%;
                         max-width: 448px;
                         height: 200px;
                         box-shadow: $box-shadow-6;
-                        padding: 16px;
-                        overflow: hidden;
+                        padding: 16px;                      
                         background-color: $bg-clr-1;
                         border-radius: 8px;
+                        
                     }
                     .first-card, .second-card{
+                        overflow: hidden;
+                    }
+                    .first-card, .second-card,.third-card{
                         .top{
                             display: flex;
                             align-items: center;
@@ -133,7 +144,7 @@
                                 color: $border-clr-3;
                                 font-size: 0.75rem;
                                 font-weight: 600;                                
-                            }
+                            }                            
                         }
                         .lists{
                             padding-left: 7px;                        
@@ -212,8 +223,7 @@
                                 }
                             }
                         }
-                    }
-                  
+                    }               
                     .second-card{
                         .carousel{
                             &-indicators{
@@ -236,6 +246,7 @@
                                     min-width: 416px;
                                     min-height: 100%;
                                     overflow: hidden;
+                                    transition: transform 0.3s ease-in-out
                                 }
                                 .carousel-item:first-child{
                                     background-color: #0d1421;
@@ -352,6 +363,95 @@
                                    
                                 }
 
+                            }
+                        }
+                    }
+                    .third-card{                      
+                            .top{
+                                position: relative;
+                                &:has(.fear-info span:hover) .tooltips{
+                                    --dp-c:block;
+                                }
+                                &:has(.fear-info span:not(:hover)) .tooltips{
+                                    --dp-c:none;
+                                }
+                                .fear-info{                                
+                                   span{
+                                    display: flex;
+                                    align-items: center;
+                                    margin-left: 10px;
+                                    width: 30px;
+                                    height: 23px;
+                                    max-height: 23px;
+                                    svg{
+                                        color: $bg-clr-4;                                      
+                                    }
+                                   }
+                                }
+                                .tooltips{      
+                                    display: var(--dp-c);                   
+                                    top: -256px;
+                                    left: -19px;                                
+                                    transform: translate(1.5%, 2.5%) !important;
+                                    box-shadow: $box-shadow-4;
+                                    .tooltip-info{
+                                        background-color: $bg-clr-2;
+                                        padding: 16px;                                                                                         
+                                        .tooltip-body{  
+                                            max-width: 320px;   
+                                            &::before{
+                                                transform: rotate(180deg);
+                                                transform-origin: 52% 129px;
+                                            }                                    
+                                           p{
+                                                color: #fff;
+                                                font-size: 0.75rem;
+                                                word-break: break-word;                                            
+                                                line-height: 18px;
+                                           }
+                                        }
+                                    }
+                                }
+                            }
+                        
+                        .fear-index{
+                            width: 177px;
+                            height: 178px;
+                            margin: 0 auto;
+                            text-align: center;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: column;
+                            .mark{
+                                width: 16px;
+                                height: 16px;
+                                border-radius: 50%;
+                                border: 2px solid $bg-clr-1 ;
+                                background-color: #fff;
+                                position: absolute;
+                                top: 102px;
+                                left: -5px;
+                                z-index: 1;
+                                transform-origin: 93.5px 8px;
+                                transform: rotate(109.562deg);
+                            }
+                            svg{
+                                position: absolute;
+                                left: 0;
+                                top: 12%;
+                            }
+                            .fear-value{
+                                font-size: 1.5625rem;
+                                color: #fff;
+                                font-weight: bold;
+                                line-height: 32.5px;
+                            }
+                            .fear-text{
+                                font-size: 0.6875rem;
+                                color: $text-clr-1;
+                                margin-top: -2px;
                             }
                         }
                     }
