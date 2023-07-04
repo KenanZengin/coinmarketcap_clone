@@ -1,6 +1,6 @@
-import React from 'react'
 import Topbar from './topbar'
 import CoinTable from './cointable'
+import Pagination from './pagination'
 
 
 const Coinlist = () => {
@@ -8,6 +8,7 @@ const Coinlist = () => {
     <div className="coinlist">
         <Topbar />
         <CoinTable />
+        <Pagination />
     </div>
   )
 }

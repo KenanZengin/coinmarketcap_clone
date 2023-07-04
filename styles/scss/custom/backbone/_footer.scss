@@ -1,0 +1,80 @@
+.footer{
+    background-color: $bg-clr-15;
+    padding: 48px 0;
+    &-web{
+        display: flex;
+        flex-flow: row wrap;
+        padding: 0 24px;
+        .logo{
+            flex: 1 1 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            p{
+                font-weight: 500;
+                font-size: 0.9375rem;
+                line-height: 21px;
+                color: $text-clr-9;
+            }
+        }
+        .info{
+            flex: 1 1 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .info-content{
+                .item{
+                    padding-right: 10px;
+                    width: 25%;
+                    float: left;
+                    p{
+                        display: inline-block;
+                        font-weight: 600;
+                        font-size: 1rem;
+                        line-height: 26px;
+                        padding-bottom:18px;
+                        color: #fff;
+                    }
+                    ul{
+                        li{
+                            line-height: 35px;
+                            a{
+                                font-weight: 500;
+                                font-size: 0.875rem;
+                                color: $text-clr-9;
+                                &:hover{
+                                    color: $text-clr-10;
+                                }
+                            }
+                            span{
+                                display: inline-block;
+                                background-color: $border-clr-5;
+                                padding: 2px 12px;
+                                margin-left: 5px;
+                                font-size: 0.6875rem;
+                                font-weight: 600;
+                                line-height: 18px;
+                                border-radius: 40px;
+                                color: #fff;
+                                height: 22px;
+                            }
+                        }
+                    }
+                }        
+            }
+            .app{
+                align-self: flex-end;
+                display: flex;
+                align-items: center;
+                padding-top: 66px;
+                a{
+                    display: inline-block;
+                }
+                a:last-child{
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+}

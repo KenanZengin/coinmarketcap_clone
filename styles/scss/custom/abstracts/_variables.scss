@@ -13,6 +13,7 @@ $bg-clr-11          :#1b1c20;
 $bg-clr-12          :#424347;
 $bg-clr-13          :#a6b1c2;
 $bg-clr-14          :#f6b87e;
+$bg-clr-15          :#1a1a1d;
 
 //text-color
 $text-clr-1         :#a1a7bb;
@@ -24,6 +25,7 @@ $text-clr-6         :#858ca2;
 $text-clr-7         :#ea3943;
 $text-clr-8         :#cfd6e4;
 $text-clr-9         :#a0a0a0;
+$text-clr-10        :#98caff;
 
 //border-color
 $border-clr-1       :#252527;
@@ -42,7 +44,9 @@ $box-shadow-4       :0px 4px 24px #171924,0px 1px 2px #171924;
 $box-shadow-5       :rgba(10, 10, 10, 0.29) 0px 0px 2px 0px;
 $box-shadow-6       :rgba(88, 102, 126, 0.08) 0px 4px 24px, rgba(88, 102, 126, 0.12) 0px 1px 2px;
 $box-shadow-7       :rgb(100, 107, 128) 0px 0px 0px 3px;
+$box-shadow-8       :rgba(56, 97, 251, 0.64) 0px 0px 0px 3px;
 
 //linear-gradient
 $linear-1           :linear-gradient(rgb(34, 37, 49) 0%, rgba(34, 37, 49, 0) 413px);
 $linear-2           :linear-gradient(0deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.04)), rgb(34, 37, 49);
+$linear-3           :linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), rgb(56, 97, 251);
