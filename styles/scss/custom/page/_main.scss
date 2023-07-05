@@ -5,19 +5,14 @@
         .coinlist{
             padding-top: 5px;
             .topbar{
-                &:has(.topbar-header input:not(:checked)) .topbar-cards{
-                    --ds-k:none;                  
-                }
-                &:has(.topbar-header input:checked) .topbar-cards{
-                    --ds-k:flex;
-                    align-items: center;
-                    justify-content: space-between;
-                }
+              
                 &-header{
-                    display: flex;
-                    align-items: center;
+                    display: flex;                    
                     .title{
-                        
+                        display: flex;
+                        flex-direction: column;
+                        padding-top: 19px;
+                       
                         h1{
                             font-size: 1.5rem;
                             color: #fff;
@@ -28,22 +23,29 @@
                         .desc{
                             color: $text-clr-1;
                             font-size: 0.875rem;
-                            line-height: 21px;
-                            display: flex;
-                            align-items: center;
-                            span:first-child{
-                                color: $text-clr-3;
-                                svg{
-                                    color: $text-clr-3;
-                                }
+                            line-height: 21px;                        
+                            span{                        
+                                font-weight: 600;                            
                             }
-                            span:last-child{
+                            .down{
+                                color: $text-clr-7;                              
+                            }
+                            .up{
+                                color: $text-clr-3;                             
+                            }
+                            button{                   
                                 text-decoration: underline;
                                 cursor: pointer;
                                 margin-left: 7.5px;
+                                color: $bg-clr-7 ;
+                                font-size: 0.9375rem;
+                                background-color: inherit;
                             }
-    
+                        }              
+                        .desc:nth-of-type(2){
+                            margin-top: 4px;   
                         }
+                        
                     }
                     .change{
                         display: flex;
@@ -95,6 +97,14 @@
                             }
                         }
                     }
+                }
+                &:has(.topbar-header input:not(:checked)) .topbar-cards{
+                    --ds-k:none;                  
+                }
+                &:has(.topbar-header input:checked) .topbar-cards{
+                    --ds-k:flex;
+                    align-items: center;
+                    justify-content: space-between;
                 }
                 &-cards{
                     display: var(--ds-k);
@@ -1150,8 +1160,7 @@
                     }
                 }
                 
-            }
-           
+            }         
         }
     }
     

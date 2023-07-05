@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import {useState} from "react"
 import { Carousel, Accordion } from "react-bootstrap"
 import {BiSolidUpArrow,BiSolidDownArrow,BiSolidPieChartAlt2,BiCalendarMinus,BiSearch} from "react-icons/bi"
 import {FiChevronDown} from "react-icons/fi"
@@ -13,19 +14,32 @@ import {PiSlidersHorizontalBold} from "react-icons/pi"
 
 
 const Topbar = () => {  
+
+  const [more,setMore] = useState(false)
+
   return (
     <div className="topbar">
       <div className="topbar-header">
-      <div className="title">
+        <div className="title">
             <h1> Today's Cryptocurrency Prices by Market Cap</h1>
             <p className='desc'>
-            The global crypto market cap is $1.2T, a &nbsp;
-            <span><BiSolidUpArrow size={7}/> 0.75%</span>
-            &nbsp;increase over the last day.           
-            <span>Read More</span>
+              The global crypto market cap is $1.2T, a &nbsp;
+              <span className="up"><BiSolidUpArrow size={7}/> 0.75%</span>
+              &nbsp;increase over the last day.           
+              <button onClick={()=>setMore(!more)} >
+                {more ? "Read More" : "Read Less"}
+              </button>   
             </p>
-            
-        </div>
+            <br />
+            {more && <div className="more-desc">
+              <p className="desc">
+                The total crypto market volume over the last 24 hours is $30.9B, which makes a <span className="down"><BiSolidDownArrow size={7}/> 14.97%</span> decrease. The total volume in DeFi is currently $2.66B, 8.60% of the total crypto market 24-hour volume. The volume of all stable coins is now $27.75B, which is 89.81% of the total crypto market 24-hour volume.
+              </p>   
+              <p className="desc">
+                Bitcoin’s dominance is currently 49.65%, an increase of <span className="up"><BiSolidUpArrow size={7}/> 0.11%</span> over the day.
+              </p>   
+            </div> }     
+        </div>    
         <div className="change">
           Highlights
           <input type="checkbox" id="1" defaultChecked="true"/>

@@ -1,6 +1,7 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import logo from 'public/img/logo.png'
+import Link from "next/link"
+import Image from "next/image"
+import {BsFacebook,BsTwitter,BsTelegram,BsInstagram,BsFillChatDotsFill} from "react-icons/bs"
+import logo from "public/img/logo.png"
 
 const Footer = () => {
   return (
@@ -125,28 +126,28 @@ const Footer = () => {
                 <p>Socials</p>
                 <ul>
                   <li>
-                    <Link href="/">
-                      Facebook  
+                    <Link href="/" className="social">
+                      Facebook  <BsFacebook size={18} />
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
-                      Twitter
+                    <Link href="/" className="social">
+                      Twitter   <BsTwitter size={18} />
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
-                      Telegram
+                    <Link href="/" className="social">
+                      Telegram  <BsTelegram size={18} />
                     </Link>
                   </li>
                   <li>
-                    <Link href="/">
-                      Instagram
+                    <Link href="/" className="social">
+                      Instagram <BsInstagram size={16} />
                     </Link>
                   </li>   
                   <li>
-                    <Link href="/">
-                      Interactive Chat
+                    <Link href="/" className="social">
+                      Interactive Chat  <BsFillChatDotsFill size={18} />
                     </Link>
                   </li>                
                 </ul>
