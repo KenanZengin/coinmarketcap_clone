@@ -5,29 +5,51 @@
         display: flex;
         flex-flow: row wrap;
         padding: 0 24px;
+        @include BootstrapMaxWidthResponsive(lg){
+            flex-direction: column-reverse;                  
+        }
+        p{
+            font-weight: 500;
+            font-size: 0.9375rem;
+            line-height: 21px;
+            color: $text-clr-9;
+        }
         .logo{
+            @include BootstrapMaxWidthResponsive(lg){
+                display: none;                
+            }
             flex: 1 1 50%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
-            p{
-                font-weight: 500;
-                font-size: 0.9375rem;
-                line-height: 21px;
-                color: $text-clr-9;
-            }
         }
         .info{
             flex: 1 1 50%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            img{
+                display: none;
+                @include BootstrapMaxWidthResponsive(lg){
+                    display: block;                
+                }
+            }
             .info-content{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                @include BootstrapMaxWidthResponsive(lg){
+                    padding-top: 15px;  
+                    justify-content: space-between;              
+                }
                 .item{
                     padding-right: 10px;
-                    width: 25%;
-                    float: left;
+                    width: 25%;   
+                    @include BootstrapMaxWidthResponsive(sm){
+                        width: 35%;    
+                        margin-bottom: 30px;           
+                    }                 
                     p{
                         display: inline-block;
                         font-weight: 600;
@@ -81,11 +103,26 @@
                 display: flex;
                 align-items: center;
                 padding-top: 66px;
+                @include BootstrapMaxWidthResponsive(lg){
+                    width: 100%;
+                    justify-content: space-between;                
+                }
+                @include BootstrapMaxWidthResponsive(xxs){
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 20px;
+                }    
                 a{
                     display: inline-block;
                 }
                 a:last-child{
                     margin-left: 6px;
+                }
+                p{
+                    display: none;
+                    @include BootstrapMaxWidthResponsive(lg){
+                        display: block;                
+                    }
                 }
             }
         }

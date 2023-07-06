@@ -297,7 +297,7 @@ const Topbar = () => {
               Portfolio
             </Link>
             </li>
-            <li className="border"></li>
+            <li className="border respon-border"></li>
             <li className="all-user-categori">
               <Link href={"/"}>
                 Cryptocurrencies
@@ -329,10 +329,6 @@ const Topbar = () => {
                 Metaverse
               </Link>
             </li>
-          </ul>
-        </div>
-        <div className="options">
-          <ul className="option-list">
             <li className="member-categori">
               <span>Show rows</span>              
                 <Accordion defaultActiveKey="1">
@@ -349,7 +345,39 @@ const Topbar = () => {
                         </Accordion.Item>
                 </Accordion>
             </li>
-            <li className="member-categori extra-categori">
+          </ul>
+        </div>
+        <div className="options">
+          <ul className="option-list">
+            <li className="member-categori response-list">
+              <Link href={"/"}>
+                <GoStarFill size={14} />
+                Watchlist
+              </Link>
+            </li>
+            <li className="member-categori response-list">
+            <Link href={"/"}>
+              <BiSolidPieChartAlt2 size={14} />
+              Portfolio
+            </Link>
+            </li>
+            <li className="member-categori response-row">
+              <span>Show rows</span>              
+                <Accordion defaultActiveKey="1">
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header> 
+                              50
+                              <FiChevronDown size={14} />
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <div className="row-v">100</div>
+                              <div className="row-v">50</div>
+                              <div className="row-v">20</div>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                </Accordion>
+            </li>
+            <li className="member-categori extra-categori respon-grow">
               <input type="checkbox"  id="extra" />
                 <button>
                   <label htmlFor="extra">
@@ -359,7 +387,7 @@ const Topbar = () => {
                 </button>
              
             </li>
-            <li className="member-categori">
+            <li className="member-categori respon-grow">
               <button>  
                 <BiCalendarMinus size={14} />
                 Customize             
@@ -398,7 +426,7 @@ const Topbar = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                 </Accordion>
-            </li>
+            </li>                       
             <li className="member-categori extra-categori">             
                 <Accordion defaultActiveKey="1">
                         <Accordion.Item eventKey="2">

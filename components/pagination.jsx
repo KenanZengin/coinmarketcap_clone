@@ -10,78 +10,132 @@ const Pagination = () => {
   return (
    <>
     <div className="table-footer">
+        <div className="respon-pagination">
+            <div className="page-pass">
+                <ul>
+                    <li>
+                        <Link href={"/"}>
+                            <AiOutlineLeft size={12} />
+                        </Link>
+                    </li>
+                    <li className="blue-bg">
+                        <Link href={"/"}>
+                            1   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            2   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            3   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            4   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            5   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            6   
+                        </Link>
+                    </li>
+                    <li className="empty">
+                        ...
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            516       
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            <AiOutlineRight size={12} />      
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div className="table-pagination">
-        <div className="pagi-info">
-            <p>Showing 1 - 20 out of 10307</p>
-        </div>
-        <div className="page-pass">
-            <ul>
-                <li>
-                    <Link href={"/"}>
-                        <AiOutlineLeft size={12} />
-                    </Link>
-                </li>
-                <li className="blue-bg">
-                    <Link href={"/"}>
-                        1   
-                    </Link>
-                </li>
-                <li>
-                    <Link href={"/"}>
-                        2   
-                    </Link>
-                </li>
-                <li>
-                    <Link href={"/"}>
-                        3   
-                    </Link>
-                </li>
-                <li>
-                    <Link href={"/"}>
-                        4   
-                    </Link>
-                </li>
-                <li>
-                    <Link href={"/"}>
-                        5   
-                    </Link>
-                </li>
-                <li>
-                    <Link href={"/"}>
-                        6   
-                    </Link>
-                </li>
-                <li className="empty">
-                    ...
-                </li>
-                <li>
-                    <Link href={"/"}>
-                        516       
-                    </Link>
-                </li>
-                <li>
-                    <Link href={"/"}>
-                        <AiOutlineRight size={12} />      
-                    </Link>
-                </li>
-            </ul>
-        </div>
-        <div className="rows-set">
-            <p>Show rows</p>              
-            <Accordion defaultActiveKey="1">
-                <Accordion.Item eventKey="2">
-                    <Accordion.Header> 
-                        20
-                        <FiChevronDown size={14} />
-                    </Accordion.Header>
-                    <Accordion.Body>
-                        <div className="row-v">100</div>
-                        <div className="row-v">50</div>
-                        <div className="row-v">20</div>
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
-        </div>
+            <div className="pagi-info">
+                <p>Showing 1 - 20 out of 10307</p>
+            </div>
+            <div className="page-pass">
+                <ul>
+                    <li>
+                        <Link href={"/"}>
+                            <AiOutlineLeft size={12} />
+                        </Link>
+                    </li>
+                    <li className="blue-bg">
+                        <Link href={"/"}>
+                            1   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            2   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            3   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            4   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            5   
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            6   
+                        </Link>
+                    </li>
+                    <li className="empty">
+                        ...
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            516       
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={"/"}>
+                            <AiOutlineRight size={12} />      
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+            <div className="rows-set">
+                <p>Show rows</p>              
+                <Accordion defaultActiveKey="1">
+                    <Accordion.Item eventKey="2">
+                        <Accordion.Header> 
+                            20
+                            <FiChevronDown size={14} />
+                        </Accordion.Header>
+                        <Accordion.Body>
+                            <div className="row-v">100</div>
+                            <div className="row-v">50</div>
+                            <div className="row-v">20</div>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
+            </div>
         </div>
         <div className="work-info">
             <div className="info-accordion">

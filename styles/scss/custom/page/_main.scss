@@ -4,21 +4,25 @@
     &-body{
         .coinlist{
             padding-top: 5px;
-            .topbar{
-              
+            .topbar{            
                 &-header{
                     display: flex;                    
                     .title{
                         display: flex;
                         flex-direction: column;
                         padding-top: 19px;
-                       
+                        @include BootstrapMaxWidthResponsive(sm){
+                            padding-top: 0;                           
+                        } 
                         h1{
                             font-size: 1.5rem;
                             color: #fff;
                             font-weight: bold;                    
                             margin-bottom: 6px;
                             line-height: 34px;
+                            @include BootstrapMaxWidthResponsive(sm){
+                                font-size: 0.875rem;
+                            } 
                         }
                         .desc{
                             color: $text-clr-1;
@@ -44,10 +48,16 @@
                         }              
                         .desc:nth-of-type(2){
                             margin-top: 4px;   
+                             @include BootstrapMaxWidthResponsive(md){
+                                margin-bottom: 20px;                                     
+                            }   
                         }
                         
                     }
                     .change{
+                        @include BootstrapMaxWidthResponsive(sm){
+                            display: none;
+                        } 
                         display: flex;
                         align-items: flex-start;
                         justify-content: flex-end;
@@ -110,7 +120,13 @@
                 &-cards{
                     display: var(--ds-k);
                     margin-bottom: 24px;
-                    padding-top: 15px;
+                    padding-top: 15px;                    
+                    @include BootstrapMaxWidthResponsive(sm){
+                        display: none;
+                    } 
+                    @include BootstrapMaxWidthResponsive(md){
+                        padding-bottom: 20px;                   
+                    }   
                     .card{                 
                         width: 33%;
                         max-width: 448px;
@@ -478,11 +494,21 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    white-space: nowrap;                 
+                    white-space: nowrap;       
+                    @include BootstrapMaxWidthResponsive(md){
+                        flex-direction: column-reverse;
+                        padding: 10px 0;
+                        gap: 10px;
+                       
+                    }           
                     .categories,.options{
+                        @include BootstrapMaxWidthResponsive(md){
+                            width: 100%;                                      
+                        }   
                         .categori-list,.option-list{
                             display: flex;
                             align-items: center;
+                              
                             li{
                                 margin-right: 4px;
                                 border-radius: 8px;
@@ -605,6 +631,58 @@
                             }
                         }
                     }
+                    .categories{
+                        .categori-list{
+                            @include BootstrapMaxWidthResponsive(md){
+                                width: 100%;                                      
+                                justify-content: space-between;
+                            }   
+                            .member-categori:first-child,.member-categori:nth-child(2){
+                                @include BootstrapMaxWidthResponsive(md){
+                                    display: none;                                   
+                                } 
+                            }
+                            .member-categori:last-child{
+                                display: none;
+                                @include BootstrapMaxWidthResponsive(md){
+                                    display: flex;                                   
+                                } 
+                            }
+                            .respon-border{
+                                @include BootstrapMaxWidthResponsive(md){
+                                    display: none;                                   
+                                } 
+                            }
+                        }
+                    }
+                    .options{                        
+                        .option-list{
+                            .response-list{
+                                display: none;
+                                @include BootstrapMaxWidthResponsive(md){
+                                   display: flex;                   
+                                }   
+                            }
+                            .response-row{
+                                @include BootstrapMaxWidthResponsive(md){
+                                   display: none;                   
+                                }   
+                            }
+                            .respon-grow{
+                                flex-grow: 1;
+                                button{
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: center;                                    
+                                    label{
+                                        width: 100%;
+                                        display: flex;
+                                        justify-content: center;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 &-extra{
                     display: var(--dp-e);
@@ -715,8 +793,11 @@
                 &-wrapper{                                  
                     .table-head,.table-body-item{
                         display: flex;
-                        align-items: center;       
-                        
+                        align-items: center;   
+                        white-space: nowrap;    
+                        @include BootstrapMaxWidthResponsive(lg){
+                            justify-content: space-between;
+                        }
                         & > div:not(:nth-child(2),:nth-child(3)){
                             text-align: end;
                         }
@@ -736,12 +817,22 @@
                                 margin-left: 4px;
                             }
                        }
+                        
                        .star{
                         width: 2.62%;
+                        @include BootstrapMaxWidthResponsive(sm){
+                            display: none;                                      
+                        }   
+                       }
+                       .star{
+
                        }
                        .rank{
                         width: 2.89%;
-                       }
+                        @include BootstrapMaxWidthResponsive(sm){
+                            display: none;                                      
+                        }   
+                       }                      
                        .name{
                         width: 13%;
                        }
@@ -750,192 +841,227 @@
                        }
                        .h1-change,.h24-change,.d7-change{
                         width: 5.6%;
-                       }                      
+                       }        
+                       .market-cap,.d7-change{
+                        @include BootstrapMaxWidthResponsive(lg){
+                            display: none;                                      
+                        }   
+                       }
+                       .h24-change{
+                        @include BootstrapMaxWidthResponsive(lg){
+                            width: 7.6%;                                      
+                        }  
+                        @include BootstrapMaxWidthResponsive(xm){
+                            display: none;                                      
+                        }                          
+                       }  
+                       .h1-change{
+                            @include BootstrapMaxWidthResponsive(md){
+                                display: none;                                      
+                            }   
+                        }    
                        .market-cap{
-                        width: 10.9%;
-                       }
+                            width: 10.9%;
+                        }   
                        .volume{
-                        width: 12.2%;
-                       }
-                       .supply{
-                        width: 14.32%;
-                       }
-                       .basic-graph{
-                        width: 13.4%;
-                       }
-                       .go-detail{
-                        width: 5.5%;
-                       }
+                            width: 12.2%;                       
+                        }                                                                 
+                        .supply{
+                            width: 14.32%;
+                            @include BootstrapMaxWidthResponsive(md){
+                                display: none;                                      
+                            }  
+                        }                      
+                        .basic-graph{
+                            width: 13.4%;
+                            @include BootstrapMaxWidthResponsive(md){
+                                width: 17%;                                      
+                            }  
+                            @include BootstrapMaxWidthResponsive(sm){
+                                display: none;                                  
+                            }  
+                        }                       
+                        .go-detail{
+                            width: 5.5%;
+                            @include BootstrapMaxWidthResponsive(sm){
+                                display: none;                                      
+                            }   
+                        }                       
+                    }
+                    
 
+                }
+                .table-head{
+                    font-size: 0.75rem;
+                    color: #fff;
+                    font-weight: bold;
+                    border-top: 1px solid $bg-clr-2;
+                    border-bottom: 1px solid $bg-clr-2;
+                    & > div{
+                        padding: 16.5px 10px;                      
                     }
-                    .table-head{
-                        font-size: 0.75rem;
-                        color: #fff;
-                        font-weight: bold;
-                        border-top: 1px solid $bg-clr-2;
-                        border-bottom: 1px solid $bg-clr-2;
+                    .price,.basic-graph{
+                        @include BootstrapMaxWidthResponsive(md){
+                            padding: 16.5px 0 ;                                      
+                        }  
+                    }
+                    .name{
+                        @include BootstrapMaxWidthResponsive(xs){
+                            width: 30%;
+                            text-align: end !important;                                      
+                        }  
+                        
+                    }
+                    
+                }
+                .table-body{                   
+                        &-item{
+                        border-bottom: 1px solid $bg-clr-2;   
                         & > div{
-                            padding: 16.5px 10px;                      
+                            padding: 13px 10px;                      
+                        }      
+                        .t-body-price,.t-body-mrkcap,.t-body-v,.t-body-sp,.t-body-name{
+                            a{
+                                font-size: 0.875rem !important;
+                                color: #fff;
+                                line-height: 22.5px;
+                                font-weight: 500;
+                            }
+                        }  
+                        .t-body-rank,.t-body-change{                           
+                            font-size: 0.875rem;
+                        }             
+                        .star{
+                            svg{
+                                color: $bg-clr-13;
+                                &:hover{
+                                    color: $bg-clr-14;
+                                }
+                            }
+                        }                            
+                        .t-body-rank{          
+                            color: $text-clr-8;
+                            line-height: 21px;
+                            font-weight: 500;                          
                         }
-                    }
-                    .table-body{                   
-                           &-item{
-                            border-bottom: 1px solid $bg-clr-2;   
-                            & > div{
-                                padding: 13px 10px;                      
-                            }      
-                            .t-body-price,.t-body-mrkcap,.t-body-v,.t-body-sp,.t-body-name{
-                                a{
-                                    font-size: 0.875rem !important;
-                                    color: #fff;
+                        .t-body-name{
+                            a{
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-start;
+                                img{
+                                    border-radius: 12px;
+                                }
+                                p,span{                                       
+                                    margin-left: 8px;
+                                    line-height: 24px
+                                }
+                                p{                            
+                                    font-weight: 600;                            
+                                }
+                                span{
+                                    font-weight: 500;
+                                    color: $bg-clr-13;
+                                }
+                            }
+                        }                          
+                        .t-body-change{
+                            color: $text-clr-3;
+                            svg{
+                                color: $text-clr-3;
+                                margin-right: 2px;
+                            }
+                        }
+                        .t-body-v{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-end;
+                            a{
+                                p{
                                     line-height: 22.5px;
                                     font-weight: 500;
                                 }
-                            }  
-                            .t-body-rank,.t-body-change{                           
-                                font-size: 0.875rem;
-                            }             
-                            .star{
-                                svg{
-                                    color: $bg-clr-13;
-                                    &:hover{
-                                        color: $bg-clr-14;
-                                    }
-                                }
-                            }                            
-                            .t-body-rank{          
-                                color: $text-clr-8;
-                                line-height: 21px;
-                                font-weight: 500;                          
                             }
-                            .t-body-name{
-                                a{
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: flex-start;
-                                    img{
-                                        border-radius: 12px;
-                                    }
-                                    p,span{                                       
-                                        margin-left: 8px;
-                                        line-height: 24px
-                                    }
-                                    p{                            
-                                        font-weight: 600;                            
-                                    }
-                                    span{
-                                        font-weight: 500;
-                                        color: $bg-clr-13;
-                                    }
-                                }
-                            }                          
-                            .t-body-change{
-                                color: $text-clr-3;
-                                svg{
-                                    color: $text-clr-3;
-                                    margin-right: 2px;
-                                }
+                            span{
+                            font-size: 0.75rem;
+                            font-weight: 500;
+                            color: $text-clr-8;
+                            text-align: end;
                             }
-                            .t-body-v{
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: flex-end;
-                               a{
-                                    p{
-                                        line-height: 22.5px;
-                                        font-weight: 500;
-                                    }
-                               }
-                               span{
-                                font-size: 0.75rem;
-                                font-weight: 500;
-                                color: $text-clr-8;
-                                text-align: end;
-                               }
+                        }
+                        .basic-graph{
+                            a{
+                            display: block;
+                            width: 100%;
+                            height: 100%;                             
+                            margin-left: 4px;
+                            img{   
+                                filter: hue-rotate(85deg) saturate(80%) brightness(0.85);                             
                             }
-                            .basic-graph{
-                               a{
-                                display: block;
-                                width: 100%;
-                                height: 100%;                             
-                                margin-left: 4px;
-                                img{   
-                                    filter: hue-rotate(85deg) saturate(80%) brightness(0.85);                             
-                                }
-                               }
                             }
-                            .go-detail{
-                                .accordion{                                 
-                                        .accordion-header{
-                                            display: inline-block;                                           
-                                            button{
-                                                background-color: inherit;    
-                                                border-radius: 50%;                                              
-                                                &:focus{
-                                                    background-color: $bg-clr-2;
-                                                    box-shadow: $box-shadow-7;                                                    
-                                                }                                                                                            
-                                                div{
-                                                    font-weight: 900;
-                                                    color: white;
-                                                    padding: 12.5px 20px;
-                                                    border-radius: 50%;
-                                                    border:2px solid inherit;
-                                                    line-height: 6px;
-                                                    height: 50px;                                                
-                                                    &:hover{
-                                                        background-color: $bg-clr-2;                                                       
-                                                    }                                                    
-                                                }
-                                           }
-                                        }
-                                        .accordion-collapse{
-                                            left: -80%;
-                                            top: 55px;                                       
-                                            box-shadow: $box-shadow-4;
-                                            background-color: $border-clr-2;
-                                            .accordion-body{
+                        }
+                        .go-detail{
+                            .accordion{                                 
+                                    .accordion-header{
+                                        display: inline-block;                                           
+                                        button{
+                                            background-color: inherit;    
+                                            border-radius: 50%;  
+                                            box-shadow: none;                                            
+                                            &:focus{
                                                 background-color: $bg-clr-2;
-                                                padding: 9px;
-                                                position: relative;
-                                                display: flex;
-                                                flex-direction: column;
-                                                align-items: flex-start;
-                                                justify-content: center;
-                                                div{
-                                                    a{
-                                                        display: flex;
-                                                        align-items: center;
-                                                        white-space: nowrap;
-                                                        color: white;
-                                                        padding: 0 10px;
-                                                        height: 32px;
-                                                        font-size: 0.875rem;
-                                                    }
-                                                }
-                                                                                  
+                                                box-shadow: $box-shadow-7;                                                    
+                                            }                                                                                            
+                                            div{
+                                                font-weight: 900;
+                                                color: white;
+                                                padding: 12.5px 20px;
+                                                border-radius: 50%;
+                                                border:2px solid inherit;
+                                                line-height: 6px;
+                                                height: 50px;                                                
+                                                &:hover{
+                                                    background-color: $bg-clr-2;                                                       
+                                                }                                                    
                                             }
                                         }
-                                }
+                                    }
+                                    .accordion-collapse{
+                                        left: -138px;
+                                        top: 55px;                                       
+                                        box-shadow: $box-shadow-4;
+                                        background-color: $border-clr-2;
+                                        .accordion-body{
+                                            background-color: $bg-clr-2;
+                                            padding: 9px;
+                                            position: relative;
+                                            display: flex;
+                                            flex-direction: column;
+                                            align-items: flex-start;
+                                            justify-content: center;
+                                            div{
+                                                a{
+                                                    display: flex;
+                                                    align-items: center;
+                                                    white-space: nowrap;
+                                                    color: white;
+                                                    padding: 0 10px;
+                                                    height: 32px;
+                                                    font-size: 0.875rem;
+                                                }
+                                            }
+                                                                                
+                                        }
+                                    }
                             }
                         }
                     }
-                }
+                }  
             }
             .table-footer{
-                .table-pagination{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    margin: 16px 0px 40px;
-                    .pagi-info,.rows-set{
-                        p{
-                            color: $text-clr-1;
-                            font-size: 0.75rem;                        
-                        }
-                    }
-                    .page-pass{
+                .table-pagination,.respon-pagination{
+                    .page-pass{                        
                         ul{
                             display: flex;
                             align-items: center;
@@ -973,6 +1099,28 @@
                             .blue-bg{
                                 background-color: $border-clr-5 !important;
                             }
+                        }
+                    }
+                }
+                .respon-pagination{
+                    display: none;                    
+                    background-color: $bg-clr-5;
+                    @include BootstrapMaxWidthResponsive(sm){
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 20px 0;                        
+                    }                    
+                }                
+                .table-pagination{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 16px 0px 40px;                    
+                    .pagi-info,.rows-set{
+                        p{
+                            color: $text-clr-1;
+                            font-size: 0.75rem;                        
                         }
                     }
                     .rows-set{     
@@ -1022,8 +1170,12 @@
                             }
                         }
                     }
-                }
-                
+                    .page-pass{
+                        @include BootstrapMaxWidthResponsive(sm){
+                            display: none;
+                        }
+                    }                   
+                }  
                 .work-info{
                     padding-bottom: 20px;
                     &:has(.info-accordion label input[type=checkbox]:checked) {
@@ -1112,15 +1264,26 @@
                     max-width: 1402px;
                     padding: 0 16px;
                     margin: 0 auto;
+                    @include BootstrapMaxWidthResponsive(sm){
+                       flex-direction: column;                  
+                    }    
                     .left{
                         flex: 1 1 60%;
                         .title{
                             margin: 96px 0 8px;
                             font-size: 2rem;
                             color: #fff;
-                            line-height: 42px;
+                            line-height: 42px;                            
+                            @include BootstrapMaxWidthResponsive(sm){
+                                font-size: 1.5rem;   
+                                margin: 14px 0 8px;
+                                line-height: 36px;               
+                            } 
                             span{
                                 font-weight: bold;
+                                @include BootstrapMaxWidthResponsive(sm){
+                                    display: block;            
+                                } 
                             }
                         }
                         p{
@@ -1128,11 +1291,20 @@
                             line-height: 24px;
                             margin-bottom: 48px;
                             color: $text-clr-5;
+                            @include BootstrapMaxWidthResponsive(sm){
+                                font-size: 0.875rem;                  
+                            } 
                         }
                         .subs-btn{
                             margin-bottom: 128px;
                             display: inline-block;
+                            @include BootstrapMaxWidthResponsive(sm){
+                                width: 100%;                  
+                            }  
                             button{
+                                @include BootstrapMaxWidthResponsive(sm){
+                                    width: 100%;                  
+                                }  
                                 padding: 0 24px;
                                 background-color: $border-clr-5;                           
                                 cursor: pointer;

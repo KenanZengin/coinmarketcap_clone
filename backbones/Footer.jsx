@@ -12,6 +12,7 @@ const Footer = () => {
             <p>© 2023 CoinMarketCap. All rights reserved</p>
           </div>
           <div className="info">
+            <Image src={logo} alt="logo" />
             <div className="info-content">
               <div className='item'>
                 <p>Products</p>
@@ -154,15 +155,18 @@ const Footer = () => {
               </div>
             </div>
             <div className="app">
-              <Link href="/">
-                <img src="https://s2.coinmarketcap.com/static/cloud/img/app_store_badge_white_1.svg?_=1bafcec" alt="apple" width={120} height={36} />
-              </Link>
-              <Link href="/">
-              <img src="https://s2.coinmarketcap.com/static/cloud/img/google_play_badge_1.png?_=1bafcec" alt="google" width={120} height={36} />
-              </Link>
-              <Link href="/">
-              <img src="https://s2.coinmarketcap.com/static/cloud/img/qr-code-button.svg?_=1bafcec" alt="code" width={36} height={36} />
-              </Link>
+              <p>© 2023 CoinMarketCap. All rights reserved</p>
+              <div className="app-link">
+                <Link href="/">
+                  <img src="https://s2.coinmarketcap.com/static/cloud/img/app_store_badge_white_1.svg?_=1bafcec" alt="apple" width={120} height={36} />
+                </Link>
+                <Link href="/">
+                <img src="https://s2.coinmarketcap.com/static/cloud/img/google_play_badge_1.png?_=1bafcec" alt="google" width={120} height={36} />
+                </Link>
+                <Link href="/">
+                <img src="https://s2.coinmarketcap.com/static/cloud/img/qr-code-button.svg?_=1bafcec" alt="code" width={36} height={36} />
+                </Link>
+              </div>
             </div>
           </div>
       </div>
