@@ -1,6 +1,14 @@
-.firstcanvas{
-    width: 100% !important;
-    background-color: $bg-clr-5;
+.offcanvas-backdrop{
+    @include BootstrapMinWidthResponsive(lg){
+        opacity: 0 !important;
+        display: none;
+    } 
+}
+.first-canvas,.second-canvas{
+    width: 100% !important;  
+    @include BootstrapMinWidthResponsive(lg){
+        display: none;
+    } 
     .offcanvas{
         &-header{
             padding: 12px 16px;
@@ -11,6 +19,14 @@
                 }
             }
             border-bottom: 1px solid $border-clr-1;
+        }
+    }
+}
+.first-canvas{ 
+    background-color: $bg-clr-5;
+    .offcanvas{
+        &-header{
+          
 
         }
         &-body{
@@ -157,7 +173,7 @@
                          
                         }
                         .accordion-collapse{
-                            left: 295px;
+                            left: 0;
                             top: -490px;
                             box-shadow: $box-shadow-9;
                             .accordion-body{
@@ -339,6 +355,160 @@
                         color:$text-clr-9;
                         &:hover{
                             color: $border-clr-6;
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}
+.second-canvas{
+    background-color: $bg-clr-1 !important;
+    .offcanvas{
+        &-header{
+
+        }
+        &-body{
+            padding: 8px 2px;
+            .coin-search-btn{
+                background-color: $border-clr-2;
+                border-radius: 8px;                
+                position: relative;               
+                .search-area{
+                    display: block;                                                                                       
+                    &-content{                       
+                        background-color: $bg-clr-1;
+                        .searching-label{
+                            padding: 16px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            font-size: 0.835rem;
+                            input{
+                                flex: 1;
+                                width: 310px;
+                                background-color: $bg-clr-1;
+                                color: #fff;
+                                padding-left: 7px;
+                                &::placeholder{
+                                    color: $bg-clr-4;
+                                }
+                            }
+                            > svg{
+                                margin-top: 1px;
+                            }
+                            svg{
+                                color: $bg-clr-7;
+                            }
+                            .close{
+                                cursor: pointer;
+                            }
+                        }
+                        .trending{
+                            padding: 8px;                                  
+                            .title{
+                                display: flex;
+                                align-items: center;
+                                padding: 0 8px;
+                                margin-bottom: 8px;
+                                font-size: 0.6875rem;
+                                color: $bg-clr-7;
+                                svg{
+                                    color: $bg-clr-8;
+                                }
+                            }
+                            .trend-list{
+                                li:first-child{
+                                    a{
+                                        background-color: $bg-clr-2;
+                                    }
+                                }
+                                li{
+                                    a{
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        padding: 12px 10px;
+                                        
+                                        border-radius: 8px;
+                                        .info{
+                                            display: flex;
+                                            align-items: center;
+                                            padding-right: 8px;
+                                            img{
+                                                border-radius: 10px;
+                                                margin-right: 8px;                                                        
+                                            }
+                                            .name{
+                                                white-space: nowrap;
+                                                color: #fff;
+                                                font-weight: 600;
+                                                font-size: 0.875rem;
+                                            }
+                                            .symbol{
+                                                margin-left: 6px;
+                                                font-size: 0.75rem;
+                                                color: $text-clr-1 ;
+                                                
+                                            }
+                                        }
+                                        .rank{
+                                            color: $bg-clr-7;
+                                            font-size: 0.75rem;
+                                            font-weight: 500;
+                                        }
+                                        &:hover{
+                                            background-color: $bg-clr-2;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .recent-searches{
+                            padding-bottom: 10px;
+                            .title{
+                                font-size: 0.6875rem;
+                                color: $bg-clr-7;
+                                margin-left: 16px;
+                                margin-top: 16px;
+                            }
+                            .recentlist{
+                                display: flex;
+                                align-items: center;
+                                padding: 0 8px;
+                                margin: 8px 0;
+                                max-width: 400px;
+                                overflow: auto hidden;
+                                
+                                li{
+                                    margin-right: 8px;
+                                    a{
+                                        padding: 12px 30px;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        align-items: center;
+                                        background-color: $bg-clr-2;
+                                        border-radius: 8px;
+                                        img{
+                                            border-radius: 10px;
+                                        }
+                                        .name{
+                                            margin-top: 4px;
+                                            color:#fff;
+                                            white-space: nowrap;
+                                            font-size: 0.75rem;
+                                            font-weight: 500;    
+                                            line-height: 18px;                                        
+                                        }
+                                        .symbol{
+                                            font-size: 0.6875rem;
+                                            color: $bg-clr-7;
+                                            
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

@@ -77,6 +77,9 @@
                     .group-list{
                         display: grid;
                         grid-template-columns: repeat(4, 1fr);
+                        @include BootstrapMaxWidthResponsive(xs){
+                            grid-template-columns: repeat(3, 1fr);
+                        } 
                         gap: 4px;
                         margin-top: 4px;
                         margin-bottom: 10px;
@@ -109,13 +112,14 @@
                                         cursor: pointer;
                                         font-weight: 500;
                                         line-height: 133%;
+                                        white-space: nowrap;
                                     }
                                     .name{
                                         color: #fff;                                 
                                        
                                     }
                                     .symbol{
-                                        color: $text-clr-5;
+                                        color: $text-clr-5;                                        
                                     }
                                 }                        
                             }

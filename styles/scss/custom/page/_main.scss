@@ -70,6 +70,7 @@
                             width: 0;
                             height: 0;
                             display: none;
+                        
                         }
                         .switch-label{
                             display: flex;
@@ -93,7 +94,7 @@
                                 transition: 0.25s all ease;
                                 background: #fff;
                                 box-shadow: $box-shadow-5;
-                                // 
+                                transition: all 0.2s ease 0s;                                
                             }
                         }
                     }
