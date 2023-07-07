@@ -6,8 +6,16 @@ import {AiOutlineStar} from "react-icons/ai"
 import {BiSolidUpArrow,BiSolidDownArrow} from "react-icons/bi"
 
 
+async function getData(){
+    const response = await fetch("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=f133ccfd-fa6e-48c3-8816-181fc0d2bad6")
+    const data = response.json()
+    return data
+}
 
-const CoinTable = () => {
+
+const CoinTable = async () => {
+    const coins = await getData()
+    console.log(coins);
   return (
     <div className='coin-table'>
         <div className="coin-table-wrapper">
