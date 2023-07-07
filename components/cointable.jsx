@@ -6,16 +6,24 @@ import {AiOutlineStar} from "react-icons/ai"
 import {BiSolidUpArrow,BiSolidDownArrow} from "react-icons/bi"
 
 
-async function getData(){
-    const response = await fetch("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=f133ccfd-fa6e-48c3-8816-181fc0d2bad6")
-    const data = response.json()
-    return data
+const getData = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/api/getCoins');
+        const data = await res.json();
+        return data
+    } catch (error) {
+      console.log(error.message);
+    }
 }
+  
+
+
 
 
 const CoinTable = async () => {
-    const coins = await getData()
-    console.log(coins);
+
+    const coins = await getData();
+
   return (
     <div className='coin-table'>
         <div className="coin-table-wrapper">
@@ -63,516 +71,94 @@ const CoinTable = async () => {
                 <div className="go-detail"></div>
             </div>
             <div className="table-body">         
-              <div className="table-body-item">
-              <div className="star">
-                    <AiOutlineStar size={16} />
-                </div>
-                <div className="t-body-rank rank">
-                    1
-                </div>
-                <div className="t-body-name name">
-                   <Link href={"/"}>
-                   <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btcLogo" width={24} height={24} />
-                    <p>Bitcoin</p>
-                    <p>BTC</p>
-                   </Link>
-                </div>
-                <div className="t-body-price price">
-                   <Link href={"/"}>
-                        $31,054.40
-                   </Link>
-                </div>  
-                <div className="t-body-change h1-change">
-                        <BiSolidUpArrow size={8} />
-                        0.06%
-                </div>
-                <div className="t-body-change h24-change">
-                        <BiSolidUpArrow size={8} />
-                        1.23%
-                </div>
-                <div className="t-body-change d7-change">
-                        <BiSolidUpArrow size={8} />
-                        8.42%
-                </div>
-                <div className="t-body-mrkcap market-cap">
-                   <Link href={"/"}>
-                    $602,275,077,675
-                   </Link>
-                </div>
-                <div className="t-body-v volume">
-                    <Link href={"/"}>
-                        <p>$15,866,406,013</p>
-                    </Link>
-                    <span>511,222 BTC</span>
-                </div>
-                <div className="t-body-sp supply">
-                   <Link href={"/"}>
-                    19,419,618 BTC
-                   </Link>
-                </div>
-                <div className="basic-graph">
-                    <Link href={"/"}>
-                        <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                    </Link>
-                </div>
-                <div className="go-detail">
-                    <Accordion defaultActiveKey="0" alwaysOpen="false">
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header> 
-                                <div>
-                                    .
-                                    <br />
-                                    .
-                                    <br />
-                                    .  
-                                </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Charts
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Markets
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Historical Data
-                                    </Link>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </div>
-              </div>
-              <div className="table-body-item">
-              <div className="star">
-                    <AiOutlineStar size={16} />
-                </div>
-                <div className="t-body-rank rank">
-                    1
-                </div>
-                <div className="t-body-name name">
-                   <Link href={"/"}>
-                   <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btcLogo" width={24} height={24} />
-                    <p>Bitcoin</p>
-                    <p>BTC</p>
-                   </Link>
-                </div>
-                <div className="t-body-price price">
-                   <Link href={"/"}>
-                        $31,054.40
-                   </Link>
-                </div>  
-                <div className="t-body-change h1-change">
-                        <BiSolidUpArrow size={8} />
-                        0.06%
-                </div>
-                <div className="t-body-change h24-change">
-                        <BiSolidUpArrow size={8} />
-                        1.23%
-                </div>
-                <div className="t-body-change d7-change">
-                        <BiSolidUpArrow size={8} />
-                        8.42%
-                </div>
-                <div className="t-body-mrkcap market-cap">
-                   <Link href={"/"}>
-                    $602,275,077,675
-                   </Link>
-                </div>
-                <div className="t-body-v volume">
-                    <Link href={"/"}>
-                        <p>$15,866,406,013</p>
-                    </Link>
-                    <span>511,222 BTC</span>
-                </div>
-                <div className="t-body-sp supply">
-                   <Link href={"/"}>
-                    19,419,618 BTC
-                   </Link>
-                </div>
-                <div className="basic-graph">
-                    <Link href={"/"}>
-                        <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                    </Link>
-                </div>
-                <div className="go-detail">
-                    <Accordion defaultActiveKey="0" alwaysOpen="false">
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header> 
-                                <div>
-                                    .
-                                    <br />
-                                    .
-                                    <br />
-                                    .  
-                                </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Charts
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Markets
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Historical Data
-                                    </Link>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </div>
-              </div>
-              <div className="table-body-item">
-              <div className="star">
-                    <AiOutlineStar size={16} />
-                </div>
-                <div className="t-body-rank rank">
-                    1
-                </div>
-                <div className="t-body-name name">
-                   <Link href={"/"}>
-                   <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btcLogo" width={24} height={24} />
-                    <p>Bitcoin</p>
-                    <p>BTC</p>
-                   </Link>
-                </div>
-                <div className="t-body-price price">
-                   <Link href={"/"}>
-                        $31,054.40
-                   </Link>
-                </div>  
-                <div className="t-body-change h1-change">
-                        <BiSolidUpArrow size={8} />
-                        0.06%
-                </div>
-                <div className="t-body-change h24-change">
-                        <BiSolidUpArrow size={8} />
-                        1.23%
-                </div>
-                <div className="t-body-change d7-change">
-                        <BiSolidUpArrow size={8} />
-                        8.42%
-                </div>
-                <div className="t-body-mrkcap market-cap">
-                   <Link href={"/"}>
-                    $602,275,077,675
-                   </Link>
-                </div>
-                <div className="t-body-v volume">
-                    <Link href={"/"}>
-                        <p>$15,866,406,013</p>
-                    </Link>
-                    <span>511,222 BTC</span>
-                </div>
-                <div className="t-body-sp supply">
-                   <Link href={"/"}>
-                    19,419,618 BTC
-                   </Link>
-                </div>
-                <div className="basic-graph">
-                    <Link href={"/"}>
-                        <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                    </Link>
-                </div>
-                <div className="go-detail">
-                    <Accordion defaultActiveKey="0" alwaysOpen="false">
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header> 
-                                <div>
-                                    .
-                                    <br />
-                                    .
-                                    <br />
-                                    .  
-                                </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Charts
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Markets
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Historical Data
-                                    </Link>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </div>
-              </div>
-              <div className="table-body-item">
-              <div className="star">
-                    <AiOutlineStar size={16} />
-                </div>
-                <div className="t-body-rank rank">
-                    1
-                </div>
-                <div className="t-body-name name">
-                   <Link href={"/"}>
-                   <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btcLogo" width={24} height={24} />
-                    <p>Bitcoin</p>
-                    <p>BTC</p>
-                   </Link>
-                </div>
-                <div className="t-body-price price">
-                   <Link href={"/"}>
-                        $31,054.40
-                   </Link>
-                </div>  
-                <div className="t-body-change h1-change">
-                        <BiSolidUpArrow size={8} />
-                        0.06%
-                </div>
-                <div className="t-body-change h24-change">
-                        <BiSolidUpArrow size={8} />
-                        1.23%
-                </div>
-                <div className="t-body-change d7-change">
-                        <BiSolidUpArrow size={8} />
-                        8.42%
-                </div>
-                <div className="t-body-mrkcap market-cap">
-                   <Link href={"/"}>
-                    $602,275,077,675
-                   </Link>
-                </div>
-                <div className="t-body-v volume">
-                    <Link href={"/"}>
-                        <p>$15,866,406,013</p>
-                    </Link>
-                    <span>511,222 BTC</span>
-                </div>
-                <div className="t-body-sp supply">
-                   <Link href={"/"}>
-                    19,419,618 BTC
-                   </Link>
-                </div>
-                <div className="basic-graph">
-                    <Link href={"/"}>
-                        <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                    </Link>
-                </div>
-                <div className="go-detail">
-                    <Accordion defaultActiveKey="0" alwaysOpen="false">
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header> 
-                                <div>
-                                    .
-                                    <br />
-                                    .
-                                    <br />
-                                    .  
-                                </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Charts
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Markets
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Historical Data
-                                    </Link>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </div>
-              </div>
-              <div className="table-body-item">
-              <div className="star">
-                    <AiOutlineStar size={16} />
-                </div>
-                <div className="t-body-rank rank">
-                    1
-                </div>
-                <div className="t-body-name name">
-                   <Link href={"/"}>
-                   <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btcLogo" width={24} height={24} />
-                    <p>Bitcoin</p>
-                    <p>BTC</p>
-                   </Link>
-                </div>
-                <div className="t-body-price price">
-                   <Link href={"/"}>
-                        $31,054.40
-                   </Link>
-                </div>  
-                <div className="t-body-change h1-change">
-                        <BiSolidUpArrow size={8} />
-                        0.06%
-                </div>
-                <div className="t-body-change h24-change">
-                        <BiSolidUpArrow size={8} />
-                        1.23%
-                </div>
-                <div className="t-body-change d7-change">
-                        <BiSolidUpArrow size={8} />
-                        8.42%
-                </div>
-                <div className="t-body-mrkcap market-cap">
-                   <Link href={"/"}>
-                    $602,275,077,675
-                   </Link>
-                </div>
-                <div className="t-body-v volume">
-                    <Link href={"/"}>
-                        <p>$15,866,406,013</p>
-                    </Link>
-                    <span>511,222 BTC</span>
-                </div>
-                <div className="t-body-sp supply">
-                   <Link href={"/"}>
-                    19,419,618 BTC
-                   </Link>
-                </div>
-                <div className="basic-graph">
-                    <Link href={"/"}>
-                        <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                    </Link>
-                </div>
-                <div className="go-detail">
-                    <Accordion defaultActiveKey="0" alwaysOpen="false">
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header> 
-                                <div>
-                                    .
-                                    <br />
-                                    .
-                                    <br />
-                                    .  
-                                </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Charts
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Markets
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Historical Data
-                                    </Link>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </div>
-              </div>
-              <div className="table-body-item">
-              <div className="star">
-                    <AiOutlineStar size={16} />
-                </div>
-                <div className="t-body-rank rank">
-                    1
-                </div>
-                <div className="t-body-name name">
-                   <Link href={"/"}>
-                   <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btcLogo" width={24} height={24} />
-                    <p>Bitcoin</p>
-                    <p>BTC</p>
-                   </Link>
-                </div>
-                <div className="t-body-price price">
-                   <Link href={"/"}>
-                        $31,054.40
-                   </Link>
-                </div>  
-                <div className="t-body-change h1-change">
-                        <BiSolidUpArrow size={8} />
-                        0.06%
-                </div>
-                <div className="t-body-change h24-change">
-                        <BiSolidUpArrow size={8} />
-                        1.23%
-                </div>
-                <div className="t-body-change d7-change">
-                        <BiSolidUpArrow size={8} />
-                        8.42%
-                </div>
-                <div className="t-body-mrkcap market-cap">
-                   <Link href={"/"}>
-                    $602,275,077,675
-                   </Link>
-                </div>
-                <div className="t-body-v volume">
-                    <Link href={"/"}>
-                        <p>$15,866,406,013</p>
-                    </Link>
-                    <span>511,222 BTC</span>
-                </div>
-                <div className="t-body-sp supply">
-                   <Link href={"/"}>
-                    19,419,618 BTC
-                   </Link>
-                </div>
-                <div className="basic-graph">
-                    <Link href={"/"}>
-                        <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                    </Link>
-                </div>
-                <div className="go-detail">
-                    <Accordion defaultActiveKey="0" alwaysOpen="false">
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header> 
-                                <div>
-                                    .
-                                    <br />
-                                    .
-                                    <br />
-                                    .  
-                                </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Charts
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Markets
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link href={"/"}>
-                                        View Historical Data
-                                    </Link>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </div>
-              </div>
+              {coins.data.data.map((coin)=>(
+                <div className="table-body-item" key={coin.id}>
+                    <div className="star">
+                      <AiOutlineStar size={16} />
+                    </div>
+                    <div className="t-body-rank rank">
+                        {coin.cmc_rank}
+                    </div>
+                    <div className="t-body-name name">
+                        <Link href={"/"}>
+                        <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
+                        <p>{coin.name}</p>
+                        <p>{coin.symbol}</p>
+                        </Link>
+                    </div>
+                    <div className="t-body-price price">
+                        <Link href={"/"}>
+                            {coin.quote.USD.price}
+                        </Link>
+                    </div>  
+                    <div className="t-body-change h1-change">
+                            <BiSolidUpArrow size={8} />
+                            {coin.quote.USD.percent_change_1h}
+                    </div>
+                    <div className="t-body-change h24-change">
+                            <BiSolidUpArrow size={8} />
+                            {coin.quote.USD.percent_change_24h}
+                    </div>
+                    <div className="t-body-change d7-change">
+                            <BiSolidUpArrow size={8} />
+                            {coin.quote.USD.percent_change_7d}
+                    </div>
+                    <div className="t-body-mrkcap market-cap">
+                        <Link href={"/"}>
+                        {coin.quote.USD.market_cap}
+                        </Link>
+                    </div>
+                    <div className="t-body-v volume">
+                        <Link href={"/"}>
+                            <p>${coin.quote.USD.volume_24h}</p>
+                        </Link>
+                        <span>511,222{coin.quote.USD.volume_24h/coin.quote.USD.price} BTC</span>
+                    </div>
+                    <div className="t-body-sp supply">
+                        <Link href={"/"}>
+                            {coin.total_supply}
+                        </Link>
+                    </div>
+                    <div className="basic-graph">
+                        <Link href={"/"}>
+                            <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
+                        </Link>
+                    </div>
+                    <div className="go-detail">
+                        <Accordion defaultActiveKey="0" alwaysOpen="false">
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header> 
+                                    <div>
+                                        .
+                                        <br />
+                                        .
+                                        <br />
+                                        .  
+                                    </div>
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                    <div>
+                                        <Link href={"/"}>
+                                            View Charts
+                                        </Link>
+                                    </div>
+                                    <div>
+                                        <Link href={"/"}>
+                                            View Markets
+                                        </Link>
+                                    </div>
+                                    <div>
+                                        <Link href={"/"}>
+                                            View Historical Data
+                                        </Link>
+                                    </div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+                    </div>
+                </div>
+              ))}
+              
             
             </div>           
         </div>
