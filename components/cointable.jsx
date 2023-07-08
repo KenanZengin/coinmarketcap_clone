@@ -1,29 +1,25 @@
-"use client"
 import Link from "next/link"
-import { Accordion } from "react-bootstrap"
+import { getTopTenCoins } from "@/app/page"
 import {BsInfoCircleFill} from "react-icons/bs"
 import {AiOutlineStar} from "react-icons/ai"
 import {BiSolidUpArrow,BiSolidDownArrow} from "react-icons/bi"
+import {TbPointFilled} from "react-icons/tb"
 
 
-const getData = async () => {
-    try {
-        const res = await fetch('http://localhost:3000/api/getCoins');
-        const data = await res.json();
-        return data
-    } catch (error) {
-      console.log(error.message);
-    }
-}
+
+
+
+ 
+
   
 
 
 
 
 const CoinTable = async () => {
-
-    const coins = await getData();
-
+    
+    const data = await getTopTenCoins();
+    
   return (
     <div className='coin-table'>
         <div className="coin-table-wrapper">
@@ -71,7 +67,7 @@ const CoinTable = async () => {
                 <div className="go-detail"></div>
             </div>
             <div className="table-body">         
-              {coins.data.data.map((coin)=>(
+              {data.data.map((coin)=>(
                 <div className="table-body-item" key={coin.id}>
                     <div className="star">
                       <AiOutlineStar size={16} />
@@ -88,35 +84,55 @@ const CoinTable = async () => {
                     </div>
                     <div className="t-body-price price">
                         <Link href={"/"}>
-                            {coin.quote.USD.price}
+                            ${ Number(coin.quote.USD.price) >= 1000 
+                                ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
+                                : coin.quote.USD.price > 1
+                                    ? Number(coin.quote.USD.price).toFixed(2)
+                                    : coin.quote.USD.price > 0.1
+                                    ? Number(coin.quote.USD.price).toFixed(4)
+                                    : coin.quote.USD.price > 0.01
+                                        ? Number(coin.quote.USD.price).toFixed(5)
+                                        : coin.quote.USD.price > 0.001 
+                                        ? Number(coin.quote.USD.price).toFixed(6)
+                                        : coin.quote.USD.price > 0.0000001 
+                                            ? Number(coin.quote.USD.price).toFixed(9)
+                                            : Number(coin.quote.USD.price).toFixed(13)
+                            }
                         </Link>
                     </div>  
                     <div className="t-body-change h1-change">
-                            <BiSolidUpArrow size={8} />
-                            {coin.quote.USD.percent_change_1h}
+                        {Number(coin.quote.USD.percent_change_1h) >= 0 
+                            ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_1h).toFixed(2)}%</span>
+                            :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_1h*-1).toFixed(2)}%</span>
+                        }                        
                     </div>
-                    <div className="t-body-change h24-change">
-                            <BiSolidUpArrow size={8} />
-                            {coin.quote.USD.percent_change_24h}
+                    <div className="t-body-change h24-change">    
+                        {Number(coin.quote.USD.percent_change_24h) >= 0 
+                            ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_24h).toFixed(2)}%</span>
+                            :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_24h*-1).toFixed(2)}%</span>
+                        }   
                     </div>
-                    <div className="t-body-change d7-change">
-                            <BiSolidUpArrow size={8} />
-                            {coin.quote.USD.percent_change_7d}
+                    <div className="t-body-change d7-change">                                               
+                         {Number(coin.quote.USD.percent_change_7d) >= 0 
+                            ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_7d).toFixed(2)}%</span>
+                            :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_7d*-1).toFixed(2)}%</span>
+                        }   
                     </div>
                     <div className="t-body-mrkcap market-cap">
                         <Link href={"/"}>
-                        {coin.quote.USD.market_cap}
+                        ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
                         </Link>
                     </div>
                     <div className="t-body-v volume">
                         <Link href={"/"}>
-                            <p>${coin.quote.USD.volume_24h}</p>
+                            <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
                         </Link>
-                        <span>511,222{coin.quote.USD.volume_24h/coin.quote.USD.price} BTC</span>
+                        <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>
+                        
                     </div>
                     <div className="t-body-sp supply">
-                        <Link href={"/"}>
-                            {coin.total_supply}
+                        <Link href={"/"}>                            
+                            {Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}
                         </Link>
                     </div>
                     <div className="basic-graph">
@@ -125,43 +141,30 @@ const CoinTable = async () => {
                         </Link>
                     </div>
                     <div className="go-detail">
-                        <Accordion defaultActiveKey="0" alwaysOpen="false">
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header> 
-                                    <div>
-                                        .
-                                        <br />
-                                        .
-                                        <br />
-                                        .  
+                        <div className="detail-tooltip">                            
+                            <button >                            
+                                <div className="svgs">
+                                    <TbPointFilled size={6.5} />
+                                    <TbPointFilled size={6.5} />
+                                    <TbPointFilled size={6.5} />
+                                </div>
+                                <div className="tooltips">
+                                    <div className="tooltips-info">
+                                        <div className="tooltips-body">
+                                        <Link href={"/"}>View Charts</Link>
+                                        <Link href={"/"}>View Marktes</Link>
+                                        <Link href={"/"}>View Historical Data</Link>
+                                        </div>
                                     </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    <div>
-                                        <Link href={"/"}>
-                                            View Charts
-                                        </Link>
-                                    </div>
-                                    <div>
-                                        <Link href={"/"}>
-                                            View Markets
-                                        </Link>
-                                    </div>
-                                    <div>
-                                        <Link href={"/"}>
-                                            View Historical Data
-                                        </Link>
-                                    </div>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
+                                </div>
+                            </button>
+                        </div>                      
                     </div>
                 </div>
-              ))}
-              
-            
+              ))}        
             </div>           
         </div>
+       
     </div>
   )
 }

@@ -834,7 +834,7 @@
                         }   
                        }                      
                        .name{
-                        width: 13%;
+                        width: 15%;
                        }
                        .price{
                         width: 8.1%;
@@ -882,14 +882,12 @@
                             }  
                         }                       
                         .go-detail{
-                            width: 5.5%;
+                            width: 3.5%;
                             @include BootstrapMaxWidthResponsive(sm){
                                 display: none;                                      
                             }   
                         }                       
-                    }
-                    
-
+                    }                 
                 }
                 .table-head{
                     font-size: 0.75rem;
@@ -918,7 +916,7 @@
                         &-item{
                         border-bottom: 1px solid $bg-clr-2;   
                         & > div{
-                            padding: 13px 10px;                      
+                            padding: 15px 10px;                      
                         }      
                         .t-body-price,.t-body-mrkcap,.t-body-v,.t-body-sp,.t-body-name{
                             a{
@@ -949,6 +947,7 @@
                                 display: flex;
                                 align-items: center;
                                 justify-content: flex-start;
+                                white-space: normal !important;
                                 img{
                                     border-radius: 12px;
                                 }
@@ -965,11 +964,15 @@
                                 }
                             }
                         }                          
-                        .t-body-change{
-                            color: $text-clr-3;
-                            svg{
-                                color: $text-clr-3;
+                        .t-body-change{                            
+                            svg{                               
                                 margin-right: 2px;
+                            }
+                            .h-change-up{
+                                color: $text-clr-3;
+                            }
+                            .h-change-down{
+                                color: $text-clr-7;
                             }
                         }
                         .t-body-v{
@@ -1001,60 +1004,75 @@
                             }
                             }
                         }
-                        .go-detail{
-                            .accordion{                                 
-                                    .accordion-header{
-                                        display: inline-block;                                           
-                                        button{
-                                            background-color: inherit;    
-                                            border-radius: 50%;  
-                                            box-shadow: none;                                            
-                                            &:focus{
-                                                background-color: $bg-clr-2;
-                                                box-shadow: $box-shadow-7;                                                    
-                                            }                                                                                            
-                                            div{
-                                                font-weight: 900;
-                                                color: white;
-                                                padding: 12.5px 20px;
-                                                border-radius: 50%;
-                                                border:2px solid inherit;
-                                                line-height: 6px;
-                                                height: 50px;                                                
-                                                &:hover{
-                                                    background-color: $bg-clr-2;                                                       
-                                                }                                                    
-                                            }
-                                        }
+                        .go-detail{      
+                                &:has(.detail-tooltip button:focus) .detail-tooltip{
+                                    --dp-d:flex;
+                                    .svgs{
+                                        background-color: $bg-clr-2;
+                                        box-shadow: $box-shadow-7;
+                                    }    
+                                }
+                                &:has(.detail-tooltip button:not(:focus)){
+                                    --dp-d:none;
+                                }         
+                            .detail-tooltip{
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-end;
+                                position: relative;                                
+                                button{
+                                   background-color: inherit;   
+                                                           
+                                }
+                                .svgs{
+                                    display:flex;
+                                    flex-direction: column;
+                                    padding: 10px 15px;
+                                    border-radius: 100%;
+                                    cursor: pointer;
+                                    svg{
+                                        color: #fff;
                                     }
-                                    .accordion-collapse{
-                                        left: -138px;
-                                        top: 55px;                                       
-                                        box-shadow: $box-shadow-4;
-                                        background-color: $border-clr-2;
-                                        .accordion-body{
-                                            background-color: $bg-clr-2;
-                                            padding: 9px;
-                                            position: relative;
+                                    &:hover{
+                                        background-color: $bg-clr-2 ;
+                                    }
+                                    
+                                }                               
+                                .tooltips{      
+                                    display: var(--dp-d);                                                                                 
+                                    transform: translate(1.5%, 2.5%) !important;
+                                    box-shadow: $box-shadow-4; 
+                                    border-radius: 8px;  
+                                    background-color: $bg-clr-2;
+                                    top: 40px;
+                                    left: -110px;
+                                    padding-top: 0 !important;
+                                    .tooltips-info{
+                                        background-color: $bg-clr-2; 
+                                        border-radius: 8px;                                                                                                                         
+                                        .tooltips-body{  
                                             display: flex;
                                             flex-direction: column;
                                             align-items: flex-start;
-                                            justify-content: center;
-                                            div{
-                                                a{
-                                                    display: flex;
-                                                    align-items: center;
-                                                    white-space: nowrap;
-                                                    color: white;
-                                                    padding: 0 10px;
-                                                    height: 32px;
-                                                    font-size: 0.875rem;
-                                                }
+                                            padding: 8px;
+                                           a{
+                                            display: flex;
+                                            align-items: center;
+                                            white-space: nowrap;
+                                            color: white;
+                                            padding: 0 10px;
+                                            height: 32px;
+                                            font-size: 0.875rem;
+                                            border-radius: 8px;
+                                            &:hover{
+                                                background-color: $border-clr-2;
                                             }
-                                                                                
+                                           }
                                         }
                                     }
+                                }
                             }
+                           
                         }
                     }
                 }  
