@@ -1,5 +1,5 @@
 "use client"
-import { createContext } from "react";
+import { createContext,useState } from "react";
 
 
 export const CoinMarketCapContext = createContext()
@@ -7,17 +7,27 @@ export const CoinMarketCapContext = createContext()
 export const CoinMarketCapProvider = ({children}) => {
 
 
-    async function getTopTenCoins(){
-        const response = await fetch('http://localhost:3000/api/coins')
-        const data =  await response.json()
-        return data.data.data
+    const [limit,setLimit] = useState(100)
+
+    const getTopTenCoins = async (url) => {
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            return data.data
+        } catch (error) {
+          console.log(error.message);
+        }
+       }
+
+    const data = {
+        getTopTenCoins,
+        limit,
+        setLimit
     }
     
+    
     return(
-        <CoinMarketCapContext.Provider
-        value={{
-            getTopTenCoins
-        }}>
+        <CoinMarketCapContext.Provider value={data}>
             {children}
         </CoinMarketCapContext.Provider>
     )

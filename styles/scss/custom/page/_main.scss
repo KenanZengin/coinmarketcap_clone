@@ -598,6 +598,7 @@
                                                 align-items: center;
                                                 justify-content: center;
                                                 border-radius: 8px;
+                                                cursor: pointer;
                                                 &:hover{
                                                     background-color: $border-clr-2;
                                                 }
@@ -915,8 +916,11 @@
                 .table-body{                   
                         &-item{
                         border-bottom: 1px solid $bg-clr-2;   
+                        &:hover{
+                            background-color: $bg-clr-5;
+                        }     
                         & > div{
-                            padding: 15px 10px;                      
+                            padding: 15px 10px;                                           
                         }      
                         .t-body-price,.t-body-mrkcap,.t-body-v,.t-body-sp,.t-body-name{
                             a{
@@ -1143,7 +1147,8 @@
                     }
                     .rows-set{     
                         display: flex;
-                        align-items: center;           
+                        align-items: center;     
+                        cursor: pointer;      
                         .accordion{                                 
                             .accordion-header{
                                 margin-left: 6px;

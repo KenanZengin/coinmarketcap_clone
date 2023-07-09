@@ -1,12 +1,15 @@
 "use client"
 
 import Link from "next/link"
+import { useContext } from 'react';
+import { CoinMarketCapContext } from "@/context/context"
 import { Accordion } from "react-bootstrap"
 import {AiOutlineLeft,AiOutlineRight} from "react-icons/ai"
 import {FiChevronDown} from "react-icons/fi"
 
 
 const Pagination = () => {
+    const {setLimit,limit} = useContext(CoinMarketCapContext)
   return (
    <>
     <div className="table-footer">
@@ -125,13 +128,13 @@ const Pagination = () => {
                 <Accordion defaultActiveKey="1">
                     <Accordion.Item eventKey="2">
                         <Accordion.Header> 
-                            20
+                            {limit}
                             <FiChevronDown size={14} />
                         </Accordion.Header>
                         <Accordion.Body>
-                            <div className="row-v">100</div>
-                            <div className="row-v">50</div>
-                            <div className="row-v">20</div>
+                            <div className="row-v" onClick={()=>setLimit(100)}>100</div>
+                            <div className="row-v" onClick={()=>setLimit(50)}>50</div>
+                            <div className="row-v" onClick={()=>setLimit(20)}>20</div>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

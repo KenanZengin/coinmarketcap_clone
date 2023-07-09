@@ -1,29 +1,26 @@
+"use client"
 import Link from "next/link"
-
-
+import useSWR from 'swr'
+import { useContext } from "react"
+import { CoinMarketCapContext } from "@/context/context"
 import {BsInfoCircleFill} from "react-icons/bs"
 import {AiOutlineStar} from "react-icons/ai"
 import {BiSolidUpArrow,BiSolidDownArrow} from "react-icons/bi"
 import {TbPointFilled} from "react-icons/tb"
 
 
-const getTopTenCoins = async () => {
-    try {
-        const res = await fetch(`http://localhost:3000/api/coins`);
-        const data = await res.json();
-        return data
-    } catch (error) {
-      console.log(error.message);
-    }
-   }
 
 
 
 
 
-const CoinTable = async () => {
+
+const CoinTable =  () => {
     
-    const data = await getTopTenCoins();
+    const {getTopTenCoins,limit} = useContext(CoinMarketCapContext)
+    const {data,error } = useSWR(`http://localhost:3000/api/coins?limit=${limit}`,getTopTenCoins)
+
+    if(error) return <h1>{error}</h1>
 
   return (
     <div className='coin-table'>
@@ -72,7 +69,7 @@ const CoinTable = async () => {
                 <div className="go-detail"></div>
             </div>
             <div className="table-body">         
-              {data.data?.map((coin)=>(
+              {data && data.map((coin)=>(
                 <div className="table-body-item" key={coin.id}>
                     <div className="star">
                       <AiOutlineStar size={16} />
