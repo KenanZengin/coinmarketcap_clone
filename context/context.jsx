@@ -8,6 +8,7 @@ export const CoinMarketCapProvider = ({children}) => {
 
 
     const [limit,setLimit] = useState(100)
+    const [start,setStart] = useState(1)
 
     const getTopTenCoins = async (url) => {
         try {
@@ -22,7 +23,9 @@ export const CoinMarketCapProvider = ({children}) => {
     const data = {
         getTopTenCoins,
         limit,
-        setLimit
+        setLimit,
+        start,
+        setStart
     }
     
     

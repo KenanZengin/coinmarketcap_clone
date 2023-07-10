@@ -17,8 +17,8 @@ import {TbPointFilled} from "react-icons/tb"
 
 const CoinTable =  () => {
     
-    const {getTopTenCoins,limit} = useContext(CoinMarketCapContext)
-    const {data,error } = useSWR(`http://localhost:3000/api/coins?limit=${limit}`,getTopTenCoins)
+    const {getTopTenCoins,limit,start} = useContext(CoinMarketCapContext)
+    const {data,error } = useSWR(`http://localhost:3000/api/coins?limit=${limit}&start=${start}`,getTopTenCoins)
 
     if(error) return <h1>{error}</h1>
 

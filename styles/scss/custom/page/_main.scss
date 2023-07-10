@@ -1098,7 +1098,7 @@
                                 &:hover{
                                     background-color: $bg-clr-2;
                                 }
-                                a{
+                                button{
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
@@ -1107,6 +1107,8 @@
                                     text-align: center;
                                     color: #fff;
                                     font-size: 0.9375rem;
+                                    background-color: inherit;
+                                    border-radius: 8px;
                                 }
                                 svg{
                                     color: $text-clr-6;

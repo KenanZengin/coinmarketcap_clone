@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CoinMarketCapContext } from "@/context/context"
 import { Accordion } from "react-bootstrap"
 import {AiOutlineLeft,AiOutlineRight} from "react-icons/ai"
@@ -9,60 +9,70 @@ import {FiChevronDown} from "react-icons/fi"
 
 
 const Pagination = () => {
-    const {setLimit,limit} = useContext(CoinMarketCapContext)
-  return (
+    const [pageNumber,setPageNumber] = useState(1)
+    const {setLimit,limit,start,setStart} = useContext(CoinMarketCapContext)
+  
+    const nextPage = (i) => {
+       
+        if(i==1){            
+            setStart(1) 
+            setPageNumber(1)
+        }
+        else if(i>1){
+            setStart((i - 1) * limit)
+            setPageNumber(i)
+        }
+        
+    }
+    
+    return (
    <>
     <div className="table-footer">
         <div className="respon-pagination">
             <div className="page-pass">
                 <ul>
                     <li>
-                        <Link href={"/"}>
+                        <button  onClick={()=>setLimit(100)}>
                             <AiOutlineLeft size={12} />
-                        </Link>
+                        </button>
                     </li>
                     <li className="blue-bg">
-                        <Link href={"/"}>
+                        <button onClick={(()=>setStart(1))}>
                             1   
-                        </Link>
+                        </button>
                     </li>
                     <li>
-                        <Link href={"/"}>
+                        <button  onClick={(()=>setStart(100))}>
                             2   
-                        </Link>
+                        </button>
                     </li>
                     <li>
-                        <Link href={"/"}>
+                        <button onClick={(()=>setStart(200))}>
                             3   
-                        </Link>
+                        </button>
                     </li>
                     <li>
-                        <Link href={"/"}>
+                        <button onClick={(()=>setStart(300))}>
                             4   
-                        </Link>
+                        </button>
                     </li>
                     <li>
-                        <Link href={"/"}>
-                            5   
-                        </Link>
+                        <button onClick={(()=>setStart(400))}>
+                            5  
+                        </button>
                     </li>
                     <li>
-                        <Link href={"/"}>
-                            6   
-                        </Link>
+                        <button onClick={(()=>setStart(500))}>
+                            6  
+                        </button>
                     </li>
                     <li className="empty">
                         ...
-                    </li>
+                    </li>                    
                     <li>
-                        <Link href={"/"}>
-                            516       
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={"/"}>
+                        <button>
                             <AiOutlineRight size={12} />      
-                        </Link>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -74,52 +84,111 @@ const Pagination = () => {
             <div className="page-pass">
                 <ul>
                     <li>
-                        <Link href={"/"}>
+                        <button onClick={()=>nextPage(pageNumber - 1)} disabled={pageNumber < 2 ? true : false}>
                             <AiOutlineLeft size={12} />
-                        </Link>
+                        </button>
+                    </li>       
+                    {pageNumber > 1
+                        ?  
+                            <>
+                                <li>
+                                    <button   onClick={(()=>nextPage(1))}>
+                                        1          
+                                    </button>
+                                </li>
+                                <li className="empty">
+                                    ...
+                                </li>   
+                            </>                 
+                        : 
+                            ""
+                    }
+
+                    {pageNumber == 3
+                        ?  
+                            <>
+                                <li>
+                                    <button   onClick={(()=>nextPage(2))}>
+                                        2          
+                                    </button>
+                                </li>                            
+                            </>                 
+                        : 
+                            ""
+                    }
+
+                    {pageNumber > 3 
+                        ?   
+                            <>
+                        <li>
+                            <button   onClick={(()=>nextPage(pageNumber - 2))}>
+                                {pageNumber - 2}          
+                            </button>
+                        </li>
+                        <li>
+                            <button   onClick={(()=>nextPage(pageNumber - 1))}>
+                                {pageNumber - 1}          
+                            </button>
+                        </li>
+                            </>                 
+                        :
+                            ""
+                    }
+                            
+                    <li>
+                        <button className="blue-bg"  onClick={(()=>nextPage(pageNumber))}>
+                            {pageNumber}          
+                        </button>
                     </li>
-                    <li className="blue-bg">
-                        <Link href={"/"}>
-                            1   
-                        </Link>
+                
+                    <li>
+                        <button  onClick={(()=>nextPage(pageNumber + 1))}>
+                            {pageNumber + 1}          
+                        </button>
                     </li>
                     <li>
-                        <Link href={"/"}>
-                            2   
-                        </Link>
+                        <button  onClick={(()=>nextPage(pageNumber + 2))}>
+                            {pageNumber + 2}          
+                        </button>
                     </li>
-                    <li>
-                        <Link href={"/"}>
-                            3   
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={"/"}>
-                            4   
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={"/"}>
-                            5   
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={"/"}>
-                            6   
-                        </Link>
-                    </li>
+                    {pageNumber < 3 
+                        ?
+                            <>
+                                <li>
+                                    <button  onClick={(()=>nextPage(pageNumber + 3))}>
+                                        {pageNumber + 3}          
+                                    </button>
+                                </li>
+                                <li>
+                                    <button  onClick={(()=>nextPage(pageNumber + 4))}>
+                                        {pageNumber + 4}          
+                                    </button>
+                                </li>
+                                <li>
+                                <button  onClick={(()=>nextPage(pageNumber + 5))}>
+                                    {pageNumber + 5}          
+                                </button>
+                                </li>
+                            </>
+                        :
+                            ""
+                    }
+
+
+
+
                     <li className="empty">
                         ...
                     </li>
                     <li>
-                        <Link href={"/"}>
-                            516       
-                        </Link>
+                        <button onClick={(()=>setStart(4900))}>
+                            103  
+                        </button>
                     </li>
                     <li>
-                        <Link href={"/"}>
+                        <button onClick={()=>nextPage(pageNumber + 1)}>
                             <AiOutlineRight size={12} />      
-                        </Link>
+                        </button>
                     </li>
                 </ul>
             </div>
