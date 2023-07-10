@@ -15,6 +15,7 @@ import {TbPointFilled} from "react-icons/tb"
 
 
 
+
 const CoinTable =  () => {
     
     const {getTopTenCoins,limit,start} = useContext(CoinMarketCapContext)
@@ -69,101 +70,121 @@ const CoinTable =  () => {
                 <div className="go-detail"></div>
             </div>
             <div className="table-body">         
-              {data && data.map((coin)=>(
-                <div className="table-body-item" key={coin.id}>
-                    <div className="star">
-                      <AiOutlineStar size={16} />
-                    </div>
-                    <div className="t-body-rank rank">
-                        {coin.cmc_rank}
-                    </div>
-                    <div className="t-body-name name">
-                        <Link href={"/"}>
-                        <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
-                        <p>{coin.name}</p>
-                        <p>{coin.symbol}</p>
-                        </Link>
-                    </div>
-                    <div className="t-body-price price">
-                        <Link href={"/"}>
-                            ${ Number(coin.quote.USD.price) >= 1000 
-                                ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
-                                : coin.quote.USD.price > 1
-                                    ? Number(coin.quote.USD.price).toFixed(2)
-                                    : coin.quote.USD.price > 0.1
-                                    ? Number(coin.quote.USD.price).toFixed(4)
-                                    : coin.quote.USD.price > 0.01
-                                        ? Number(coin.quote.USD.price).toFixed(5)
-                                        : coin.quote.USD.price > 0.001 
-                                        ? Number(coin.quote.USD.price).toFixed(6)
-                                        : coin.quote.USD.price > 0.0000001 
-                                            ? Number(coin.quote.USD.price).toFixed(9)
-                                            : Number(coin.quote.USD.price).toFixed(13)
-                            }
-                        </Link>
-                    </div>  
-                    <div className="t-body-change h1-change">
-                        {Number(coin.quote.USD.percent_change_1h) >= 0 
-                            ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_1h).toFixed(2)}%</span>
-                            :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_1h*-1).toFixed(2)}%</span>
-                        }                        
-                    </div>
-                    <div className="t-body-change h24-change">    
-                        {Number(coin.quote.USD.percent_change_24h) >= 0 
-                            ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_24h).toFixed(2)}%</span>
-                            :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_24h*-1).toFixed(2)}%</span>
-                        }   
-                    </div>
-                    <div className="t-body-change d7-change">                                               
-                         {Number(coin.quote.USD.percent_change_7d) >= 0 
-                            ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_7d).toFixed(2)}%</span>
-                            :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_7d*-1).toFixed(2)}%</span>
-                        }   
-                    </div>
-                    <div className="t-body-mrkcap market-cap">
-                        <Link href={"/"}>
-                        ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
-                        </Link>
-                    </div>
-                    <div className="t-body-v volume">
-                        <Link href={"/"}>
-                            <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
-                        </Link>
-                        <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>
-                        
-                    </div>
-                    <div className="t-body-sp supply">
-                        <Link href={"/"}>                            
-                            {Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}
-                        </Link>
-                    </div>
-                    <div className="basic-graph">
-                        <Link href={"/"}>
-                            <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                        </Link>
-                    </div>
-                    <div className="go-detail">
-                        <div className="detail-tooltip">                            
-                            <button >                            
-                                <div className="svgs">
-                                    <TbPointFilled size={6.5} />
-                                    <TbPointFilled size={6.5} />
-                                    <TbPointFilled size={6.5} />
-                                </div>
-                                <div className="tooltips">
-                                    <div className="tooltips-info">
-                                        <div className="tooltips-body">
-                                        <Link href={"/"}>View Charts</Link>
-                                        <Link href={"/"}>View Marktes</Link>
-                                        <Link href={"/"}>View Historical Data</Link>
+                {data ? data.map((coin)=>(
+                    <div className="table-body-item" key={coin.id}>
+                        <div className="star">
+                        <AiOutlineStar size={16} />
+                        </div>
+                        <div className="t-body-rank rank">
+                            {coin.cmc_rank}
+                        </div>
+                        <div className="t-body-name name">
+                            <Link href={"/"}>
+                            <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
+                            <p>{coin.name}</p>
+                            <p>{coin.symbol}</p>
+                            </Link>
+                        </div>
+                        <div className="t-body-price price">
+                            <Link href={"/"}>
+                                ${ Number(coin.quote.USD.price) >= 1000 
+                                    ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
+                                    : coin.quote.USD.price > 1
+                                        ? Number(coin.quote.USD.price).toFixed(2)
+                                        : coin.quote.USD.price > 0.1
+                                        ? Number(coin.quote.USD.price).toFixed(4)
+                                        : coin.quote.USD.price > 0.01
+                                            ? Number(coin.quote.USD.price).toFixed(5)
+                                            : coin.quote.USD.price > 0.001 
+                                            ? Number(coin.quote.USD.price).toFixed(6)
+                                            : coin.quote.USD.price > 0.0000001 
+                                                ? Number(coin.quote.USD.price).toFixed(9)
+                                                : Number(coin.quote.USD.price).toFixed(13)
+                                }
+                            </Link>
+                        </div>  
+                        <div className="t-body-change h1-change">
+                            {Number(coin.quote.USD.percent_change_1h) >= 0 
+                                ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_1h).toFixed(2)}%</span>
+                                :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_1h*-1).toFixed(2)}%</span>
+                            }                        
+                        </div>
+                        <div className="t-body-change h24-change">    
+                            {Number(coin.quote.USD.percent_change_24h) >= 0 
+                                ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_24h).toFixed(2)}%</span>
+                                :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_24h*-1).toFixed(2)}%</span>
+                            }   
+                        </div>
+                        <div className="t-body-change d7-change">                                               
+                            {Number(coin.quote.USD.percent_change_7d) >= 0 
+                                ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_7d).toFixed(2)}%</span>
+                                :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_7d*-1).toFixed(2)}%</span>
+                            }   
+                        </div>
+                        <div className="t-body-mrkcap market-cap">
+                            <Link href={"/"}>
+                            ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
+                            </Link>
+                        </div>
+                        <div className="t-body-v volume">
+                            <Link href={"/"}>
+                                <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
+                            </Link>
+                            <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>
+                            
+                        </div>
+                        <div className="t-body-sp supply">
+                            <Link href={"/"}>                            
+                                {Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}
+                            </Link>
+                        </div>
+                        <div className="basic-graph">
+                            <Link href={"/"}>
+                                <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
+                            </Link>
+                        </div>
+                        <div className="go-detail">
+                            <div className="detail-tooltip">                            
+                                <button >                            
+                                    <div className="svgs">
+                                        <TbPointFilled size={6.5} />
+                                        <TbPointFilled size={6.5} />
+                                        <TbPointFilled size={6.5} />
+                                    </div>
+                                    <div className="tooltips">
+                                        <div className="tooltips-info">
+                                            <div className="tooltips-body">
+                                            <Link href={"/"}>View Charts</Link>
+                                            <Link href={"/"}>View Marktes</Link>
+                                            <Link href={"/"}>View Historical Data</Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </button>
-                        </div>                      
+                                </button>
+                            </div>                      
+                        </div>
                     </div>
-                </div>
-              ))}        
+                ))
+                :  Array(limit).fill().map(()=>(
+                    <div className="skeleton-card" >
+                        <div className="skeleton-card-body">
+                        <span className="card-rank skeleton"></span> 
+                        <span className="card-img skeleton"></span>
+                        <span className="card-name skeleton "></span>
+                        <span className="card-symbol skeleton "></span>
+                        <span className="card-value skeleton "></span>
+                        <span className="card-change skeleton "></span>
+                        <span className="card-change skeleton "></span>
+                        <span className="card-change skeleton "></span>
+                        <span className="card-value price skeleton "></span>
+                        <span className="card-value supply skeleton "></span>
+                        <span className="card-value skeleton "></span>
+                        <span className="card-graph skeleton "></span>
+                        <span className="card-accor skeleton "></span>
+                        </div>
+                    </div>
+                ))
+                }        
             </div>           
         </div>
        
