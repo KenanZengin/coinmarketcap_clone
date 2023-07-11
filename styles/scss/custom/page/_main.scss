@@ -806,9 +806,7 @@
                             text-align: start;
                         }
                            
-                        & > div{                            
-                            cursor: pointer;
-                        }
+                       
                        .market-cap,.volume,.supply{
                             display: flex;
                             align-items: center;
@@ -923,17 +921,22 @@
                             padding: 15px 10px;                                           
                         }      
                         .t-body-price,.t-body-mrkcap,.t-body-v,.t-body-sp,.t-body-name{
-                            a{
+                            button{
                                 font-size: 0.875rem !important;
                                 color: #fff;
                                 line-height: 22.5px;
                                 font-weight: 500;
+                                
                             }
                         }  
+                        button{
+                            background-color: inherit;
+                        }
                         .t-body-rank,.t-body-change{                           
                             font-size: 0.875rem;
                         }             
                         .star{
+                            
                             svg{
                                 color: $bg-clr-13;
                                 &:hover{
@@ -947,7 +950,7 @@
                             font-weight: 500;                          
                         }
                         .t-body-name{
-                            a{
+                            button{
                                 display: flex;
                                 align-items: center;
                                 justify-content: flex-start;
@@ -984,7 +987,7 @@
                             flex-direction: column;
                             justify-content: center;
                             align-items: flex-end;
-                            a{
+                            button{
                                 p{
                                     line-height: 22.5px;
                                     font-weight: 500;
@@ -998,11 +1001,12 @@
                             }
                         }
                         .basic-graph{
-                            a{
+                            button{
                             display: block;
                             width: 100%;
                             height: 100%;                             
                             margin-left: 4px;
+                            
                             img{   
                                 filter: hue-rotate(85deg) saturate(80%) brightness(0.85);                             
                             }
@@ -1059,7 +1063,7 @@
                                             flex-direction: column;
                                             align-items: flex-start;
                                             padding: 8px;
-                                           a{
+                                           button{
                                             display: flex;
                                             align-items: center;
                                             white-space: nowrap;
@@ -1068,6 +1072,7 @@
                                             height: 32px;
                                             font-size: 0.875rem;
                                             border-radius: 8px;
+                                            background-color: inherit;
                                             &:hover{
                                                 background-color: $border-clr-2;
                                             }

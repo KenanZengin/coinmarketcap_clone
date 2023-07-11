@@ -9,8 +9,8 @@ import {FiChevronDown} from "react-icons/fi"
 
 
 const Pagination = () => {
-    const [pageNumber,setPageNumber] = useState(1)
-    const {setLimit,limit,start,setStart} = useContext(CoinMarketCapContext)
+   
+    const {setLimit,limit,start,setStart,setPageNumber,pageNumber} = useContext(CoinMarketCapContext)
   
     const nextPage = (i) => {
        

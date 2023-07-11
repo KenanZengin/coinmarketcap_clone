@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/link"
+import { useRouter } from 'next/navigation'
 import useSWR from 'swr'
 import { useContext } from "react"
 import { CoinMarketCapContext } from "@/context/context"
@@ -17,14 +17,24 @@ import {TbPointFilled} from "react-icons/tb"
 
 
 const CoinTable =  () => {
-    
-    const {getTopTenCoins,limit,start} = useContext(CoinMarketCapContext)
-    const {data,error } = useSWR(`http://localhost:3000/api/coins?limit=${limit}&start=${start}`,getTopTenCoins)
 
+    const router = useRouter()
+    const {getTopTenCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
+    const {data,error } = useSWR(`http://localhost:3000/api/coins?limit=${limit}&start=${start}`,getTopTenCoins)
+    
     if(error) return <h1>{error}</h1>
 
+    const last = (name,coinInfo) => {
+        setCoinDetail(coinInfo)
+        router.push(
+            `/coindetail/${name}`
+        )
+    }
+
+   
+
   return (
-    <div className='coin-table'>
+    <div className='coin-table'> 
         <div className="coin-table-wrapper">
             <div className="table-head">
                 <div className="star"></div>
@@ -73,20 +83,22 @@ const CoinTable =  () => {
                 {data ? data.map((coin)=>(
                     <div className="table-body-item" key={coin.id}>
                         <div className="star">
-                        <AiOutlineStar size={16} />
+                            <button>
+                                <AiOutlineStar size={16} />
+                            </button>
                         </div>
-                        <div className="t-body-rank rank">
+                        <div className="t-body-rank rank" >
                             {coin.cmc_rank}
                         </div>
                         <div className="t-body-name name">
-                            <Link href={"/"}>
+                            <button  onClick={()=>last(coin.name.toLowerCase(),coin)}>
                             <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
                             <p>{coin.name}</p>
                             <p>{coin.symbol}</p>
-                            </Link>
+                            </button>
                         </div>
                         <div className="t-body-price price">
-                            <Link href={"/"}>
+                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
                                 ${ Number(coin.quote.USD.price) >= 1000 
                                     ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
                                     : coin.quote.USD.price > 1
@@ -101,7 +113,7 @@ const CoinTable =  () => {
                                                 ? Number(coin.quote.USD.price).toFixed(9)
                                                 : Number(coin.quote.USD.price).toFixed(13)
                                 }
-                            </Link>
+                            </button>
                         </div>  
                         <div className="t-body-change h1-change">
                             {Number(coin.quote.USD.percent_change_1h) >= 0 
@@ -122,26 +134,26 @@ const CoinTable =  () => {
                             }   
                         </div>
                         <div className="t-body-mrkcap market-cap">
-                            <Link href={"/"}>
+                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
                             ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
-                            </Link>
+                            </button>
                         </div>
                         <div className="t-body-v volume">
-                            <Link href={"/"}>
+                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
                                 <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
-                            </Link>
+                            </button>
                             <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>
                             
                         </div>
                         <div className="t-body-sp supply">
-                            <Link href={"/"}>                            
+                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>                            
                                 {Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}
-                            </Link>
+                            </button>
                         </div>
                         <div className="basic-graph">
-                            <Link href={"/"}>
+                            <button >
                                 <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
-                            </Link>
+                            </button>
                         </div>
                         <div className="go-detail">
                             <div className="detail-tooltip">                            
@@ -154,9 +166,9 @@ const CoinTable =  () => {
                                     <div className="tooltips">
                                         <div className="tooltips-info">
                                             <div className="tooltips-body">
-                                            <Link href={"/"}>View Charts</Link>
-                                            <Link href={"/"}>View Marktes</Link>
-                                            <Link href={"/"}>View Historical Data</Link>
+                                            <span>View Charts</span>
+                                            <span>View Marktes</span>
+                                            <span>View Historical Data</span>
                                             </div>
                                         </div>
                                     </div>
@@ -166,7 +178,7 @@ const CoinTable =  () => {
                     </div>
                 ))
                 :  Array(limit).fill().map(()=>(
-                    <div className="skeleton-card" >
+                    <div className="skeleton-card">
                         <div className="skeleton-card-body">
                         <span className="card-rank skeleton"></span> 
                         <span className="card-img skeleton"></span>
@@ -193,3 +205,17 @@ const CoinTable =  () => {
 }
 
 export default CoinTable
+
+
+// const denemeData  ={
+//     name :  [data[0].name || "unknown"],
+//     rank :  [data[0].cmc_rank || "unknown"]
+// }
+//  const detailPush = async () => {
+//     const options = {
+//      method:"POST",
+//      headers:{'Content-type':'application/json'},
+//      body:JSON.stringify(denemeData)
+//     }
+//     await fetch(`http://localhost:3000/api/son`,options)
+//  }
