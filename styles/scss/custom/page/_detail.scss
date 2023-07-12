@@ -1,0 +1,63 @@
+.coin-detail{
+    display: flex;
+    background-color: $bg-clr-1;
+    .coin-stats{
+        padding: 24px;
+        border-right: 1px solid $border-clr-2;
+        width: 440px;
+        max-width: 440px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .info{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            img{
+                display: flex;
+                align-items: center;
+                .name,.symbol{
+                    margin-left: 8px;
+                }
+                .name{
+                    color: #fff;
+                    font-size: 1.125rem;
+                    font-weight: 600;                    
+                }
+                .symbol{
+                    color: $text-clr-1;
+                    font-size: 0.75rem;
+                    font-weight: 400;
+                }
+            }
+            .add-card{
+                button{
+                    background-color: $border-clr-2;
+                    padding: 12px;
+                    border-radius: 6px;
+                    display: flex;
+                    align-items: center;
+                    svg{
+                        color: $bg-clr-7;
+                    }
+
+                }
+            }
+        }
+        .price{
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: bold;
+            &-change{
+                font-size:0.875rem;
+                font-weight:600;
+                .up{
+                    color :$text-clr-3;
+                }
+                .down{
+                    color :$text-clr-7;
+                }
+            }
+        }
+    }
+}

@@ -1,23 +1,23 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
-import { Accordion, Nav, Navbar, Modal, Offcanvas } from 'react-bootstrap'
-import {AiFillCloseCircle} from 'react-icons/ai'
-import {BiSolidUpArrow, BiSolidDownArrow, BiSolidGasPump,} from 'react-icons/bi'
-import {FiChevronDown} from 'react-icons/fi'
-import {BsFillSunFill, BsFire, BsFacebook,BsTwitter,BsTelegram,BsInstagram,BsLinkedin,BsReddit} from 'react-icons/bs'
-import {GoStarFill} from 'react-icons/go'
-import {BiSolidPieChartAlt2, BiSearch} from 'react-icons/bi'
-import {AiOutlineCheckCircle} from 'react-icons/ai'
-import {CgClose} from 'react-icons/cg'
-import {PiArrowSquareOutBold} from 'react-icons/pi'
+import Link from "next/link"
+import Image from "next/image"
+import { useState } from "react"
+import { Accordion, Nav, Navbar, Modal, Offcanvas } from "react-bootstrap"
+import {AiFillCloseCircle} from "react-icons/ai"
+import {BiSolidUpArrow, BiSolidDownArrow, BiSolidGasPump,} from "react-icons/bi"
+import {FiChevronDown} from "react-icons/fi"
+import {BsFillSunFill, BsFire, BsFacebook,BsTwitter,BsTelegram,BsInstagram,BsLinkedin,BsReddit} from "react-icons/bs"
+import {GoStarFill} from "react-icons/go"
+import {BiSolidPieChartAlt2, BiSearch} from "react-icons/bi"
+import {AiOutlineCheckCircle} from "react-icons/ai"
+import {CgClose} from "react-icons/cg"
+import {PiArrowSquareOutBold} from "react-icons/pi"
 import {HiMiniBars3} from "react-icons/hi2"
 import {TbPointFilled} from "react-icons/tb"
 
-import logo from 'public/img/logo.png'
-import calendar from 'public/img/calendar.png'
+import logo from "public/img/logo.png"
+import calendar from "public/img/calendar.png"
 
 
 const Header = () => {
@@ -993,7 +993,7 @@ const Header = () => {
             </Offcanvas.Body>
           </Offcanvas>
         </div>
-        <div className="header-web-border header-web-hibar-border"></div>
+        <div className="header-web-line header-web-hibar-line"></div>
         <div className="header-web-topbar">
           <div className="web-container">
             <div className="web-container-left">
@@ -1573,7 +1573,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="header-web-border"></div>
+        <div className="header-web-line"></div>
         <div className="header-web-global">       
           <div className="web-container">
             <div className="web-container-left">
@@ -2038,7 +2038,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="header-web-border"></div> 
+        <div className="header-web-borlineder"></div> 
 
       </div>
     </header>

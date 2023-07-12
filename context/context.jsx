@@ -11,6 +11,8 @@ export const CoinMarketCapProvider = ({children}) => {
     const [start,setStart] = useState(1)
     const [pageNumber,setPageNumber] = useState(1)
     const [coinDetail,setCoinDetail] = useState()
+    
+    
 
     const getTopTenCoins = async (url) => {
         try {
@@ -31,7 +33,8 @@ export const CoinMarketCapProvider = ({children}) => {
         pageNumber,
         setPageNumber,
         coinDetail,
-        setCoinDetail
+        setCoinDetail,
+        
     }
     
     

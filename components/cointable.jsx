@@ -24,10 +24,11 @@ const CoinTable =  () => {
     
     if(error) return <h1>{error}</h1>
 
-    const last = (name,coinInfo) => {
+    const last = (coinInfo) => {
         setCoinDetail(coinInfo)
+        
         router.push(
-            `/coindetail/${name}`
+            `/currencies/${coinInfo.slug}?rank=${coinInfo.cmc_rank}`
         )
     }
 
@@ -91,14 +92,14 @@ const CoinTable =  () => {
                             {coin.cmc_rank}
                         </div>
                         <div className="t-body-name name">
-                            <button  onClick={()=>last(coin.name.toLowerCase(),coin)}>
-                            <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
-                            <p>{coin.name}</p>
-                            <p>{coin.symbol}</p>
+                            <button  onClick={()=>last(coin)}>
+                                <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
+                                <p>{coin.name}</p>
+                                <p>{coin.symbol}</p>
                             </button>
                         </div>
                         <div className="t-body-price price">
-                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
+                            <button onClick={()=>last(coin)}>
                                 ${ Number(coin.quote.USD.price) >= 1000 
                                     ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
                                     : coin.quote.USD.price > 1
@@ -151,8 +152,8 @@ const CoinTable =  () => {
                             </button>
                         </div>
                         <div className="basic-graph">
-                            <button >
-                                <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" alt="graph" width={164} height={48} />
+                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
+                                <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
                             </button>
                         </div>
                         <div className="go-detail">

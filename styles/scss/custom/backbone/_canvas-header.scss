@@ -25,10 +25,6 @@
 .first-canvas{ 
     background-color: $bg-clr-5;
     .offcanvas{
-        &-header{
-          
-
-        }
         &-body{
             padding-top: 0 !important;
             .navbar{
@@ -365,9 +361,6 @@
 .second-canvas{
     background-color: $bg-clr-1 !important;
     .offcanvas{
-        &-header{
-
-        }
         &-body{
             padding: 8px 2px;
             .coin-search-btn{
