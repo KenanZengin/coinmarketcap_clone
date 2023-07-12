@@ -1,6 +1,7 @@
 .coin-detail{
     display: flex;
     background-color: $bg-clr-1;
+    border-top: 1px solid  $border-clr-2;
     .coin-stats{
         padding: 24px;
         border-right: 1px solid $border-clr-2;
@@ -9,11 +10,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        .info,.price,.stats-wrapper{
+            width: 100%;
+            .up{
+                color :$text-clr-3 !important;
+            }
+            .down{
+                color :$text-clr-7 !important;
+            }
+        }
         .info{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            img{
+            .detail{
                 display: flex;
                 align-items: center;
                 .name,.symbol{
@@ -31,12 +41,15 @@
                 }
             }
             .add-card{
+                display: flex;
+                align-items: center;
                 button{
                     background-color: $border-clr-2;
-                    padding: 12px;
+                    padding: 7px;
                     border-radius: 6px;
                     display: flex;
                     align-items: center;
+                    margin-left: 10px;
                     svg{
                         color: $bg-clr-7;
                     }
@@ -45,17 +58,139 @@
             }
         }
         .price{
-            font-size: 2.5rem;
-            color: #fff;
-            font-weight: bold;
+            display: flex;
+            align-items: baseline;
+            margin-top: 15px;
+            h2{
+                font-size: 2.5rem;
+                color: #fff;
+                font-weight: bold;
+            }
             &-change{
                 font-size:0.875rem;
                 font-weight:600;
-                .up{
-                    color :$text-clr-3;
+                margin-left: 15px;
+                .up,.down{
+                    img{
+                        margin-right: 1px;
+                        margin-top: 2px;
+                    }
                 }
-                .down{
-                    color :$text-clr-7;
+                
+            }
+        }
+        .stats-wrapper{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .add-list{
+                width: 100%;
+                margin-top: 24px;
+                button{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: $border-clr-2;
+                    color: $bg-clr-7;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    padding: 7.5px 10px;
+                    border-radius: 8px;
+                    margin-bottom: 12px;
+                    .watchlist{
+                        display: flex;
+                        align-items: center;
+                        img{
+                            margin-bottom: 1px;
+                        }
+                        span{
+                            margin-left: 10px;
+                        }
+                        
+                    }
+                    span:last-child{
+                        font-size: 1rem;
+                        margin-right: 6px;
+                    }
+                }
+            }
+            .detail-stats{
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                margin-top: 20px;
+                .stat{
+                    display: flex;
+                    flex-direction: column;
+                    .stat-value{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        span{
+                            color: $text-clr-1;
+                            img{
+                                margin-right: 4px;
+                            }
+                        }
+                        p{
+                            color: #fff;
+                            span{
+                                font-size: 0.6875rem;
+                                margin-right: 6px;
+                            }
+                        }
+                        span,p{
+                            display: flex;
+                            align-items: center;
+                            font-size: 0.75rem;
+                            font-weight: 500;
+                        }
+                    }
+                    &-percentage{
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-top: 4px;
+                        .percentage-bar{
+                            width: 90%;
+                            height: 4px;
+                            border-radius: 2px;
+                            margin-right: 8px;
+                            background-color: $border-clr-2;
+                            .bar{                                
+                                position: relative;
+                                height: 100%;
+                                background-color: $bg-clr-19;
+                                &::before{
+                                    content: "";
+                                    display: block;
+                                    position: absolute;
+                                    right: 0px;
+                                    width: 2px;
+                                    height: 10px;
+                                    top: -3px;
+                                    background: $bg-clr-4;
+                                    border-radius: 3px;
+                                }
+                            }
+                        }
+                        .rank,.circulation{
+                            color: $text-clr-1;
+                            font-size: 0.6875rem;
+                            
+                            line-height: 16.5px;
+                        }
+                        .rank{ 
+                            background-color: $border-clr-2;
+                            border-radius: 4px;
+                            padding: 0 4px;
+                        }
+                        .circulation{
+                            padding-left: 4px;
+                        }
+                    }
                 }
             }
         }

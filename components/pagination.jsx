@@ -1,11 +1,12 @@
 "use client"
 
 import Link from "next/link"
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { CoinMarketCapContext } from "@/context/context"
 import { Accordion } from "react-bootstrap"
 import {AiOutlineLeft,AiOutlineRight} from "react-icons/ai"
 import {FiChevronDown} from "react-icons/fi"
+
 
 
 const Pagination = () => {

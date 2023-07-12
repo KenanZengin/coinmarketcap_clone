@@ -10,29 +10,20 @@ import {TbPointFilled} from "react-icons/tb"
 
 
 
-
-
-
-
-
-
 const CoinTable =  () => {
 
     const router = useRouter()
-    const {getTopTenCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
-    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`,getTopTenCoins)
+    const {getCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
+    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`,getCoins)
     
     if(error) return <h1>{error}</h1>
 
-    const last = (coinInfo) => {
-        setCoinDetail(coinInfo)
-        
+    const sendInfo = (coinInfo) => {
+        setCoinDetail(coinInfo)  
         router.push(
             `/currencies/${coinInfo.slug}?rank=${coinInfo.cmc_rank}`
         )
     }
-
-   
 
   return (
     <div className='coin-table'> 
@@ -92,14 +83,14 @@ const CoinTable =  () => {
                             {coin.cmc_rank}
                         </div>
                         <div className="t-body-name name">
-                            <button  onClick={()=>last(coin)}>
+                            <button  onClick={()=>sendInfo(coin)}>
                                 <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
                                 <p>{coin.name}</p>
                                 <p>{coin.symbol}</p>
                             </button>
                         </div>
                         <div className="t-body-price price">
-                            <button onClick={()=>last(coin)}>
+                            <button onClick={()=>sendInfo(coin)}>
                                 ${ Number(coin.quote.USD.price) >= 1000 
                                     ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
                                     : coin.quote.USD.price > 1
@@ -135,24 +126,24 @@ const CoinTable =  () => {
                             }   
                         </div>
                         <div className="t-body-mrkcap market-cap">
-                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
+                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>
                             ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
                             </button>
                         </div>
                         <div className="t-body-v volume">
-                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
+                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>
                                 <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
                             </button>
                             <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>
                             
                         </div>
                         <div className="t-body-sp supply">
-                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>                            
+                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>                            
                                 {Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}
                             </button>
                         </div>
                         <div className="basic-graph">
-                            <button onClick={()=>last(coin.name.toLowerCase(),coin.cmc_rank)}>
+                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>
                                 <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
                             </button>
                         </div>

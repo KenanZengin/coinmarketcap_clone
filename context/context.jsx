@@ -14,7 +14,7 @@ export const CoinMarketCapProvider = ({children}) => {
     
     
 
-    const getTopTenCoins = async (url) => {
+    const getCoins = async (url) => {
         try {
             const res = await fetch(url);
             const data = await res.json();
@@ -25,7 +25,7 @@ export const CoinMarketCapProvider = ({children}) => {
        }
 
     const data = {
-        getTopTenCoins,
+        getCoins,
         limit,
         setLimit,
         start,

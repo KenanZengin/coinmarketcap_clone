@@ -15,7 +15,6 @@ import {CgClose} from "react-icons/cg"
 import {PiArrowSquareOutBold} from "react-icons/pi"
 import {HiMiniBars3} from "react-icons/hi2"
 import {TbPointFilled} from "react-icons/tb"
-
 import logo from "public/img/logo.png"
 import calendar from "public/img/calendar.png"
 
@@ -28,7 +27,6 @@ const Header = () => {
   const [showFourth,setShowFourth] = useState(false)
   const [dp,setDp] = useState("none")
 
-  
   return (
     <header className='header'>
       <div className="header-web">
@@ -2039,7 +2037,6 @@ const Header = () => {
           </div>
         </div>
         <div className="header-web-borlineder"></div> 
-
       </div>
     </header>
   )

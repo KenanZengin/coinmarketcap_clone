@@ -1,4 +1,3 @@
-
 import Topbar from "@/components/topbar";
 import CoinTable from "@/components/cointable";
 import Pagination from "@/components/pagination";
