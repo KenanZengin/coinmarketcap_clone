@@ -20,7 +20,7 @@ const CoinTable =  () => {
 
     const router = useRouter()
     const {getTopTenCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
-    const {data,error } = useSWR(`http://localhost:3000/api/coins?limit=${limit}&start=${start}`,getTopTenCoins)
+    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`,getTopTenCoins)
     
     if(error) return <h1>{error}</h1>
 
@@ -208,15 +208,3 @@ const CoinTable =  () => {
 export default CoinTable
 
 
-// const denemeData  ={
-//     name :  [data[0].name || "unknown"],
-//     rank :  [data[0].cmc_rank || "unknown"]
-// }
-//  const detailPush = async () => {
-//     const options = {
-//      method:"POST",
-//      headers:{'Content-type':'application/json'},
-//      body:JSON.stringify(denemeData)
-//     }
-//     await fetch(`http://localhost:3000/api/son`,options)
-//  }
