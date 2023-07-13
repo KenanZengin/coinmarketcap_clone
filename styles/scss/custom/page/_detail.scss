@@ -3,13 +3,15 @@
     background-color: $bg-clr-1;
     border-top: 1px solid  $border-clr-2;
     .coin-stats{
-        padding: 24px;
+        padding: 0 24px 24px 24px;
         border-right: 1px solid $border-clr-2;
         width: 440px;
         max-width: 440px;
         display: flex;
         flex-direction: column;
         align-items: center;
+  
+       
         .info,.price,.stats-wrapper{
             width: 100%;
             .up{
@@ -19,70 +21,81 @@
                 color :$text-clr-7 !important;
             }
         }
-        .info{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            .detail{
+        
+        .stats-top{
+            width: 100%;
+            background: $linear-4;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 24px 0 2px;
+            .info{
                 display: flex;
                 align-items: center;
-                .name,.symbol{
-                    margin-left: 8px;
-                }
-                .name{
-                    color: #fff;
-                    font-size: 1.125rem;
-                    font-weight: 600;                    
-                }
-                .symbol{
-                    color: $text-clr-1;
-                    font-size: 0.75rem;
-                    font-weight: 400;
-                }
-            }
-            .add-card{
-                display: flex;
-                align-items: center;
-                button{
-                    background-color: $border-clr-2;
-                    padding: 7px;
-                    border-radius: 6px;
+                justify-content: space-between;
+                .detail{
                     display: flex;
                     align-items: center;
-                    margin-left: 10px;
-                    svg{
-                        color: $bg-clr-7;
+                    .name,.symbol{
+                        margin-left: 8px;
                     }
-
-                }
-            }
-        }
-        .price{
-            display: flex;
-            align-items: baseline;
-            margin-top: 15px;
-            h2{
-                font-size: 2.5rem;
-                color: #fff;
-                font-weight: bold;
-            }
-            &-change{
-                font-size:0.875rem;
-                font-weight:600;
-                margin-left: 15px;
-                .up,.down{
-                    img{
-                        margin-right: 1px;
-                        margin-top: 2px;
+                    .name{
+                        color: #fff;
+                        font-size: 1.125rem;
+                        font-weight: 600;                    
+                    }
+                    .symbol{
+                        color: $text-clr-1;
+                        font-size: 0.75rem;
+                        font-weight: 400;
                     }
                 }
-                
+                .add-card{
+                    display: flex;
+                    align-items: center;
+                    button{
+                        background-color: $border-clr-2;
+                        padding: 7px;
+                        border-radius: 6px;
+                        display: flex;
+                        align-items: center;
+                        margin-left: 10px;
+                        svg{
+                            color: $bg-clr-7;
+                        }
+    
+                    }
+                }
+            }
+            .price{
+                display: flex;
+                align-items: baseline;
+                margin-top: 15px;
+                h2{
+                    font-size: 2.5rem;
+                    color: #fff;
+                    font-weight: bold;
+                }
+                &-change{
+                    font-size:0.875rem;
+                    font-weight:600;
+                    margin-left: 15px;
+                    .up,.down{
+                        img{
+                            margin-right: 1px;
+                            margin-top: 2px;
+                        }
+                    }
+                    
+                }
             }
         }
         .stats-wrapper{
             width: 100%;
             display: flex;
             flex-direction: column;
+           
+          
             .add-list{
                 width: 100%;
                 margin-top: 24px;
@@ -109,8 +122,7 @@
                         }
                         
                     }
-                    span:last-child{
-                        font-size: 1rem;
+                    span:last-child{                        
                         margin-right: 6px;
                     }
                 }
@@ -183,6 +195,7 @@
                             line-height: 16.5px;
                         }
                         .rank{ 
+                            white-space: nowrap;
                             background-color: $border-clr-2;
                             border-radius: 4px;
                             padding: 0 4px;
@@ -190,7 +203,13 @@
                         .circulation{
                             padding-left: 4px;
                         }
-                    }                  
+                    }  
+                    .watchlist{
+                        font-size: 0.75rem;
+                        color: #fff;
+                        font-weight: 600;
+                        margin-bottom: 12px;
+                    }    
                 }
                 .social{
                     display: flex;

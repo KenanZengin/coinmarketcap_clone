@@ -2036,7 +2036,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="header-web-borlineder"></div> 
       </div>
     </header>
   )
