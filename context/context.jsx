@@ -34,6 +34,7 @@ export const CoinMarketCapProvider = ({children}) => {
         setPageNumber,
         coinDetail,
         setCoinDetail,
+ 
         
     }
     

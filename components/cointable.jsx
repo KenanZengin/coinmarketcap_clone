@@ -20,11 +20,12 @@ const CoinTable =  () => {
 
     const sendInfo = (coinInfo) => {
         setCoinDetail(coinInfo)  
+        
         router.push(
-            `/currencies/${coinInfo.slug}?rank=${coinInfo.cmc_rank}`
+            `/currencies/${coinInfo.slug}?rank=${Number(coinInfo.cmc_rank)}`
         )
     }
-
+    console.log(data);
   return (
     <div className='coin-table'> 
         <div className="coin-table-wrapper">
