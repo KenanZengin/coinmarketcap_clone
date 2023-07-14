@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation'
 import useSWR from 'swr'
 import { useContext } from "react"
 import { CoinMarketCapContext } from "@/context/context"
+import { v4 as uuidv4 } from 'uuid';
 import {BsInfoCircleFill} from "react-icons/bs"
 import {AiOutlineStar} from "react-icons/ai"
 import {BiSolidUpArrow,BiSolidDownArrow} from "react-icons/bi"
@@ -171,7 +172,7 @@ const CoinTable =  () => {
                     </div>
                 ))
                 :  Array(limit).fill().map(()=>(
-                    <div className="skeleton-card">
+                    <div className="skeleton-card" key={uuidv4()}>
                         <div className="skeleton-card-body">
                         <span className="card-rank skeleton"></span> 
                         <span className="card-img skeleton"></span>

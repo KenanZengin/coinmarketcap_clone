@@ -1,0 +1,194 @@
+.table-pagination,.respon-pagination{
+    .page-pass{                        
+        ul{
+            display: flex;
+            align-items: center;
+            li{
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                border-radius: 8px;
+                background-color: inherit;
+                margin-right: 4px;
+                color: white;                            
+                &:hover{
+                    background-color: $bg-clr-2;
+                }
+                button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 0.9375rem;
+                    background-color: inherit;
+                    border-radius: 8px;
+                }
+                svg{
+                    color: $text-clr-6;
+                }                            
+            }
+            .empty{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 2px;
+            }
+            .blue-bg{
+                background-color: $border-clr-5 !important;
+            }
+        }
+    }
+}
+.respon-pagination{
+    display: none;                    
+    background-color: $bg-clr-5;
+    @include BootstrapMaxWidthResponsive(sm){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;                        
+    }                    
+}                
+.table-pagination{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0px 40px;                    
+    .pagi-info,.rows-set{
+        p{
+            color: $text-clr-1;
+            font-size: 0.75rem;                        
+        }
+    }
+    .rows-set{     
+        display: flex;
+        align-items: center;     
+        cursor: pointer;      
+        .accordion{                                 
+            .accordion-header{
+                margin-left: 6px;
+               button{
+                background-color: $border-clr-2;
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: #fff;
+                padding: 8px;
+                border-radius: 8px;
+                svg{
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+               }
+            }
+            .accordion-collapse{
+                left: -3px;
+                top: 40px;                                       
+                max-height: 140px;
+                box-shadow: $box-shadow-4;
+                background-color: $border-clr-2;
+                .accordion-body{
+                    background-color: $bg-clr-2;
+                    padding: 5px 9px;
+                    position: relative;
+                    .row-v{
+                        padding: 5px 12px;
+                        color:#fff;
+                        font-size: 0.8rem;
+                        font-weight: 600;                                                
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 8px;
+                        &:hover{
+                            background-color: $border-clr-2;
+                        }
+                    }                                            
+                }
+            }
+        }
+    }
+    .page-pass{
+        @include BootstrapMaxWidthResponsive(sm){
+            display: none;
+        }
+    }                   
+}  
+.work-info{
+    padding-bottom: 20px;
+    &:has(.info-accordion label input[type=checkbox]:checked) {
+        .info-accordion{
+            label{
+                &::before{
+                    content: 'Read Less';
+                }
+            }
+        }
+        .text-content{
+            --ds-i:block;
+        }
+    }
+    &:has(.info-accordion label input[type=checkbox]:not(:checked)) .text-content{
+        --ds-i:none;
+    }
+    .info-accordion{
+        color: $text-clr-5;
+        font-size: 0.75rem;
+        font-family: 600;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $bg-clr-2;
+        padding: 16px 0;
+        margin-bottom: 40px;
+        label{
+            padding-left: 5px;
+            &::before{
+                content:'Read More';
+                text-decoration: underline;
+                color: inherit;
+                font-size: inherit;
+            }
+            input[type=checkbox]{
+                display: none;
+                width: 0;
+                height: 0;                            
+            }
+        }
+    }
+    .text-content{
+        display: var(--ds-i);
+        padding: 28px 0;
+        animation: 0.5s ease 0s 1 normal forwards running opacityValue ;
+        h2,h3{
+            font-weight: 600;
+            font-size: 0.9375rem;
+            line-height: 21px;
+            margin: 12px 0;
+            color: #fff;
+        }
+        p{
+            padding-bottom: 15px;
+            margin: 12px 0;
+            font-size: 0.75rem;
+            line-height: 18px;
+            color: $text-clr-5;
+            a{
+                color: $text-clr-2;
+                &:hover{
+                    color: $text-clr-10;
+                }
+            }
+        }
+        label{
+            color: $border-clr-5;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+       
+    }
+}

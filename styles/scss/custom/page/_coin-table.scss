@@ -1,0 +1,301 @@
+.coin-table{
+    &-wrapper{                                  
+        .table-head,.table-body-item{
+            display: flex;
+            align-items: center;   
+            white-space: nowrap;    
+            @include BootstrapMaxWidthResponsive(lg){
+                justify-content: space-between;
+            }
+            & > div:not(:nth-child(2),:nth-child(3)){
+                text-align: end;
+            }
+            & > div:nth-child(2),& > div:nth-child(3){
+                text-align: start;
+            }
+               
+           
+           .market-cap,.volume,.supply{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                svg{
+                    color: $bg-clr-4;
+                    margin-left: 4px;
+                }
+           }
+            
+           .star{
+            width: 2.62%;
+            @include BootstrapMaxWidthResponsive(sm){
+                display: none;                                      
+            }   
+           }
+           .star{
+
+           }
+           .rank{
+            width: 2.89%;
+            @include BootstrapMaxWidthResponsive(sm){
+                display: none;                                      
+            }   
+           }                      
+           .name{
+            width: 15%;
+           }
+           .price{
+            width: 8.1%;
+           }
+           .h1-change,.h24-change,.d7-change{
+            width: 5.6%;
+           }        
+           .market-cap,.d7-change{
+            @include BootstrapMaxWidthResponsive(lg){
+                display: none;                                      
+            }   
+           }
+           .h24-change{
+            @include BootstrapMaxWidthResponsive(lg){
+                width: 7.6%;                                      
+            }  
+            @include BootstrapMaxWidthResponsive(xm){
+                display: none;                                      
+            }                          
+           }  
+           .h1-change{
+                @include BootstrapMaxWidthResponsive(md){
+                    display: none;                                      
+                }   
+            }    
+           .market-cap{
+                width: 10.9%;
+            }   
+           .volume{
+                width: 12.2%;                       
+            }                                                                 
+            .supply{
+                width: 14.32%;
+                @include BootstrapMaxWidthResponsive(md){
+                    display: none;                                      
+                }  
+            }                      
+            .basic-graph{
+                width: 13.4%;
+                @include BootstrapMaxWidthResponsive(md){
+                    width: 17%;                                      
+                }  
+                @include BootstrapMaxWidthResponsive(sm){
+                    display: none;                                  
+                }  
+            }                       
+            .go-detail{
+                width: 3.5%;
+                @include BootstrapMaxWidthResponsive(sm){
+                    display: none;                                      
+                }   
+            }                       
+        }                 
+        .table-head{
+            font-size: 0.75rem;
+            color: #fff;
+            font-weight: bold;
+            border-top: 1px solid $bg-clr-2;
+            border-bottom: 1px solid $bg-clr-2;
+            & > div{
+                padding: 16.5px 10px;                      
+            }
+            .price,.basic-graph{
+                @include BootstrapMaxWidthResponsive(md){
+                    padding: 16.5px 0 ;                                      
+                }  
+            }
+            .name{
+                @include BootstrapMaxWidthResponsive(xs){
+                    width: 30%;
+                    text-align: end !important;                                      
+                }  
+                
+            }
+            
+        }
+        .table-body{                   
+                &-item{
+                border-bottom: 1px solid $bg-clr-2;   
+                &:hover{
+                    background-color: $bg-clr-5;
+                }     
+                & > div{
+                    padding: 15px 10px;                                           
+                }      
+                .t-body-price,.t-body-mrkcap,.t-body-v,.t-body-sp,.t-body-name{
+                    button{
+                        font-size: 0.875rem !important;
+                        color: #fff;
+                        line-height: 22.5px;
+                        font-weight: 500;
+                        
+                    }
+                }  
+                button{
+                    background-color: inherit;
+                }
+                .t-body-rank,.t-body-change{                           
+                    font-size: 0.875rem;
+                }             
+                .star{
+                    
+                    svg{
+                        color: $bg-clr-13;
+                        &:hover{
+                            color: $bg-clr-14;
+                        }
+                    }
+                }                            
+                .t-body-rank{          
+                    color: $text-clr-8;
+                    line-height: 21px;
+                    font-weight: 500;                          
+                }
+                .t-body-name{
+                    button{
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        white-space: normal !important;
+                        img{
+                            border-radius: 12px;
+                        }
+                        p,span{                                       
+                            margin-left: 8px;
+                            line-height: 24px
+                        }
+                        p{                            
+                            font-weight: 600;
+                            text-align: start;                     
+                        }
+                        span{
+                            font-weight: 500;
+                            color: $bg-clr-13;
+                        }
+                    }
+                }                          
+                .t-body-change{                            
+                    svg{                               
+                        margin-right: 2px;
+                    }
+                    .h-change-up{
+                        color: $text-clr-3;
+                    }
+                    .h-change-down{
+                        color: $text-clr-7;
+                    }
+                }
+                .t-body-v{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-end;
+                    button{
+                        p{
+                            line-height: 22.5px;
+                            font-weight: 500;
+                        }
+                    }
+                    span{
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    color: $text-clr-8;
+                    text-align: end;
+                    }
+                }
+                .basic-graph{
+                    button{
+                    display: block;
+                    width: 100%;
+                    height: 100%;                             
+                    margin-left: 4px;
+                    
+                    .up{   
+                        filter: hue-rotate(85deg) saturate(80%) brightness(0.85);                             
+                    }
+                    .low{
+                        filter: hue-rotate(300deg) saturate(210%) brightness(0.7) contrast(170%);
+                    }
+                    }
+                }
+                .go-detail{      
+                        &:has(.detail-tooltip button:focus) .detail-tooltip{
+                            --dp-d:flex;
+                            .svgs{
+                                background-color: $bg-clr-2;
+                                box-shadow: $box-shadow-7;
+                            }    
+                        }
+                        &:has(.detail-tooltip button:not(:focus)){
+                            --dp-d:none;
+                        }         
+                    .detail-tooltip{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        position: relative;                                
+                        button{
+                           background-color: inherit;   
+                                                   
+                        }
+                        .svgs{
+                            display:flex;
+                            flex-direction: column;
+                            padding: 10px 15px;
+                            border-radius: 100%;
+                            cursor: pointer;
+                            svg{
+                                color: #fff;
+                            }
+                            &:hover{
+                                background-color: $bg-clr-2 ;
+                            }
+                            
+                        }                               
+                        .tooltips{      
+                            display: var(--dp-d);                                                                                 
+                            transform: translate(1.5%, 2.5%) !important;
+                            box-shadow: $box-shadow-4; 
+                            border-radius: 8px;  
+                            background-color: $bg-clr-2;
+                            top: 40px;
+                            left: -110px;
+                            padding-top: 0 !important;
+                            .tooltips-info{
+                                background-color: $bg-clr-2; 
+                                border-radius: 8px;                                                                                                                         
+                                .tooltips-body{  
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: flex-start;
+                                    padding: 8px;
+                                    span{
+                                    display: flex;
+                                    align-items: center;
+                                    white-space: nowrap;
+                                    color: white;
+                                    padding: 0 10px;
+                                    height: 32px;
+                                    font-size: 0.875rem;
+                                    border-radius: 8px;
+                                    background-color: inherit;
+                                    &:hover{
+                                        background-color: $border-clr-2;
+                                    }
+                                   }
+                                }
+                            }
+                        }
+                    }
+                   
+                }
+            }
+        }  
+    }
+  
+}
