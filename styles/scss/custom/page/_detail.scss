@@ -9,8 +9,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-  
-       
+        abbr{
+            text-decoration: none;
+        }
         .info,.price,.stats-wrapper{
             width: 100%;
             .up{

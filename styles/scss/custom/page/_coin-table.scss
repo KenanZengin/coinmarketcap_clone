@@ -138,6 +138,9 @@
                 }  
                 button{
                     background-color: inherit;
+                    abbr{
+                        text-decoration: none;
+                    }
                 }
                 .t-body-rank,.t-body-change{                           
                     font-size: 0.875rem;
@@ -189,6 +192,17 @@
                     .h-change-down{
                         color: $text-clr-7;
                     }
+                }
+                .t-body-sp{
+                    button{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;                       
+                    }
+                    font-size: .875rem!important;
+                    color: #fff;
+                    line-height: 22.5px;
+                    font-weight: 500;
                 }
                 .t-body-v{
                     display: flex;

@@ -56,7 +56,7 @@ const CoinDetail =  ({searchParams}) => {
       <div className="coin-stats">
         {(coinDetail ? detail : data)?.map((coin)=>(
             <>
-            <div className="stats-top">
+              <div className="stats-top">
               <div className="info">
                 <div className="detail">
                   <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="coin-img" width={24} height={24} />
@@ -75,20 +75,37 @@ const CoinDetail =  ({searchParams}) => {
                 </div>
               </div>
               <div className="price">
-                <h2>${ Number(coin.quote.USD.price) >= 1000 
-                        ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
-                        : coin.quote.USD.price > 1
-                            ? Number(coin.quote.USD.price).toFixed(2)
-                            : coin.quote.USD.price > 0.1
-                            ? Number(coin.quote.USD.price).toFixed(4)
-                            : coin.quote.USD.price > 0.01
-                                ? Number(coin.quote.USD.price).toFixed(5)
-                                : coin.quote.USD.price > 0.001 
-                                ? Number(coin.quote.USD.price).toFixed(6)
-                                : coin.quote.USD.price > 0.0000001 
-                                    ? Number(coin.quote.USD.price).toFixed(9)
-                                    : Number(coin.quote.USD.price).toFixed(13)
-                  }
+                <h2>   
+                  $<abbr title=  
+                        { Number(coin?.quote.USD.price) >= 1000 
+                          ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
+                          : coin.quote.USD.price > 1
+                              ? Number(coin.quote.USD.price).toFixed('2')
+                              : coin.quote.USD.price > 0.1
+                              ? Number(coin.quote.USD.price).toFixed('4')
+                              : coin.quote.USD.price > 0.01
+                                  ? Number(coin.quote.USD.price).toFixed('5')
+                                  : coin.quote.USD.price > 0.001 
+                                  ? Number(coin.quote.USD.price).toFixed('6')
+                                  : coin.quote.USD.price < 0.000001 
+                                      ? Number(coin.quote.USD.price).toFixed('12')
+                                      : Number(coin.quote.USD.price).toFixed('7')
+                      }>
+                        { Number(coin.quote.USD.price) >= 1000 
+                            ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
+                            : coin.quote.USD.price > 1
+                                ? Number(coin.quote.USD.price).toFixed('2')
+                                : coin.quote.USD.price > 0.1
+                                ? Number(coin.quote.USD.price).toFixed('4')
+                                : coin.quote.USD.price > 0.01
+                                    ? Number(coin.quote.USD.price).toFixed('5')
+                                    : coin.quote.USD.price > 0.001 
+                                    ? Number(coin.quote.USD.price).toFixed('6')
+                                    : coin.quote.USD.price < 0.000001 
+                                        ? `0.0...${Number(coin.quote.USD.price * 1000000).toFixed('0')}`
+                                        : Number(coin.quote.USD.price).toFixed('7')
+                        }
+                    </abbr>
                 </h2>
                 <div className="price-change">                
                   {Number(coin.quote.USD.percent_change_24h) >= 0 

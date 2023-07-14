@@ -93,20 +93,37 @@ const CoinTable =  () => {
                         </div>
                         <div className="t-body-price price">
                             <button onClick={()=>sendInfo(coin)}>
-                                ${ Number(coin.quote.USD.price) >= 1000 
-                                    ? Number(coin.quote.USD.price.toFixed(2)).toLocaleString('en-US')
-                                    : coin.quote.USD.price > 1
-                                        ? Number(coin.quote.USD.price).toFixed(2)
-                                        : coin.quote.USD.price > 0.1
-                                        ? Number(coin.quote.USD.price).toFixed(4)
-                                        : coin.quote.USD.price > 0.01
-                                            ? Number(coin.quote.USD.price).toFixed(5)
-                                            : coin.quote.USD.price > 0.001 
-                                            ? Number(coin.quote.USD.price).toFixed(6)
-                                            : coin.quote.USD.price > 0.0000001 
-                                                ? Number(coin.quote.USD.price).toFixed(9)
-                                                : Number(coin.quote.USD.price).toFixed(13)
-                                }
+                               
+                               $<abbr title=  { Number(coin.quote.USD.price) >= 1000 
+                                        ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
+                                        : coin.quote.USD.price > 1
+                                            ? Number(coin.quote.USD.price).toFixed('2')
+                                            : coin.quote.USD.price > 0.1
+                                            ? Number(coin.quote.USD.price).toFixed('4')
+                                            : coin.quote.USD.price > 0.01
+                                                ? Number(coin.quote.USD.price).toFixed('5')
+                                                : coin.quote.USD.price > 0.001 
+                                                ? Number(coin.quote.USD.price).toFixed('6')
+                                                : coin.quote.USD.price < 0.000001 
+                                                    ? Number(coin.quote.USD.price).toFixed('12')
+                                                    : Number(coin.quote.USD.price).toFixed('7')
+                                    }>
+                                    { Number(coin.quote.USD.price) >= 1000 
+                                        ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
+                                        : coin.quote.USD.price > 1
+                                            ? Number(coin.quote.USD.price).toFixed('2')
+                                            : coin.quote.USD.price > 0.1
+                                            ? Number(coin.quote.USD.price).toFixed('4')
+                                            : coin.quote.USD.price > 0.01
+                                                ? Number(coin.quote.USD.price).toFixed('5')
+                                                : coin.quote.USD.price > 0.001 
+                                                ? Number(coin.quote.USD.price).toFixed('6')
+                                                : coin.quote.USD.price < 0.000001 
+                                                    ? `0.0...${Number(coin.quote.USD.price * 1000000).toFixed('0')}`
+                                                    : Number(coin.quote.USD.price).toFixed('7')
+                                    }
+                               </abbr>
+                                
                             </button>
                         </div>  
                         <div className="t-body-change h1-change">
@@ -128,24 +145,26 @@ const CoinTable =  () => {
                             }   
                         </div>
                         <div className="t-body-mrkcap market-cap">
-                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>
+                            <button onClick={()=>sendInfo(coin)}>
                             ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
                             </button>
                         </div>
                         <div className="t-body-v volume">
-                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>
+                            <button onClick={()=>sendInfo(coin)}>
                                 <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
                             </button>
                             <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>
                             
                         </div>
                         <div className="t-body-sp supply">
-                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>                            
-                                {Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}
+                            <button onClick={()=>sendInfo(coin)}>                            
+                                <abbr title={Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}>{Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}</abbr>
+                                
                             </button>
+                            &nbsp;{coin.symbol}
                         </div>
                         <div className="basic-graph">
-                            <button onClick={()=>sendInfo(coin.name.toLowerCase(),coin.cmc_rank)}>
+                            <button onClick={()=>sendInfo(coin)}>
                                 <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
                             </button>
                         </div>
@@ -160,9 +179,9 @@ const CoinTable =  () => {
                                     <div className="tooltips">
                                         <div className="tooltips-info">
                                             <div className="tooltips-body">
-                                            <span>View Charts</span>
-                                            <span>View Marktes</span>
-                                            <span>View Historical Data</span>
+                                            <span onClick={()=>sendInfo(coin)}>View Charts</span>
+                                            <span onClick={()=>sendInfo(coin)}>View Marktes</span>
+                                            <span onClick={()=>sendInfo(coin)}>View Historical Data</span>
                                             </div>
                                         </div>
                                     </div>
