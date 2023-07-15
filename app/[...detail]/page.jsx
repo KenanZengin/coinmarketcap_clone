@@ -40,7 +40,7 @@ const CoinDetail =  ({searchParams}) => {
   const {getCoins,coinDetail} = useContext(CoinMarketCapContext)
   const [converter,setConverter] = useState(0)
   const [Coinconverter,SetCoinConverter] = useState()
-  const {data,error } = useSWR(`/api/coins?limit=${1}&start=${searchParams.rank}`,getCoins)
+  const {data,error } = useSWR(`/api/coindetail?start=${searchParams.rank}`,getCoins)
  
   const getValue = (event) => {
     setConverter(event.target.value)
@@ -49,7 +49,7 @@ const CoinDetail =  ({searchParams}) => {
 
   const detail = [coinDetail]
   
-  
+  console.log(data,coinDetail)
   return (
     <div className="coin-detail">
        
