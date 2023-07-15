@@ -8,6 +8,7 @@ import {BsInfoCircleFill} from "react-icons/bs"
 import {AiOutlineStar} from "react-icons/ai"
 import {BiSolidUpArrow,BiSolidDownArrow} from "react-icons/bi"
 import {TbPointFilled} from "react-icons/tb"
+import Link from 'next/link'
 
 
 
@@ -22,9 +23,7 @@ const CoinTable =  () => {
     const sendInfo = (coinInfo) => {
         setCoinDetail(coinInfo)  
         
-        router.push(
-            `/currencies/${coinInfo.slug}?rank=${Number(coinInfo.cmc_rank)}`
-        )
+        
     }
     console.log(data);
   return (
@@ -85,15 +84,14 @@ const CoinTable =  () => {
                             {coin.cmc_rank}
                         </div>
                         <div className="t-body-name name">
-                            <button  onClick={()=>sendInfo(coin)}>
+                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
                                 <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
                                 <p>{coin.name}</p>
                                 <p>{coin.symbol}</p>
-                            </button>
+                            </Link>
                         </div>
                         <div className="t-body-price price">
-                            <button onClick={()=>sendInfo(coin)}>
-                               
+                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
                                $<abbr title=  { Number(coin.quote.USD.price) >= 1000 
                                         ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
                                         : coin.quote.USD.price > 1
@@ -122,9 +120,8 @@ const CoinTable =  () => {
                                                     ? `0.0...${Number(coin.quote.USD.price * 1000000).toFixed('0')}`
                                                     : Number(coin.quote.USD.price).toFixed('7')
                                     }
-                               </abbr>
-                                
-                            </button>
+                               </abbr>                                
+                            </Link>
                         </div>  
                         <div className="t-body-change h1-change">
                             {Number(coin.quote.USD.percent_change_1h) >= 0 
@@ -145,28 +142,26 @@ const CoinTable =  () => {
                             }   
                         </div>
                         <div className="t-body-mrkcap market-cap">
-                            <button onClick={()=>sendInfo(coin)}>
-                            ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
-                            </button>
+                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
+                                ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
+                            </Link>
                         </div>
                         <div className="t-body-v volume">
-                            <button onClick={()=>sendInfo(coin)}>
+                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
                                 <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
-                            </button>
-                            <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>
-                            
+                            </Link>
+                            <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>                            
                         </div>
                         <div className="t-body-sp supply">
-                            <button onClick={()=>sendInfo(coin)}>                            
-                                <abbr title={Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}>{Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}</abbr>
-                                
-                            </button>
+                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>                           
+                                <abbr title={Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}>{Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}</abbr>                                
+                            </Link>
                             &nbsp;{coin.symbol}
                         </div>
                         <div className="basic-graph">
-                            <button onClick={()=>sendInfo(coin)}>
+                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
                                 <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
-                            </button>
+                            </Link>
                         </div>
                         <div className="go-detail">
                             <div className="detail-tooltip">                            
@@ -179,9 +174,9 @@ const CoinTable =  () => {
                                     <div className="tooltips">
                                         <div className="tooltips-info">
                                             <div className="tooltips-body">
-                                            <span onClick={()=>sendInfo(coin)}>View Charts</span>
-                                            <span onClick={()=>sendInfo(coin)}>View Marktes</span>
-                                            <span onClick={()=>sendInfo(coin)}>View Historical Data</span>
+                                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Charts</Link>
+                                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Marktes</Link>
+                                            <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Historical Data</Link>
                                             </div>
                                         </div>
                                     </div>
