@@ -3,6 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
+import { useContext } from "react"
+import { CoinMarketCapContext } from "@/context/context"
 import { Accordion, Nav, Navbar, Modal, Offcanvas } from "react-bootstrap"
 import {AiFillCloseCircle} from "react-icons/ai"
 import {BiSolidUpArrow, BiSolidDownArrow, BiSolidGasPump,} from "react-icons/bi"
@@ -21,6 +23,7 @@ import calendar from "public/img/calendar.png"
 
 const Header = () => {
 
+  const {setStart} = useContext(CoinMarketCapContext)
   const [show, setShow] = useState(false);
   const [showSecond, setShowSecond] = useState(false);
   const [showThirt, setShowThird] = useState(false);
@@ -1576,7 +1579,7 @@ const Header = () => {
           <div className="web-container">
             <div className="web-container-left">
               <div className="mainlogo">
-                <Link href={"/"} className='logo-link'>
+                <Link href={"/"} onClick={()=>setStart(1)} className='logo-link'>
                   <Image src={logo} alt='MainLogo' priority />
                 </Link>
               </div>

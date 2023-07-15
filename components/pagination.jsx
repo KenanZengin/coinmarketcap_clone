@@ -13,8 +13,19 @@ const Pagination = () => {
    
     const {setLimit,limit,start,setStart,setPageNumber,pageNumber} = useContext(CoinMarketCapContext)
   
+
+    const coinLimit = (i) => {
+        document.body.scrollTop=200;
+        document.documentElement.scrollTop=200; 
+        setLimit(i)
+        setStart(1)
+        setPageNumber(1)
+    }
+
     const nextPage = (i) => {
-       
+        
+        document.body.scrollTop=220;
+        document.documentElement.scrollTop=220; 
         if(i==1){            
             setStart(1) 
             setPageNumber(1)
@@ -182,7 +193,7 @@ const Pagination = () => {
                         ...
                     </li>
                     <li>
-                        <button onClick={(()=>setStart(4900))}>
+                        <button  onClick={(()=>setStart(4900))}>
                             103  
                         </button>
                     </li>
@@ -202,9 +213,9 @@ const Pagination = () => {
                             <FiChevronDown size={14} />
                         </Accordion.Header>
                         <Accordion.Body>
-                            <div className="row-v" onClick={()=>setLimit(100)}>100</div>
-                            <div className="row-v" onClick={()=>setLimit(50)}>50</div>
-                            <div className="row-v" onClick={()=>setLimit(20)}>20</div>
+                            <div className="row-v" onClick={()=>coinLimit(100)}>100</div>
+                            <div className="row-v" onClick={()=>coinLimit(50)}>50</div>
+                            <div className="row-v" onClick={()=>coinLimit(20)}>20</div>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

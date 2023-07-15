@@ -1,8 +1,7 @@
 "use client"
-import { useRouter } from 'next/navigation'
-import useSWR from 'swr'
 import { useContext } from "react"
 import { CoinMarketCapContext } from "@/context/context"
+import useSWR from 'swr'
 import { v4 as uuidv4 } from 'uuid';
 import {BsInfoCircleFill} from "react-icons/bs"
 import {AiOutlineStar} from "react-icons/ai"
@@ -14,7 +13,7 @@ import Link from 'next/link'
 
 const CoinTable =  () => {
 
-    const router = useRouter()
+    
     const {getCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
     const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`,getCoins)
     
@@ -22,14 +21,12 @@ const CoinTable =  () => {
 
     const sendInfo = (coinInfo) => {
         setCoinDetail(coinInfo)  
-        
-        
     }
     console.log(data);
   return (
     <div className='coin-table'> 
         <div className="coin-table-wrapper">
-            <div className="table-head">
+            <div className="table-head" id="top">
                 <div className="star"></div>
                 <div className="rank">
                     #

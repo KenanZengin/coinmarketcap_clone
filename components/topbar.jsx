@@ -14,8 +14,16 @@ import {PiSlidersHorizontalBold} from "react-icons/pi"
 
 
 const Topbar = () => {  
-  const {setLimit,limit} = useContext(CoinMarketCapContext)
+  const {setLimit,limit,setStart,start,setPageNumber,} = useContext(CoinMarketCapContext)
   const [more,setMore] = useState(false)
+
+  const coinLimit = (i) => {
+    
+    setLimit(i)
+    setStart(1)
+    setPageNumber(1)
+}
+
 
   return (
     <div className="topbar">
@@ -281,7 +289,7 @@ const Topbar = () => {
             <span className="fear-text">Greed</span>
           </div>
         </div>
-      </div>
+      </div>    
       <div className="topbar-customize">
         <div className="categories">
           <ul className="categori-list">
@@ -338,9 +346,9 @@ const Topbar = () => {
                               <FiChevronDown size={14} />
                             </Accordion.Header>
                             <Accordion.Body>
-                              <div className="row-v" onClick={()=>setLimit(100)}>100</div>
-                              <div className="row-v" onClick={()=>setLimit(50)}>50</div>
-                              <div className="row-v" onClick={()=>setLimit(20)}>20</div>
+                              <div className="row-v" onClick={()=>coinLimit(100)}>100</div>
+                              <div className="row-v" onClick={()=>coinLimit(50)}>50</div>
+                              <div className="row-v" onClick={()=>coinLimit(20)}>20</div>
                             </Accordion.Body>
                         </Accordion.Item>
                 </Accordion>
@@ -370,9 +378,9 @@ const Topbar = () => {
                               <FiChevronDown size={14} />
                             </Accordion.Header>
                             <Accordion.Body>
-                              <div className="row-v" onClick={()=>setLimit(100)}>100</div>
-                              <div className="row-v" onClick={()=>setLimit(50)}>50</div>
-                              <div className="row-v" onClick={()=>setLimit(20)}>20</div>
+                              <div className="row-v" onClick={()=>coinLimit(100)}>100</div>
+                              <div className="row-v" onClick={()=>coinLimit(50)}>50</div>
+                              <div className="row-v" onClick={()=>coinLimit(20)}>20</div>
                             </Accordion.Body>
                         </Accordion.Item>
                 </Accordion>

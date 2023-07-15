@@ -1,4 +1,5 @@
 .table-pagination,.respon-pagination{
+    scroll-behavior: smooth;
     .page-pass{                        
         ul{
             display: flex;
@@ -14,7 +15,7 @@
                 &:hover{
                     background-color: $bg-clr-2;
                 }
-                button{
+                button,a{
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -70,7 +71,7 @@
         .accordion{                                 
             .accordion-header{
                 margin-left: 6px;
-               button{
+               button,a{
                 background-color: $border-clr-2;
                 font-size: 0.75rem;
                 font-weight: 600;
