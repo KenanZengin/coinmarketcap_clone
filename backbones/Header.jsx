@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { useContext } from "react"
 import { CoinMarketCapContext } from "@/context/context"
@@ -23,13 +24,17 @@ import Search from "@/components/search-label"
 
 
 const Header = () => {
-
+  const router = useRouter()
   const {setStart,searchContent} = useContext(CoinMarketCapContext)
   const [show, setShow] = useState(false);
   const [showSecond, setShowSecond] = useState(false);
   const [showThirt, setShowThird] = useState(false);
   const [showFourth,setShowFourth] = useState(false)
 
+  const backHomePage = () => {
+    setStart(1)
+    router.back()
+  }
   return (
     <header className='header'>
       <div className="header-web">
@@ -1467,9 +1472,9 @@ const Header = () => {
           <div className="web-container">
             <div className="web-container-left">
               <div className="mainlogo">
-                <Link href={"/"} onClick={()=>setStart(1)} className='logo-link'>
+                <button  onClick={backHomePage} className='logo-link'>
                   <Image src={logo} alt='MainLogo' priority />
-                </Link>
+                </button>
               </div>
               <div className="header-navbar">
                 <Navbar>
