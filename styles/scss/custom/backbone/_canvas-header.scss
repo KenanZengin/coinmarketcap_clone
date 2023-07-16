@@ -18,6 +18,18 @@
                     color: #fff;
                 }
             }
+            .offcanvas-title{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                span{
+                    cursor: pointer;
+                    svg{
+                        color: $bg-clr-19;
+                    }
+                }
+            }
             border-bottom: 1px solid $border-clr-1;
         }
     }
@@ -394,7 +406,7 @@
                                 color: $bg-clr-7;
                             }
                             .close{
-                                cursor: pointer;
+                                display: none;
                             }
                         }
                         .trending{

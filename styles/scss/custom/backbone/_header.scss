@@ -34,6 +34,7 @@
                     margin: 0 25px;
                 }
             }
+            
         }
         &-topbar{
             padding: 8px 0;
@@ -701,216 +702,7 @@
                             }
                         }
                     }
-                    .coin-search-btn{
-                        background-color: $border-clr-2;
-                        border-radius: 8px;
-                        margin-left: 8px;
-                        position: relative;
-                        .search-input{
-                            padding: 8px;
-                            display: flex;
-                            align-items: center;
-                            cursor: pointer;
-                            svg{
-                                flex-shrink: 0;                                
-                            }
-                            .placeholder{
-                                flex-direction: 1;
-                                margin-left: 6px;
-                                font-size: 0.75rem;
-                                font-weight: 600;
-                                width: 200px;
-                                overflow: hidden;
-                                line-height: 22.5px;
-                            }
-                            svg,.placeholder{
-                                color: $bg-clr-4;
-                            }
-                            &:has(.search-tooltip:not(:hover)) .tooltips{
-                            --dp-c : none;
-                            }
-                            &:has(.search-tooltip:hover) .tooltips{
-                            --dp-c : block;
-                            }
-                            .search-tooltip{
-                                flex-shrink: 0;
-                                width: 20px;
-                                height: 20px;
-                                background-color: $bg-clr-4;
-                                border-radius: 4px;
-                                text-align: center;
-                                color: white;
-                                line-height: 19px;
-                                position: relative;
-                                .tooltips{      
-                                display: var(--dp-c);                   
-                                top: 10px;
-                                left: -66px;
-                                .tooltip-info{
-                                    background-color: white;
-                                    padding: 3px;                                                                                         
-                                    .tooltip-body{
-                                        color: #000;
-                                        font-size: 0.75rem;
-                                        font-weight: 600;
-                                        width:128px;
-                                        &::before{
-                                            border-bottom-color: white;
-                                            top: 5px;
-                                            left: calc(50% - -46px);
-                                        }
-                                    }
-                                }
-                                }
-                            }
-                        }
-                        .search-area{
-                            display: var(--dp-v);
-                            position: absolute;                           
-                            top:0;
-                            animation: 0.5s ease 0s 1 normal forwards running opacityValue;
-                            max-width: 400px;
-                            left: -138px;
-                            box-shadow: $box-shadow-4;
-                            z-index: 9999;
-                            &-content{
-                                width: 400px;
-                                min-height: 140px;
-                                max-height: 673px;
-                                border-radius: 8px;
-                                background-color: $bg-clr-1;
-                                .searching-label{
-                                    padding: 16px;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: space-between;
-                                    font-size: 0.835rem;
-                                    input{
-                                        flex: 1;
-                                        width: 310px;
-                                        background-color: $bg-clr-1;
-                                        color: #fff;
-                                        padding-left: 7px;
-                                        &::placeholder{
-                                            color: $bg-clr-4;
-                                        }
-                                    }
-                                    > svg{
-                                        margin-top: 1px;
-                                    }
-                                    svg{
-                                        color: $bg-clr-7;
-                                    }
-                                    .close{
-                                        cursor: pointer;
-                                    }
-                                }
-                                .trending{
-                                    padding: 8px;                                  
-                                    .title{
-                                        display: flex;
-                                        align-items: center;
-                                        padding: 0 8px;
-                                        margin-bottom: 8px;
-                                        font-size: 0.6875rem;
-                                        color: $bg-clr-7;
-                                        svg{
-                                            color: $bg-clr-8;
-                                        }
-                                    }
-                                    .trend-list{
-                                        li:first-child{
-                                            a{
-                                                background-color: $bg-clr-2;
-                                            }
-                                        }
-                                        li{
-                                            a{
-                                                display: flex;
-                                                align-items: center;
-                                                justify-content: space-between;
-                                                padding: 10px;                                                
-                                                border-radius: 8px;
-                                                .info{
-                                                    display: flex;
-                                                    align-items: center;
-                                                    padding-right: 8px;
-                                                    img{
-                                                        border-radius: 10px;
-                                                        margin-right: 8px;                                                        
-                                                    }
-                                                    .name{
-                                                        white-space: nowrap;
-                                                        color: #fff;
-                                                        font-weight: 600;
-                                                        font-size: 0.875rem;
-                                                    }
-                                                    .symbol{
-                                                        margin-left: 6px;
-                                                        font-size: 0.75rem;
-                                                        color: $text-clr-1 ;
-                                                    }
-                                                }
-                                                .rank{
-                                                    color: $bg-clr-7;
-                                                    font-size: 0.75rem;
-                                                    font-weight: 500;
-                                                }
-                                                &:hover{
-                                                    background-color: $bg-clr-2;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                .recent-searches{
-                                    padding-bottom: 10px;
-                                    .title{
-                                        font-size: 0.6875rem;
-                                        color: $bg-clr-7;
-                                        margin-left: 16px;
-                                        margin-top: 16px;
-                                    }
-                                    .recentlist{
-                                        display: flex;
-                                        align-items: center;
-                                        padding: 0 8px;
-                                        margin: 8px 0;
-                                        max-width: 400px;
-                                        overflow: auto hidden;                                        
-                                        li{
-                                            margin-right: 8px;
-                                            a{
-                                                padding: 8px 26px;
-                                                display: flex;
-                                                flex-direction: column;
-                                                justify-content: center;
-                                                align-items: center;
-                                                background-color: $bg-clr-2;
-                                                border-radius: 8px;
-                                                img{
-                                                    border-radius: 10px;
-                                                }
-                                                .name{
-                                                    margin-top: 4px;
-                                                    color:#fff;
-                                                    white-space: nowrap;
-                                                    font-size: 0.75rem;
-                                                    font-weight: 500;    
-                                                    line-height: 18px;                                        
-                                                }
-                                                .symbol{
-                                                    font-size: 0.6875rem;
-                                                    color: $bg-clr-7;
-                                                    
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                   
                 }
             }
         }
@@ -925,7 +717,218 @@
             height: 1px;
             background-color: $border-clr-2;
         }
-        
+        &-global,&-hibars{
+            .coin-search-btn{
+                background-color: $border-clr-2;
+                border-radius: 8px;
+                margin-left: 8px;
+                position: relative;
+                .search-input{
+                    padding: 8px;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    svg{
+                        flex-shrink: 0;                                
+                    }
+                    .placeholder{
+                        flex-direction: 1;
+                        margin-left: 6px;
+                        font-size: 0.75rem;
+                        font-weight: 600;
+                        width: 200px;
+                        overflow: hidden;
+                        line-height: 22.5px;
+                    }
+                    svg,.placeholder{
+                        color: $bg-clr-4;
+                    }
+                    &:has(.search-tooltip:not(:hover)) .tooltips{
+                    --dp-c : none;
+                    }
+                    &:has(.search-tooltip:hover) .tooltips{
+                    --dp-c : block;
+                    }
+                    .search-tooltip{
+                        flex-shrink: 0;
+                        width: 20px;
+                        height: 20px;
+                        background-color: $bg-clr-4;
+                        border-radius: 4px;
+                        text-align: center;
+                        color: white;
+                        line-height: 19px;
+                        position: relative;
+                        .tooltips{      
+                        display: var(--dp-c);                   
+                        top: 10px;
+                        left: -66px;
+                        .tooltip-info{
+                            background-color: white;
+                            padding: 3px;                                                                                         
+                            .tooltip-body{
+                                color: #000;
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                width:128px;
+                                &::before{
+                                    border-bottom-color: white;
+                                    top: 5px;
+                                    left: calc(50% - -46px);
+                                }
+                            }
+                        }
+                        }
+                    }
+                }
+                .search-area{
+                    display: var(--dp-v);
+                    position: absolute;                           
+                    top:0;
+                    animation: 0.5s ease 0s 1 normal forwards running opacityValue;
+                    max-width: 400px;
+                    left: -138px;
+                    box-shadow: $box-shadow-4;
+                    z-index: 9999;
+                    &-content{
+                        width: 400px;
+                        min-height: 140px;
+                        max-height: 673px;
+                        border-radius: 8px;
+                        background-color: $bg-clr-1;
+                        .searching-label{
+                            padding: 16px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            font-size: 0.835rem;
+                            input{
+                                flex: 1;
+                                width: 310px;
+                                background-color: $bg-clr-1;
+                                color: #fff;
+                                padding-left: 7px;
+                                &::placeholder{
+                                    color: $bg-clr-4;
+                                }
+                            }
+                            > svg{
+                                margin-top: 1px;
+                            }
+                            svg{
+                                color: $bg-clr-7;
+                            }
+                            .close{
+                                cursor: pointer;
+                            }
+                        }
+                        .trending{
+                            padding: 8px;                                  
+                            .title{
+                                display: flex;
+                                align-items: center;
+                                padding: 0 8px;
+                                margin-bottom: 8px;
+                                font-size: 0.6875rem;
+                                color: $bg-clr-7;
+                                svg{
+                                    color: $bg-clr-8;
+                                }
+                            }
+                            .trend-list{
+                                li:first-child{
+                                    a{
+                                        background-color: $bg-clr-2;
+                                    }
+                                }
+                                li{
+                                    a{
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        padding: 10px;                                                
+                                        border-radius: 8px;
+                                        .info{
+                                            display: flex;
+                                            align-items: center;
+                                            padding-right: 8px;
+                                            img{
+                                                border-radius: 10px;
+                                                margin-right: 8px;                                                        
+                                            }
+                                            .name{
+                                                white-space: nowrap;
+                                                color: #fff;
+                                                font-weight: 600;
+                                                font-size: 0.875rem;
+                                            }
+                                            .symbol{
+                                                margin-left: 6px;
+                                                font-size: 0.75rem;
+                                                color: $text-clr-1 ;
+                                            }
+                                        }
+                                        .rank{
+                                            color: $bg-clr-7;
+                                            font-size: 0.75rem;
+                                            font-weight: 500;
+                                        }
+                                        &:hover{
+                                            background-color: $bg-clr-2;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .recent-searches{
+                            padding-bottom: 10px;
+                            .title{
+                                font-size: 0.6875rem;
+                                color: $bg-clr-7;
+                                margin-left: 16px;
+                                margin-top: 16px;
+                            }
+                            .recentlist{
+                                display: flex;
+                                align-items: center;
+                                padding: 0 8px;
+                                margin: 8px 0;
+                                max-width: 400px;
+                                overflow: auto hidden;                                        
+                                li{
+                                    margin-right: 8px;
+                                    a{
+                                        padding: 8px 26px;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        align-items: center;
+                                        background-color: $bg-clr-2;
+                                        border-radius: 8px;
+                                        img{
+                                            border-radius: 10px;
+                                        }
+                                        .name{
+                                            margin-top: 4px;
+                                            color:#fff;
+                                            white-space: nowrap;
+                                            font-size: 0.75rem;
+                                            font-weight: 500;    
+                                            line-height: 18px;                                        
+                                        }
+                                        .symbol{
+                                            font-size: 0.6875rem;
+                                            color: $bg-clr-7;
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

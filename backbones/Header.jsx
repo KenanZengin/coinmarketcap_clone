@@ -19,16 +19,16 @@ import {HiMiniBars3} from "react-icons/hi2"
 import {TbPointFilled} from "react-icons/tb"
 import logo from "public/img/logo.png"
 import calendar from "public/img/calendar.png"
+import Search from "@/components/search-label"
 
 
 const Header = () => {
 
-  const {setStart} = useContext(CoinMarketCapContext)
+  const {setStart,searchContent} = useContext(CoinMarketCapContext)
   const [show, setShow] = useState(false);
   const [showSecond, setShowSecond] = useState(false);
   const [showThirt, setShowThird] = useState(false);
   const [showFourth,setShowFourth] = useState(false)
-  const [dp,setDp] = useState("none")
 
   return (
     <header className='header'>
@@ -867,126 +867,14 @@ const Header = () => {
             <Offcanvas.Header >
               <Offcanvas.Title>
                 <Image src={logo} alt="logo" />
-                
+                <span onClick={()=>setShowFourth(false)}><AiFillCloseCircle size={20}/></span>
               </Offcanvas.Title>              
             </Offcanvas.Header>
             <Offcanvas.Body>
               <div className="coin-search-btn">                
                 <div className="search-area">
                   <div className="search-area-content">
-                    <div className="searching-label">
-                      <BiSearch size={15} />
-                      <input type="text" placeholder='Search coin, pair, contract address or exchange' />                      
-                      <div className="close" onClick={()=>setShowFourth(false)}>
-                        <AiFillCloseCircle size={18} />
-                      </div>
-                    </div>
-                    <div className="trending">
-                      <div className="title">
-                        Trending
-                        &nbsp;
-                        <span>
-                          <BsFire size={14} />
-                        </span>
-                      </div>
-                      <ul className="trend-list">
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/24478.png" alt="pepe" width={20} height={20} />
-                              <span className='name'>Pepe</span>
-                              <span className="symbol">PEPE</span>
-                            </span>
-                            <span className="rank">
-                              #58
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/10791.png" alt="eCash" width={20} height={20} />
-                              <span className='name'>eCash</span>
-                              <span className="symbol">XEC</span>
-                            </span>
-                            <span className="rank">
-                              #62
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png" alt="bitcoinCash" width={20} height={20} />
-                              <span className='name'>Bitcoin Cash</span>
-                              <span className="symbol">BCH</span>
-                            </span>
-                            <span className="rank">
-                              #14
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="bitcoin" width={20} height={20} />
-                              <span className='name'>Bitcoin Cash</span>
-                              <span className="symbol">BCH</span>
-                            </span>
-                            <span className="rank">
-                              #1
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/18037.png" alt="MAV" width={20} height={20} />
-                              <span className='name'>Maverick Protocol</span>
-                              <span className="symbol">MAV</span>
-                            </span>
-                            <span className="rank">
-                              #242
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/2.png" alt="LTC" width={20} height={20} />
-                              <span className='name'>Litecoin</span>
-                              <span className="symbol">LTC</span>
-                            </span>
-                            <span className="rank">
-                              #9
-                            </span>
-                          </Link>
-                        </li>
-                      
-                      </ul>
-                    </div>
-                    <div className="recent-searches">
-                      <div className="title">
-                        Recent search 
-                      </div>
-                      <ul className="recentlist">
-                        <li>
-                          <Link href={"/"}>
-                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btc" height={20} width={20} />
-                            <span className="name">Bitcoin</span>
-                            <span className="symbol">BTC</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/10791.png" alt="xec" height={20} width={20} />
-                            <span className="name">eCash</span>
-                            <span className="symbol">XEC</span>
-                          </Link>
-                        </li>
-                       
-                      </ul>
-                    </div>
+                    <Search  />                    
                   </div>
                 </div>
               </div>
@@ -1904,7 +1792,7 @@ const Header = () => {
                 </button>
               </div>
               <div className="coin-search-btn">
-                <div className="search-input" onClick={()=>setDp("block")}>
+                <div className="search-input" onClick={()=>searchContent("block")}>
                   <BiSearch size={19} />
                   <div className="placeholder">Search</div>
                   <div className="search-tooltip">
@@ -1918,123 +1806,7 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
-                <div className="search-area" style={{"--dp-v":dp}}>
-                  <div className="search-area-content">
-                    <div className="searching-label">
-                      <BiSearch size={15} />
-                      <input type="text" placeholder='Search coin, pair, contract address or exchange' />
-                      <div className="close" onClick={()=>setDp("none")}>
-                        <AiFillCloseCircle size={18} />
-                      </div>
-                    </div>
-                    <div className="trending">
-                      <div className="title">
-                        Trending
-                        &nbsp;
-                        <span>
-                          <BsFire size={14} />
-                        </span>
-                      </div>
-                      <ul className="trend-list">
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/24478.png" alt="pepe" width={20} height={20} />
-                              <span className='name'>Pepe</span>
-                              <span className="symbol">PEPE</span>
-                            </span>
-                            <span className="rank">
-                              #58
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/10791.png" alt="eCash" width={20} height={20} />
-                              <span className='name'>eCash</span>
-                              <span className="symbol">XEC</span>
-                            </span>
-                            <span className="rank">
-                              #62
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png" alt="bitcoinCash" width={20} height={20} />
-                              <span className='name'>Bitcoin Cash</span>
-                              <span className="symbol">BCH</span>
-                            </span>
-                            <span className="rank">
-                              #14
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="bitcoin" width={20} height={20} />
-                              <span className='name'>Bitcoin Cash</span>
-                              <span className="symbol">BCH</span>
-                            </span>
-                            <span className="rank">
-                              #1
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/18037.png" alt="MAV" width={20} height={20} />
-                              <span className='name'>Maverick Protocol</span>
-                              <span className="symbol">MAV</span>
-                            </span>
-                            <span className="rank">
-                              #242
-                            </span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <span className="info">
-                              <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/2.png" alt="LTC" width={20} height={20} />
-                              <span className='name'>Litecoin</span>
-                              <span className="symbol">LTC</span>
-                            </span>
-                            <span className="rank">
-                              #9
-                            </span>
-                          </Link>
-                        </li>
-                      
-                      </ul>
-                    </div>
-                    <div className="recent-searches">
-                      <div className="title">
-                        Recent search 
-                      </div>
-                      <ul className="recentlist">
-                        <li>
-                          <Link href={"/"}>
-                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="btc" height={20} width={20} />
-                            <span className="name">Bitcoin</span>
-                            <span className="symbol">BTC</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href={"/"}>
-                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/10791.png" alt="xec" height={20} width={20} />
-                            <span className="name">eCash</span>
-                            <span className="symbol">XEC</span>
-                          </Link>
-                        </li>
-                       
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+                <Search  />
               </div>
             </div>
           </div>

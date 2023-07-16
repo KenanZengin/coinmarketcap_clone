@@ -157,7 +157,7 @@ const CoinTable =  () => {
                         </div>
                         <div className="basic-graph">
                             <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
-                                <img src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/1.svg" className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
+                                <img src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${coin.id}.svg`} className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
                             </Link>
                         </div>
                         <div className="go-detail">

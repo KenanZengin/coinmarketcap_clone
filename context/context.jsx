@@ -11,8 +11,9 @@ export const CoinMarketCapProvider = ({children}) => {
     const [start,setStart] = useState(1)
     const [pageNumber,setPageNumber] = useState(1)
     const [coinDetail,setCoinDetail] = useState()
-    
-    
+    const [searchLabel,setSearchLabel] = useState("none")
+    const [search,setSearch] = useState("")
+   
 
     const getCoins = async (url) => {
         try {
@@ -22,10 +23,17 @@ export const CoinMarketCapProvider = ({children}) => {
         } catch (error) {
           console.log(error.message);
         }
-       }
+    }
+
+    const searchContent = (dp) => {
+        setSearchLabel(dp)
+        setSearch("")
+    }
+
 
     const data = {
         getCoins,
+        searchContent,
         limit,
         setLimit,
         start,
@@ -34,8 +42,10 @@ export const CoinMarketCapProvider = ({children}) => {
         setPageNumber,
         coinDetail,
         setCoinDetail,
- 
-        
+        searchLabel,
+        setSearchLabel,
+        search,
+        setSearch
     }
     
     
