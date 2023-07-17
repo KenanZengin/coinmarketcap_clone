@@ -2,13 +2,22 @@
     display: flex;
     background-color: $bg-clr-1;
     border-top: 1px solid  $border-clr-2;
+    @include BootstrapMaxWidthResponsive(md){
+       flex-direction: column;
+    } 
     .coin-stats{
         padding: 0 24px 24px 24px;
         border-right: 1px solid $border-clr-2;
         width: 23%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: center;       
+        @include BootstrapMaxWidthResponsive(lg){
+            width: 36%;
+        } 
+        @include BootstrapMaxWidthResponsive(md){
+            width: 100%;
+         } 
         abbr{
             text-decoration: none;
         }
@@ -70,7 +79,12 @@
             .price{
                 display: flex;
                 align-items: baseline;
-                margin-top: 15px;
+                margin-top: 15px;             
+                @include BootstrapMaxWidthResponsive(xl){
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 10px;
+                }                
                 h2{
                     font-size: 2.5rem;
                     color: #fff;
@@ -80,6 +94,10 @@
                     font-size:0.875rem;
                     font-weight:600;
                     margin-left: 15px;
+                    white-space: nowrap;
+                    @include BootstrapMaxWidthResponsive(xl){
+                        margin-left: 0;
+                    }       
                     .up,.down{
                         img{
                             margin-right: 1px;
@@ -334,6 +352,12 @@
     }
     .coin-info-detail{
         width: 57%;
+        @include BootstrapMaxWidthResponsive(lg){
+            width: 64%;
+        } 
+        @include BootstrapMaxWidthResponsive(md){
+            width: 100%;
+        } 
         .info-top{
             padding:  24px 5% 0;
             border-bottom: 1px solid  $border-clr-2;
@@ -369,15 +393,28 @@
             }
             canvas{
                 padding:0 5%;
-                width: 800px;
-                height: 275px;
+                width: 100%;
+                height: 100%;
                 
             }
             .buttons--group:first-child{
                 width: 25%;
                 button{
                     width: 100%;
-                }
+                    @include BootstrapMaxWidthResponsive(xs){
+                        padding: 0;
+                    } 
+                }                
+            }
+            .buttons--group:nth-child(2){
+                @include BootstrapMaxWidthResponsive(xl){
+                    display: none;
+                } 
+            }
+            .buttons--group:nth-child(3){
+                @include BootstrapMaxWidthResponsive(hd){
+                    display: none;
+                } 
             }
             .buttons--group:nth-child(4){
                 width: 21%;
@@ -385,13 +422,15 @@
                     width: 100%;
                     justify-content: space-between !important;
                 }
+                @include BootstrapMaxWidthResponsive(xs){
+                    display: none;
+                } 
             }
-            .buttons--group:nth-child(5){
-            
+            .buttons--group:nth-child(5){            
                 button:nth-child(6){
                     border-right: 1px solid $bg-clr-19;
                     
-                }
+                }                
             }
             .trading{
                 border-radius: 6px;
@@ -432,6 +471,10 @@
                         }
                         .name{
                             width: 20%;
+                            white-space: nowrap;
+                            @include BootstrapMaxWidthResponsive(lg){
+                                width: 32%;
+                            } 
                         }
                         .h1-change{
                             width: 18%;
@@ -453,7 +496,11 @@
                         }
                     }
                     .table-body-item{
-                        
+                        .t-body-name{
+                            button{
+                                white-space: nowrap !important;
+                            }
+                        }
                         .t-body-price{
                            a{
                             color: $text-clr-11;
@@ -525,7 +572,7 @@
                 font-weight: 600;
                 padding: 0 9px;
                 line-height: 24px;
-               
+                white-space: nowrap;
                 svg{
                     height: 24px;
                 }
@@ -541,6 +588,14 @@
         width: 20%;
         padding: 24px 10px 0;
         border-left: 1px solid $border-clr-2;
+        @include BootstrapMaxWidthResponsive(lg){
+            display: none;
+        } 
+        @include BootstrapMaxWidthResponsive(md){
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        } 
         .chat-title{
             display: flex;
             align-items: center;
@@ -564,6 +619,14 @@
             padding: 25px 10px;
             background-color: $bg-clr-20;
             border-radius: 8px;
+            @include BootstrapMaxWidthResponsive(xl){
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;;
+            } 
+            @include BootstrapMaxWidthResponsive(md){                
+                flex-direction: row;                
+            } 
             .left{
                 display: flex;
                 align-items: center;

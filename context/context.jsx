@@ -13,7 +13,8 @@ export const CoinMarketCapProvider = ({children}) => {
     const [coinDetail,setCoinDetail] = useState()
     const [searchLabel,setSearchLabel] = useState("none")
     const [search,setSearch] = useState("")
-   
+    const [showFourthCanvas,setshowFourthCanvas] = useState(false)
+
 
     const getCoins = async (url) => {
         try {
@@ -45,7 +46,9 @@ export const CoinMarketCapProvider = ({children}) => {
         searchLabel,
         setSearchLabel,
         search,
-        setSearch
+        setSearch,
+        showFourthCanvas,
+        setshowFourthCanvas
     }
     
     

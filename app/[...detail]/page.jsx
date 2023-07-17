@@ -565,6 +565,7 @@ const CoinDetail =  ({searchParams}) => {
                               <p>Coinbase Exchange</p>
                               <BsDatabaseFillCheck size={15} />
                           </button>
+                          
                       </div>
                       <div className="t-body-price price">
                           <Link href={"/"}>

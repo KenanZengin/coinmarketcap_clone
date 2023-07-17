@@ -9,14 +9,14 @@ import {BsFire} from "react-icons/bs"
 import {BiSearch} from "react-icons/bi"
 
 const Search = () => {
-    const {getCoins,setCoinDetail,searchLabel,search,setSearch,searchContent} = useContext(CoinMarketCapContext)
+    const {getCoins,setCoinDetail,searchLabel,search,setSearch,searchContent,setshowFourthCanvas} = useContext(CoinMarketCapContext)
     const {data,error } = useSWR(`/api/coins?limit=100&start=1`,getCoins)
    
 
     const sendInfo = (coinInfo) => {
         setCoinDetail(coinInfo)  
         searchContent("none")
-        
+        setshowFourthCanvas(false)
     }
     return (
     <div className="search-area" style={{"--dp-v":searchLabel}}>

@@ -25,11 +25,10 @@ import Search from "@/components/search-label"
 
 const Header = () => {
   const router = useRouter()
-  const {setStart,searchContent} = useContext(CoinMarketCapContext)
+  const {setStart,searchContent,showFourthCanvas,setshowFourthCanvas} = useContext(CoinMarketCapContext)
   const [show, setShow] = useState(false);
   const [showSecond, setShowSecond] = useState(false);
   const [showThirt, setShowThird] = useState(false);
-  const [showFourth,setShowFourth] = useState(false)
 
   const backHomePage = () => {
     setStart(1)
@@ -39,9 +38,9 @@ const Header = () => {
     <header className='header'>
       <div className="header-web">
         <div className="header-web-hibars">
-          <Image src={logo} alt="logo" />
+          <Image src={logo} alt="logo" onClick={backHomePage} />
           <div className="left">
-            <button onClick={()=>setShowFourth(true)}>
+            <button onClick={()=>setshowFourthCanvas(true)}>
               <BiSearch size={25} />
             </button>
             <img src="https://s2.coinmarketcap.com/static/cloud/img/loyalty-program/diamond-icon.svg" alt="diamond" width={24} height={24} />
@@ -868,11 +867,11 @@ const Header = () => {
               </div>
             </Offcanvas.Body>
           </Offcanvas>
-          <Offcanvas show={showFourth}  className="second-canvas">
+          <Offcanvas show={showFourthCanvas}  className="second-canvas">
             <Offcanvas.Header >
               <Offcanvas.Title>
                 <Image src={logo} alt="logo" />
-                <span onClick={()=>setShowFourth(false)}><AiFillCloseCircle size={20}/></span>
+                <span onClick={()=>setshowFourthCanvas(false)}><AiFillCloseCircle size={20}/></span>
               </Offcanvas.Title>              
             </Offcanvas.Header>
             <Offcanvas.Body>
