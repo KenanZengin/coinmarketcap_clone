@@ -398,7 +398,7 @@
                             }
                         }
                         .signup-btn,.login-btn{
-                            button{
+                            button,a{
                                 display: flex;
                                 align-items: center;
                                 justify-self: center;
@@ -412,7 +412,7 @@
                         }
                         .login-btn{
                             margin: 2px 8px 2px 12px;
-                            button{
+                            button,a{
                                 background-color: inherit;                            
                                 border-color: $border-clr-3;                               
                                 color: $border-clr-3;                                                                
@@ -423,7 +423,7 @@
                         }
                         .signup-btn{
                             position: relative;
-                            button{
+                            button,a{
                                 color: white;
                                 background-color:$bg-clr-3;
                                 border-color: $bg-clr-3;

@@ -41,7 +41,7 @@ const Search = () => {
                                 : item.name.toLowerCase().includes(search)
                             }).map((coin,i)=>(
                                 i < 6
-                                ?  <li><Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
+                                ?  <li key={i}><Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
                                     <span className="info">
                                         <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png`} alt="eCash" width={20} height={20} />
                                         <span className='name'>{coin.name}</span>
@@ -68,7 +68,7 @@ const Search = () => {
                     <ul className="trend-list">
                         {data?.map((coin,i)=>(
                         i < 6 
-                                ?   <li>
+                                ?   <li key={i}>
                                         <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
                                         <span className="info">
                                             <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png`} alt="pepe" width={20} height={20} />

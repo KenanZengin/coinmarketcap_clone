@@ -761,7 +761,6 @@ const CoinDetail =  ({searchParams}) => {
         </div>
         <div id="News"></div>
       </div>
-
       <div className="coin-community">
         <div className="chat-title">
           <p>Live Chat</p>
@@ -789,6 +788,7 @@ const CoinDetail =  ({searchParams}) => {
           </form>
         </div>
       </div>
+      
     </div>
   )
 }
