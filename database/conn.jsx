@@ -4,7 +4,7 @@ const connectMongo = async() => {
     try {
         const {connection} = await mongoose.connect(process.env.MONGODB_URL)
         console.log("connection succesful");
-        if(connection.readyState == 1){ // 0 bağlantı kesilirse , 1 bağlantı olursa  , 3 bağlantı kesmek için 
+        if(connection.readyState == 1){ 
             return Promise.resolve(true)
         }
 

@@ -3,7 +3,7 @@ import connectMongo from "../../../../database/conn";
 import Users from "../../../../model/Schema";
 import { hash } from "bcryptjs";
 
-export async function POST(request,response) {
+export async function POST(request) {
 
   connectMongo().catch(error => res.json({ error: "Connection Failed...!"}))
      
