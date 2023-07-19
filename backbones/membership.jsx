@@ -1,6 +1,8 @@
 "use client"
 import { useState } from "react"
 import {Modal} from "react-bootstrap"
+import { useFormik } from "formik"
+import signUp_validate from "@/lib/validate"
 import { CgClose } from "react-icons/cg"
 import Google from "public/img/google.png"
 import Github from "public/img/github.png"
@@ -9,8 +11,10 @@ import Image from "next/image"
 
 const MemberShip = () => {
 
+
     const [signUp,setsignUp] = useState(false)
     const [signIn,setsignIn] = useState(false)
+    const [checkBox,setCheckBox] = useState(false)
 
     const SignUpSend = () => {
         setsignIn(false)
@@ -20,6 +24,27 @@ const MemberShip = () => {
         setsignUp(false)
         setsignIn(true)
     }
+
+    const formik = useFormik({
+        initialValues:{
+            userName:"",
+            email:"",
+            password:"",
+        },
+        validate:signUp_validate,
+        onSubmit
+    })
+    async function onSubmit(values){
+        const options = {
+            method : "POST",
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(values)
+        }
+        await fetch('/api/auth/signup',options)
+    }
+
+    console.log(formik);
+  
   return (
     <>
          <div className="login-btn">
@@ -44,6 +69,7 @@ const MemberShip = () => {
                         <label htmlFor="mail">
                             <span>Email Address</span>
                             <input type="email" id="mail" placeholder="Enter your email address..." />
+                            
                         </label>
                         <label htmlFor="password">
                             <span>Password</span>
@@ -96,24 +122,27 @@ const MemberShip = () => {
                             <CgClose size={25} />
                         </span>
                     </div>
-                    <form>
+                    <form onSubmit={formik.handleSubmit}>
                         <label htmlFor="userName">
                             <span>User Name</span>
-                            <input type="text" id="userName" placeholder="Enter your user name..." />
+                            <input type="text" id="userName" name="userName"  placeholder="Enter your user name..."  {...formik.getFieldProps("userName")} className={formik.errors.userName && formik.touched.userName ? "errborder": ""} />
+                            {formik.errors.userName && formik.touched.userName ? <span className="errmessage">{formik.errors.userName}</span> : <></>}
                         </label>
-                        <label htmlFor="mail">
+                        <label htmlFor="email">
                             <span>Email Address</span>
-                            <input type="email" id="mail" placeholder="Enter your email address..." />
+                            <input type="email" id="email"  name="email" placeholder="Enter your email address..." {...formik.getFieldProps("email")}  className={formik.errors.email && formik.touched.email ? "errborder": ""}/>
+                            {formik.errors.email && formik.touched.email ? <span className="errmessage">{formik.errors.email}</span> : <></>}
                         </label>
                         <label htmlFor="password">
                             <span>Password</span>
-                            <input type="password" id="password"  placeholder="Enter your password..."/>
+                            <input type="password" id="password" name="password"  placeholder="Enter your password..." {...formik.getFieldProps("password")} className={formik.errors.password && formik.touched.password ? "errborder": ""}/>
+                            {formik.errors.password && formik.touched.password ? <span className="errmessage">{formik.errors.password}</span> : <></>}
                         </label>
                         <label htmlFor="rights" className="rights">
-                            <input type="checkbox" id="rights" />
+                            <input type="checkbox" id="rights" onClick={()=>setCheckBox(!checkBox)} />
                             <p>I agree to receive marketing updates from CoinMarketCap</p>
                         </label>
-                        <button>
+                        <button type="submit" disabled={checkBox && formik.isValid ? false : true}  style={{opacity: checkBox && formik.isValid ? "1" : ".4"}}>
                             Create an account
                         </button>
                     </form>

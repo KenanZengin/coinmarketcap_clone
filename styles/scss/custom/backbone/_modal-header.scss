@@ -219,6 +219,19 @@
                                 box-shadow: $box-shadow-3;
                             }     
                         }
+                        .errmessage{
+                            margin-top: 7.5px;
+                            color: $text-clr-7;
+                        }
+                        .errborder{
+                            border-color: $text-clr-7 !important;
+                            box-shadow: $box-shadow-10 !important;
+                            &:focus{
+                                border-color: $text-clr-7 !important;
+                                box-shadow: $box-shadow-10 !important;
+                            } 
+                        }
+
                     }
                     .rights{  
                         display: flex;
