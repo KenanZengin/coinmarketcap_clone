@@ -397,7 +397,7 @@
                                 }
                             }
                         }
-                        .signup-btn,.login-btn{
+                        .signup-btn,.login-btn,.signout-btn{
                             button,a{
                                 display: flex;
                                 align-items: center;
@@ -410,7 +410,7 @@
                                 border: 1px solid;
                             }
                         }
-                        .login-btn{
+                        .login-btn,.signout-btn{
                             margin: 2px 8px 2px 12px;
                             button,a{
                                 background-color: inherit;                            

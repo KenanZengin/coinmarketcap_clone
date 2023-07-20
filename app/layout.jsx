@@ -1,5 +1,6 @@
 import '../styles/globals.scss'
 import { Inter } from 'next/font/google'
+import NextAuthProvider from '@/components/provider'
 import { CoinMarketCapProvider } from '@/context/context'
 import Header from '../backbones/Header'
 import Footer from '../backbones/Footer'
@@ -18,11 +19,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CoinMarketCapProvider>
-          <Header />
-          {children}
-          <Footer />
-        </CoinMarketCapProvider>
+        <NextAuthProvider>
+          <CoinMarketCapProvider>
+            <Header />
+            {children}
+            <Footer />
+          </CoinMarketCapProvider>
+        </NextAuthProvider>
       </body>
     </html>
   )
