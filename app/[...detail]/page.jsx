@@ -56,42 +56,28 @@ const CoinDetail =  ({searchParams}) => {
       <div className="coin-stats">
         {(coinDetail ? detail : data)?.map((coin)=>(
             <>
-              <div className="stats-top">
-              <div className="info">
-                <div className="detail">
-                  <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="coin-img" width={24} height={24} />
-                  <h1>
-                    <span className="name">{coin.name}</span>
-                    <span className="symbol">{coin.symbol}</span>
-                  </h1>
+              <div className="stats-top" key={coin.id}>
+                <div className="info">
+                  <div className="detail">
+                    <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="coin-img" width={24} height={24} />
+                    <h1>
+                      <span className="name">{coin.name}</span>
+                      <span className="symbol">{coin.symbol}</span>
+                    </h1>
+                  </div>
+                  <div className="add-card">
+                    <button>
+                      <Image src={Star} alt="Star"/>
+                    </button>
+                    <button>
+                      <Image src={Share} alt="Share"/>
+                    </button>
+                  </div>
                 </div>
-                <div className="add-card">
-                  <button>
-                    <Image src={Star} alt="Star"/>
-                  </button>
-                  <button>
-                    <Image src={Share} alt="Share"/>
-                  </button>
-                </div>
-              </div>
-              <div className="price">
-                <h2>   
-                  $<abbr title=  
-                        { Number(coin?.quote.USD.price) >= 1000 
-                          ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
-                          : coin.quote.USD.price > 1
-                              ? Number(coin.quote.USD.price).toFixed('2')
-                              : coin.quote.USD.price > 0.1
-                              ? Number(coin.quote.USD.price).toFixed('4')
-                              : coin.quote.USD.price > 0.01
-                                  ? Number(coin.quote.USD.price).toFixed('5')
-                                  : coin.quote.USD.price > 0.001 
-                                  ? Number(coin.quote.USD.price).toFixed('6')
-                                  : coin.quote.USD.price < 0.000001 
-                                      ? Number(coin.quote.USD.price).toFixed('12')
-                                      : Number(coin.quote.USD.price).toFixed('7')
-                      }>
-                        { Number(coin.quote.USD.price) >= 1000 
+                <div className="price">
+                  <h2>   
+                    $<abbr title=  
+                          { Number(coin?.quote.USD.price) >= 1000 
                             ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
                             : coin.quote.USD.price > 1
                                 ? Number(coin.quote.USD.price).toFixed('2')
@@ -102,20 +88,34 @@ const CoinDetail =  ({searchParams}) => {
                                     : coin.quote.USD.price > 0.001 
                                     ? Number(coin.quote.USD.price).toFixed('6')
                                     : coin.quote.USD.price < 0.000001 
-                                        ? `0.0...${Number(coin.quote.USD.price * 1000000).toFixed('0')}`
+                                        ? Number(coin.quote.USD.price).toFixed('12')
                                         : Number(coin.quote.USD.price).toFixed('7')
-                        }
-                    </abbr>
-                </h2>
-                <div className="price-change">                
-                  {Number(coin.quote.USD.percent_change_24h) >= 0 
-                        ?  <span className="up">   <span><Image src={Up} alt="Up"/></span> {Number(coin.quote.USD.percent_change_24h).toFixed(2)}% (1d)</span>
-                        :  <span className="down"> <span><Image src={Down} alt="Down"/></span> {Number(coin.quote.USD.percent_change_24h*-1).toFixed(2)}% (1d)</span>
-                  }      
+                        }>
+                          { Number(coin.quote.USD.price) >= 1000 
+                              ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
+                              : coin.quote.USD.price > 1
+                                  ? Number(coin.quote.USD.price).toFixed('2')
+                                  : coin.quote.USD.price > 0.1
+                                  ? Number(coin.quote.USD.price).toFixed('4')
+                                  : coin.quote.USD.price > 0.01
+                                      ? Number(coin.quote.USD.price).toFixed('5')
+                                      : coin.quote.USD.price > 0.001 
+                                      ? Number(coin.quote.USD.price).toFixed('6')
+                                      : coin.quote.USD.price < 0.000001 
+                                          ? `0.0...${Number(coin.quote.USD.price * 1000000).toFixed('0')}`
+                                          : Number(coin.quote.USD.price).toFixed('7')
+                          }
+                      </abbr>
+                  </h2>
+                  <div className="price-change">                
+                    {Number(coin.quote.USD.percent_change_24h) >= 0 
+                          ?  <span className="up">   <span><Image src={Up} alt="Up"/></span> {Number(coin.quote.USD.percent_change_24h).toFixed(2)}% (1d)</span>
+                          :  <span className="down"> <span><Image src={Down} alt="Down"/></span> {Number(coin.quote.USD.percent_change_24h*-1).toFixed(2)}% (1d)</span>
+                    }      
+                  </div>
                 </div>
-              </div>
-              </div>
-              <div className="stats-wrapper">
+                </div>
+                <div className="stats-wrapper">
                 <div className="add-list">
                   <button>
                     <span className="watchlist">

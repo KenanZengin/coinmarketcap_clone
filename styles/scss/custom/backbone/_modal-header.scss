@@ -146,6 +146,7 @@
             }
             .modal-signvalidate{
                 padding: 24px 32px 36px;
+                position: relative;
                 .currency-title{
                     margin-bottom: 40px; 
                     position: relative;
@@ -190,6 +191,13 @@
                         align-items: flex-start;
                         margin-bottom: 25px;
                         width: 100%;
+                        position: relative;
+                         svg{
+                            position: absolute;
+                            top: 43px;
+                            right: 10px;
+                            color: #3b61f4;
+                        }
                         span{
                             display: block;
                             color: #fff;
@@ -315,8 +323,24 @@
                         color: $text-clr-2;
                     }
                 }
+                .register-success{
+                    position: absolute;
+                    padding: 6px 10px;
+                    background-color: $text-clr-3;
+                    color: white;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    top: -36px;
+                    right: 30%;
+                    border-radius: 6px;
+                    display: flex;
+                    align-items: center;
+                    animation: 0.5s ease 0s 1 normal forwards running opacityValue;
+                    svg{
+                        margin-left: 3px;
+                    }
+                }
             }
         }
-    }
-    
+    }  
 }
