@@ -5,12 +5,15 @@ import {signIn as SignIn , signOut , useSession} from "next-auth/react"
 import { useFormik } from "formik"
 import { signIn_validate } from "@/lib/validate"
 import {HiFingerPrint,HiAtSymbol, HiOutlineUser} from "react-icons/hi"
+import {TiTick} from "react-icons/ti"
+
 
 
 const SignInForm = () => {
 
     const {setsignIn} = useContext(CoinMarketCapContext)
     const [showPassword,setShowPassword] = useState(false)
+    const [success,setSuccess] = useState(false)
     const formik = useFormik({
         initialValues:{
             email:"",
@@ -21,16 +24,21 @@ const SignInForm = () => {
     })
 
     async function onSubmit(values){
+        setSuccess(true)
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const status = await SignIn('credentials',{
             redirect: false,
             email : values.email,
             password : values.password,
         })
+        setSuccess(false)
         if(status.ok) setsignIn(false)
+        formik.resetForm()
     }
 
   return (
     <>
+        <p className="register-success" style={{display:success ? "flex" : "none"}}>successful login <TiTick size={18}/></p>
         <form onSubmit={formik.handleSubmit}>
             <label htmlFor="mail">
                 <span>Email Address</span>

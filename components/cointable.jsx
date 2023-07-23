@@ -53,20 +53,49 @@ const CoinTable =  () => {
                 </div>
                 <div className="market-cap">
                     Market Cap
-                    <div>
+                    <div className="table-head-tooltips">
                         <BsInfoCircleFill size={12} />
+                        <div className="tooltips">
+                            <div className="tooltip-info">
+                                <div className="tooltip-body">
+                                    <p>The total market value of a cryptocurrency's <br /> circulating supply. It is analogous to the free-float <br />capitalization in the stock market.</p>
+                                    <p>Market Cap = Current Price x Circulating Supply.</p>
+                                    <span>ReadMore</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="volume">
                     Volume(24h)
-                    <div>
+                    <div className="table-head-tooltips">
                         <BsInfoCircleFill size={12} />
+                        <div className="tooltips">
+                            <div className="tooltip-info">
+                                <div className="tooltip-body">
+                                  <p>
+                                  A measure of how much of a cryptocurrency was <br />traded in the last 24 hours.
+                                  </p>
+                                  <span>Read More</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="supply">
                     Circulating Supply
-                    <div>
+                    <div className="table-head-tooltips">
                         <BsInfoCircleFill size={12} />
+                        <div className="tooltips">
+                            <div className="tooltip-info">
+                                <div className="tooltip-body">
+                                    <p>
+                                        The amount of coins that are circulating in the <br />market and are in public hands. It is analogous to <br /> the flowing shares in the stock market.
+                                    </p>
+                                    <span>ReadMore</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="basic-graph">
@@ -74,7 +103,6 @@ const CoinTable =  () => {
                 </div>
                 <div className="go-detail"></div>
             </div>
-            <h2 style={{color:'white',fontSize:"2rem"}}>{session ? session.user.email : ""}</h2>
             <div className="table-body">         
                 
                     {data 
@@ -197,7 +225,6 @@ const CoinTable =  () => {
                 
             </div>           
         </div>
-       
     </div>
   )
 }

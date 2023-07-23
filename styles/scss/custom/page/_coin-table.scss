@@ -116,6 +116,82 @@
                 }  
                 
             }
+            .market-cap,.volume,.supply{
+                .tooltips{                         
+                    top: -9px;
+                    left: -36px;                      
+                    .tooltip-info{
+                        background-color: $bg-clr-2;
+                        padding: 12.5px 10px 0;                                                                                         
+                        .tooltip-body{
+                            color: $text-clr-1; 
+                            text-align: start;
+                            font-size: 0.75rem;
+                            p{
+                                margin-bottom: 12px;
+                                line-height: 21px;
+                                @include BootstrapMaxWidthResponsive(sm){
+                                    white-space: normal;                                     
+                                } 
+                            }                      
+                            span{
+                                display: inline-block;
+                                color: $text-clr-11;
+                                margin-bottom: 12.5px;
+                            }         
+                        }
+                    }
+                }
+            }
+            .market-cap{
+                &:has(.table-head-tooltips:not(:hover)) .table-head-tooltips .tooltips{                   
+                    display: none;                   
+                }
+                &:has(.table-head-tooltips:hover) .table-head-tooltips .tooltips{                   
+                    display: flex;                    
+                }              
+                .table-head-tooltips{
+                    position: relative;
+                    .tooltips{                         
+                        top: -9px;
+                        left: -36px;                      
+                      
+                    }
+                }
+            }
+            .volume{
+                &:has(.table-head-tooltips:not(:hover)) .table-head-tooltips .tooltips{                   
+                    display: none;                   
+                }
+                &:has(.table-head-tooltips:hover) .table-head-tooltips .tooltips{                   
+                    display: flex;                    
+                }              
+                .table-head-tooltips{
+                    position: relative;
+                    .tooltips{                         
+                        top: -9px;
+                        left: -36px;                      
+                       
+                    }
+                }
+            }
+            .supply{
+                &:has(.table-head-tooltips:not(:hover)) .table-head-tooltips .tooltips{                   
+                    display: none;                   
+                }
+                &:has(.table-head-tooltips:hover) .table-head-tooltips .tooltips{                   
+                    display: flex;                    
+                }              
+                .table-head-tooltips{
+                    position: relative;
+                    .tooltips{                         
+                        top: -9px;
+                        left: -36px;                      
+                       
+                    }
+                }
+            }
+            
             
         }
         .table-body{                   

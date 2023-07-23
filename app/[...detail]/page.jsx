@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useContext, useState } from "react"
+import { useSession} from "next-auth/react"
 import { CoinMarketCapContext } from "@/context/context"
 import useSWR from 'swr'
 import Nav from 'react-bootstrap/Nav';
@@ -37,6 +38,7 @@ import Pagination from "@/components/pagination"
 
 const CoinDetail =  ({searchParams}) => {
 
+  const {data : session} = useSession()
   const {getCoins,coinDetail} = useContext(CoinMarketCapContext)
   const [converter,setConverter] = useState(0)
   const [Coinconverter,SetCoinConverter] = useState()
@@ -783,7 +785,7 @@ const CoinDetail =  ({searchParams}) => {
         </div>
         <div className="user-comment">
           <form>
-            <input type="text" placeholder="What's happening on BTC?" />
+            <input type="text" placeholder={session && session.user ? "What's happening on today?" : "You could be a member to comment"} disabled={session && session.user ? false : true}/>
             <button>Post</button>
           </form>
         </div>
