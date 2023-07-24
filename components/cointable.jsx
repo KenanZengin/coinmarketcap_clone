@@ -2,7 +2,6 @@
 import useSWR from 'swr'
 import { useContext } from "react"
 import { CoinMarketCapContext } from "@/context/context"
-import {useSession} from "next-auth/react"
 import { v4 as uuidv4 } from 'uuid';
 import Skeleton from "./skeleton";
 import {BsInfoCircleFill} from "react-icons/bs"
@@ -15,9 +14,8 @@ import Link from 'next/link'
 
 const CoinTable =  () => {
 
-    const {data : session} = useSession()
     const {getCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
-    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`)
+    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`,getCoins)
     
     if(error) return <h1>{error}</h1>
 
