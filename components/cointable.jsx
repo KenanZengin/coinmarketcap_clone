@@ -17,10 +17,7 @@ const CoinTable =  () => {
 
     const {data : session} = useSession()
     const {getCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
-    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`,getCoins,{
-        keepPreviousData : true,
-       
-    })
+    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`)
     
     if(error) return <h1>{error}</h1>
 
