@@ -15,14 +15,14 @@ import Link from 'next/link'
 const CoinTable =  () => {
 
     const {getCoins,limit,start,setCoinDetail} = useContext(CoinMarketCapContext)
-    const {data,error } = useSWR(`/api/coins?limit=${limit}&start=${start}`,getCoins)
+    const {data,error} = useSWR(`/api/coins?limit=${limit}&start=${start}`,getCoins)
     
     if(error) return <h1>{error}</h1>
 
     const sendInfo = (coinInfo) => {
         setCoinDetail(coinInfo)  
     }
-    console.log(data);
+    
   return (
     <div className='coin-table'> 
         <div className="coin-table-wrapper">
