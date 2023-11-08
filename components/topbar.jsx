@@ -14,11 +14,11 @@ import {PiSlidersHorizontalBold} from "react-icons/pi"
 
 
 const Topbar = () => {  
+  
   const {setLimit,limit,setStart,start,setPageNumber,} = useContext(CoinMarketCapContext)
   const [more,setMore] = useState(false)
 
   const coinLimit = (i) => {
-    
     setLimit(i)
     setStart(1)
     setPageNumber(1)
