@@ -35,11 +35,11 @@ const Search = () => {
                         Cryptoassets
                     </div>
                     <ul className="trend-list">            
-                        {data && data?.filter((item)=>{
-                            return search.toLowerCase() === ""
+                        {data && data?.filter((item)=>(
+                            search.toLowerCase() === ""
                                 ? ""
                                 : item.name.toLowerCase().includes(search)
-                            }).map((coin,i)=>(
+                            )).map((coin,i)=>(
                                 i < 6
                                 ?  <li key={i}><Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
                                     <span className="info">

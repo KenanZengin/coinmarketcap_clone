@@ -12,7 +12,7 @@ import {FiChevronDown} from "react-icons/fi"
 const Pagination = () => {
    
     const {setLimit,limit,start,setStart,setPageNumber,pageNumber} = useContext(CoinMarketCapContext)
-  
+    
 
     const coinLimit = (i) => {
         document.body.scrollTop=200;

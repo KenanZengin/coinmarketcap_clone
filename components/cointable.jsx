@@ -101,121 +101,121 @@ const CoinTable =  () => {
             <div className="table-body">         
                 
                     {data 
-                    ? data.map((coin)=>(
-                        <div className="table-body-item" key={coin.id}>
-                            <div className="star">
-                                <button>
-                                    <AiOutlineStar size={16} />
-                                </button>
-                            </div>
-                            <div className="t-body-rank rank" >
-                                {coin.cmc_rank}
-                            </div>
-                            <div className="t-body-name name">
-                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
-                                    <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
-                                    <p>{coin.name}</p>
-                                    <p>{coin.symbol}</p>
-                                </Link>
-                            </div>
-                            <div className="t-body-price price">
-                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
-                                $<abbr title=  { Number(coin.quote.USD.price) >= 1000 
-                                            ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
-                                            : coin.quote.USD.price > 1
-                                                ? Number(coin.quote.USD.price).toFixed('2')
-                                                : coin.quote.USD.price > 0.1
-                                                ? Number(coin.quote.USD.price).toFixed('4')
-                                                : coin.quote.USD.price > 0.01
-                                                    ? Number(coin.quote.USD.price).toFixed('5')
-                                                    : coin.quote.USD.price > 0.001 
-                                                    ? Number(coin.quote.USD.price).toFixed('6')
-                                                    : coin.quote.USD.price < 0.000001 
-                                                        ? Number(coin.quote.USD.price).toFixed('12')
-                                                        : Number(coin.quote.USD.price).toFixed('7')
-                                        }>
-                                        { Number(coin.quote.USD.price) >= 1000 
-                                            ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
-                                            : coin.quote.USD.price > 1
-                                                ? Number(coin.quote.USD.price).toFixed('2')
-                                                : coin.quote.USD.price > 0.1
-                                                ? Number(coin.quote.USD.price).toFixed('4')
-                                                : coin.quote.USD.price > 0.01
-                                                    ? Number(coin.quote.USD.price).toFixed('5')
-                                                    : coin.quote.USD.price > 0.001 
-                                                    ? Number(coin.quote.USD.price).toFixed('6')
-                                                    : coin.quote.USD.price < 0.000001 
-                                                        ? `0.0...${Number(coin.quote.USD.price * 1000000).toFixed('0')}`
-                                                        : Number(coin.quote.USD.price).toFixed('7')
-                                        }
-                                </abbr>                                
-                                </Link>
-                            </div>  
-                            <div className="t-body-change h1-change">
-                                {Number(coin.quote.USD.percent_change_1h) >= 0 
-                                    ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_1h).toFixed(2)}%</span>
-                                    :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_1h*-1).toFixed(2)}%</span>
-                                }                        
-                            </div>
-                            <div className="t-body-change h24-change">    
-                                {Number(coin.quote.USD.percent_change_24h) >= 0 
-                                    ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_24h).toFixed(2)}%</span>
-                                    :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_24h*-1).toFixed(2)}%</span>
-                                }   
-                            </div>
-                            <div className="t-body-change d7-change">                                               
-                                {Number(coin.quote.USD.percent_change_7d) >= 0 
-                                    ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_7d).toFixed(2)}%</span>
-                                    :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_7d*-1).toFixed(2)}%</span>
-                                }   
-                            </div>
-                            <div className="t-body-mrkcap market-cap">
-                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
-                                    ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
-                                </Link>
-                            </div>
-                            <div className="t-body-v volume">
-                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
-                                    <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
-                                </Link>
-                                <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>                            
-                            </div>
-                            <div className="t-body-sp supply">
-                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>                           
-                                    <abbr title={Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}>{Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}</abbr>                                
-                                </Link>
-                                &nbsp;{coin.symbol}
-                            </div>
-                            <div className="basic-graph">
-                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
-                                    <img src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${coin.id}.svg`} className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
-                                </Link>
-                            </div>
-                            <div className="go-detail">
-                                <div className="detail-tooltip">                            
-                                    <button >                            
-                                        <div className="svgs">
-                                            <TbPointFilled size={6.5} />
-                                            <TbPointFilled size={6.5} />
-                                            <TbPointFilled size={6.5} />
-                                        </div>
-                                        <div className="tooltips">
-                                            <div className="tooltips-info">
-                                                <div className="tooltips-body">
-                                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Charts</Link>
-                                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Marktes</Link>
-                                                <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Historical Data</Link>
+                        ? data.map((coin)=>(
+                            <div className="table-body-item" key={coin.id}>
+                                <div className="star">
+                                    <button>
+                                        <AiOutlineStar size={16} />
+                                    </button>
+                                </div>
+                                <div className="t-body-rank rank" >
+                                    {coin.cmc_rank}
+                                </div>
+                                <div className="t-body-name name">
+                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
+                                        <img src={`https://s2.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`} alt="btcLogo" width={24} height={24} />
+                                        <p>{coin.name}</p>
+                                        <p>{coin.symbol}</p>
+                                    </Link>
+                                </div>
+                                <div className="t-body-price price">
+                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
+                                    $<abbr title=  { Number(coin.quote.USD.price) >= 1000 
+                                                ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
+                                                : coin.quote.USD.price > 1
+                                                    ? Number(coin.quote.USD.price).toFixed('2')
+                                                    : coin.quote.USD.price > 0.1
+                                                    ? Number(coin.quote.USD.price).toFixed('4')
+                                                    : coin.quote.USD.price > 0.01
+                                                        ? Number(coin.quote.USD.price).toFixed('5')
+                                                        : coin.quote.USD.price > 0.001 
+                                                        ? Number(coin.quote.USD.price).toFixed('6')
+                                                        : coin.quote.USD.price < 0.000001 
+                                                            ? Number(coin.quote.USD.price).toFixed('12')
+                                                            : Number(coin.quote.USD.price).toFixed('7')
+                                            }>
+                                            { Number(coin.quote.USD.price) >= 1000 
+                                                ? Number(coin.quote.USD.price.toFixed('2')).toLocaleString('en-US')
+                                                : coin.quote.USD.price > 1
+                                                    ? Number(coin.quote.USD.price).toFixed('2')
+                                                    : coin.quote.USD.price > 0.1
+                                                    ? Number(coin.quote.USD.price).toFixed('4')
+                                                    : coin.quote.USD.price > 0.01
+                                                        ? Number(coin.quote.USD.price).toFixed('5')
+                                                        : coin.quote.USD.price > 0.001 
+                                                        ? Number(coin.quote.USD.price).toFixed('6')
+                                                        : coin.quote.USD.price < 0.000001 
+                                                            ? `0.0...${Number(coin.quote.USD.price * 1000000).toFixed('0')}`
+                                                            : Number(coin.quote.USD.price).toFixed('7')
+                                            }
+                                    </abbr>                                
+                                    </Link>
+                                </div>  
+                                <div className="t-body-change h1-change">
+                                    {Number(coin.quote.USD.percent_change_1h) >= 0 
+                                        ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_1h).toFixed(2)}%</span>
+                                        :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_1h*-1).toFixed(2)}%</span>
+                                    }                        
+                                </div>
+                                <div className="t-body-change h24-change">    
+                                    {Number(coin.quote.USD.percent_change_24h) >= 0 
+                                        ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_24h).toFixed(2)}%</span>
+                                        :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_24h*-1).toFixed(2)}%</span>
+                                    }   
+                                </div>
+                                <div className="t-body-change d7-change">                                               
+                                    {Number(coin.quote.USD.percent_change_7d) >= 0 
+                                        ?  <span className="h-change-up">   <BiSolidUpArrow size={8} /> {Number(coin.quote.USD.percent_change_7d).toFixed(2)}%</span>
+                                        :  <span className="h-change-down"> <BiSolidDownArrow size={8} /> {Number(coin.quote.USD.percent_change_7d*-1).toFixed(2)}%</span>
+                                    }   
+                                </div>
+                                <div className="t-body-mrkcap market-cap">
+                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
+                                        ${Number(coin.quote.USD.market_cap).toLocaleString('en-US',{maximumFractionDigits:0})} 
+                                    </Link>
+                                </div>
+                                <div className="t-body-v volume">
+                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
+                                        <p>${Number(coin.quote.USD.volume_24h).toLocaleString('en-US',{maximumFractionDigits:0})} </p> 
+                                    </Link>
+                                    <span>{Number(coin.quote.USD.volume_24h/coin.quote.USD.price).toLocaleString('en-US',{maximumFractionDigits:0})} {coin.symbol}</span>                            
+                                </div>
+                                <div className="t-body-sp supply">
+                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>                           
+                                        <abbr title={Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}>{Number(coin.total_supply).toLocaleString('en-US',{maximumFractionDigits:0})}</abbr>                                
+                                    </Link>
+                                    &nbsp;{coin.symbol}
+                                </div>
+                                <div className="basic-graph">
+                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>
+                                        <img src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${coin.id}.svg`} className={Number(coin.quote.USD.percent_change_7d) >= 0 ? "up" : "low"} alt="graph" width={164} height={48} />
+                                    </Link>
+                                </div>
+                                <div className="go-detail">
+                                    <div className="detail-tooltip">                            
+                                        <button >                            
+                                            <div className="svgs">
+                                                <TbPointFilled size={6.5} />
+                                                <TbPointFilled size={6.5} />
+                                                <TbPointFilled size={6.5} />
+                                            </div>
+                                            <div className="tooltips">
+                                                <div className="tooltips-info">
+                                                    <div className="tooltips-body">
+                                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Charts</Link>
+                                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Marktes</Link>
+                                                    <Link  onClick={()=>sendInfo(coin)} href={`/currencies/${coin.slug}?rank=${Number(coin.cmc_rank)}`}>View Historical Data</Link>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </button>
-                                </div>                      
+                                        </button>
+                                    </div>                      
+                                </div>
                             </div>
-                        </div>
-                    ))
-                    :  Array(limit).fill().map(()=>(
-                        <Skeleton key={uuidv4()} />
-                    ))
+                        ))
+                        :  Array(limit).fill().map(()=>(
+                            <Skeleton key={uuidv4()} />
+                        ))
                     }          
                 
             </div>           
